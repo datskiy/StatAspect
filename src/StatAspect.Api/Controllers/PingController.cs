@@ -1,8 +1,10 @@
 ﻿namespace StatAspect.Api.Controllers;
 
-[ApiController]
+/// <summary>
+/// Represents a ping controller for checking an API accessibility.
+/// </summary>
 [Route("[controller]")]
-public sealed class PingController : ControllerBase
+public sealed class PingController : BaseController
 {
     public PingController()
     {
