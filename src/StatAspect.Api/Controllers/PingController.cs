@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Api.Controllers;
 
 /// <summary>
-/// Represents a ping controller for checking an API accessibility.
+/// Represents a ping controller for checking API availability.
 /// </summary>
 [Route("[controller]")]
 public sealed class PingController : BaseController
@@ -11,12 +11,11 @@ public sealed class PingController : BaseController
     }
 
     /// <summary>
-    /// Checks the API accessibility.
+    /// Checks the API availability.
     /// </summary>
-    /// <returns><see cref="IActionResult"/></returns>
     [HttpGet]
     public IActionResult Ping()
     {
-        return Ok();
+        return Ok(true);
     }
 }

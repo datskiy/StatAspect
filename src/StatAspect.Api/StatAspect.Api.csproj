@@ -10,4 +10,8 @@
 		<Using Include="Microsoft.AspNetCore.Mvc" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Settings\" />
+	</ItemGroup>
+
 </Project>
