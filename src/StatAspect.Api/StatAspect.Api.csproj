@@ -8,10 +8,17 @@
 
 	<ItemGroup>
 		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Newtonsoft.Json" />
+		<Using Include="StatAspect.Api.Interaction.Requests.MediaTracking" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Settings\" />
+		<Folder Include="Interaction\Responses\" />
+		<Folder Include="Settings\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 
 </Project>
