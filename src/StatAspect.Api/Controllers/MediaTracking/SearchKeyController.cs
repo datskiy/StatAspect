@@ -1,4 +1,6 @@
-﻿namespace StatAspect.Api.Controllers;
+﻿using StatAspect.Api.Interaction.Requests.MediaTracking;
+
+namespace StatAspect.Api.Controllers;
 
 /// <summary>
 /// XXX
