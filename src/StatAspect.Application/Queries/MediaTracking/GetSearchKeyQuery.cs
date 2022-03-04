@@ -12,6 +12,9 @@ public sealed class GetSearchKeyQuery : IRequest<SearchKey?>
     /// </summary>
     public int SearchKeyId { get; }
 
+    /// <summary>
+    /// Initializes a new <see cref="GetSearchKeyQuery"/> instance.
+    /// </summary>
     public GetSearchKeyQuery(int searchKeyId)
     {
         SearchKeyId = searchKeyId;

@@ -4,9 +4,9 @@ using StatAspect.Domain.ValueObjects.MediaTracking;
 namespace StatAspect.Application.Handlers.MediaTracking;
 
 /// <summary>
-/// Represents search key requests handler.
+/// Represents a search key read request handler.
 /// </summary>
-public class SearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
+public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
 {
     /// <summary>
     /// Returns the result of processing the <see cref="GetSearchKeyQuery"/> request.
@@ -14,6 +14,8 @@ public class SearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
     /// <exception cref="ArgumentNullException"/>
     public Task<SearchKey?> Handle(GetSearchKeyQuery request, CancellationToken cancellationToken)
     {
+        Guard.Argument(() => request).NotNull();
+
         return Task.FromResult<SearchKey?>(new SearchKey(1, "China attacks", "The main news from China attacks Kazakhstan", DateTime.Now, null));
     }
 }

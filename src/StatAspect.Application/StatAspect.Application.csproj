@@ -1,20 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
    <PropertyGroup>
-      <TargetFramework>net6.0</TargetFramework>
-      <Nullable>enable</Nullable>
-      <ImplicitUsings>enable</ImplicitUsings>
+     <TargetFramework>net6.0</TargetFramework>
+     <Nullable>enable</Nullable>
+     <ImplicitUsings>enable</ImplicitUsings>
    </PropertyGroup>
 
-	<ItemGroup>
-	  <Using Include="MediatR" />
-	</ItemGroup>
+   <ItemGroup>
+	 <Using Include="Dawn" />
+	 <Using Include="MediatR" />
+   </ItemGroup>
 
    <ItemGroup>
      <Folder Include="Commands\" />
    </ItemGroup>
 
    <ItemGroup>
+     <PackageReference Include="Dawn.Guard" Version="1.12.0" />
      <PackageReference Include="MediatR" Version="10.0.1" />
    </ItemGroup>
 

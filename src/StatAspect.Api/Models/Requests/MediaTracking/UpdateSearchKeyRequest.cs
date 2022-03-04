@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Api.Interaction.Requests.MediaTracking;
+﻿namespace StatAspect.Api.Models.Requests.MediaTracking;
 
 /// <summary>
 /// XXX

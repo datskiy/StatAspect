@@ -1,5 +1,5 @@
-﻿using StatAspect.Api.Interaction.Requests.MediaTracking;
-using StatAspect.Api.Interaction.Responses.MediaTracking;
+﻿using StatAspect.Api.Models.Requests.MediaTracking;
+using StatAspect.Api.Models.Responses.MediaTracking;
 using StatAspect.Application.Queries.MediaTracking;
 
 namespace StatAspect.Api.Controllers.MediaTracking;
@@ -34,13 +34,14 @@ public sealed class SearchKeyController : ControllerBase
     }
 
     /// <summary>
-    /// XXX
+    /// Gets multiple search keys filtered by the specified paramerters.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken) // todo: Add CancellationToken paging, filtering, sorting
+    public async Task<IActionResult> GetListAsync(CancellationToken cancellationToken) // todo: paging, filtering, sorting
     {
-        await Task.Delay(0);
-        return Ok();
+        var query = new GetSearchKeysQuery();
+        var result = await _mediator.Send(query, cancellationToken);
+        return Ok(_mapper.Map<IList<SearchKeyResponse>>(result));
     }
 
     /// <summary>

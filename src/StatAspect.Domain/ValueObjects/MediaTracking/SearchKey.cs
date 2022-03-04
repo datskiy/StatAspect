@@ -30,6 +30,10 @@ public sealed class SearchKey
     /// </summary>
     public DateTime? LastUpdateDate { get; set; }
 
+    /// <summary>
+    /// Initializes a new <see cref="SearchKey"/> instance.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     public SearchKey(
         int id,
         string name,
@@ -37,6 +41,8 @@ public sealed class SearchKey
         DateTime creationDate,
         DateTime? lastUpdateDate)
     {
+        Guard.Argument(() => name).NotNull();
+
         Id = id;
         Name = name;
         Description = description;
