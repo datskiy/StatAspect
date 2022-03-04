@@ -1,5 +1,6 @@
 ﻿using StatAspect.Api.Models.Requests.MediaTracking;
 using StatAspect.Api.Models.Responses.MediaTracking;
+using StatAspect.Application.Commands.MediaTracking;
 using StatAspect.Application.Queries.MediaTracking;
 
 namespace StatAspect.Api.Controllers.MediaTracking;
@@ -29,8 +30,8 @@ public sealed class SearchKeyController : ControllerBase
     public async Task<IActionResult> GetAsync([FromQuery] int id, CancellationToken cancellationToken)
     {
         var query = new GetSearchKeyQuery(id);
-        var result = await _mediator.Send(query, cancellationToken);
-        return Ok(_mapper.Map<SearchKeyResponse>(result));
+        var searchKey = await _mediator.Send(query, cancellationToken);
+        return Ok(_mapper.Map<SearchKeyResponse>(searchKey));
     }
 
     /// <summary>
@@ -40,18 +41,19 @@ public sealed class SearchKeyController : ControllerBase
     public async Task<IActionResult> GetListAsync(CancellationToken cancellationToken) // todo: paging, filtering, sorting
     {
         var query = new GetSearchKeysQuery();
-        var result = await _mediator.Send(query, cancellationToken);
-        return Ok(_mapper.Map<IEnumerable<SearchKeyResponse>>(result));
+        var searchKeys = await _mediator.Send(query, cancellationToken);
+        return Ok(_mapper.Map<IEnumerable<SearchKeyResponse>>(searchKeys));
     }
 
     /// <summary>
-    /// XXX
+    /// Adds a new search key.
     /// </summary>
     [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] AddSearchKeyRequest request)
     {
-        await Task.Delay(0);
-        return Created("searchKey", null);
+        var command = new AddSearchKeyCommand(request.Name, request.Description);
+        var searchKeyId = await _mediator.Send(command);
+        return Created($"mediaTracking/searchKey/{searchKeyId}"/*todo: use ApiRouting.Get/{createdId}*/, new { Id = searchKeyId });
     }
 
     /// <summary>
