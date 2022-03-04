@@ -12,6 +12,7 @@
 	 <Using Include="MediatR" />
 	 <Using Include="Microsoft.AspNetCore.Mvc" />
      <Using Include="Newtonsoft.Json" />
+	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>
 
    <ItemGroup>

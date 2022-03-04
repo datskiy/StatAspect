@@ -41,7 +41,7 @@ public sealed class SearchKeyController : ControllerBase
     {
         var query = new GetSearchKeysQuery();
         var result = await _mediator.Send(query, cancellationToken);
-        return Ok(_mapper.Map<IList<SearchKeyResponse>>(result));
+        return Ok(_mapper.Map<IEnumerable<SearchKeyResponse>>(result));
     }
 
     /// <summary>

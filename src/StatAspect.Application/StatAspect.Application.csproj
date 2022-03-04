@@ -9,6 +9,7 @@
    <ItemGroup>
 	 <Using Include="Dawn" />
 	 <Using Include="MediatR" />
+	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>
 
    <ItemGroup>
