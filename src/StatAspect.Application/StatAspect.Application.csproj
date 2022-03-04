@@ -6,4 +6,20 @@
       <ImplicitUsings>enable</ImplicitUsings>
    </PropertyGroup>
 
+	<ItemGroup>
+	  <Using Include="MediatR" />
+	</ItemGroup>
+
+   <ItemGroup>
+     <Folder Include="Commands\" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <PackageReference Include="MediatR" Version="10.0.1" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\StatAspect.Domain\StatAspect.Domain.csproj" />
+   </ItemGroup>
+
 </Project>

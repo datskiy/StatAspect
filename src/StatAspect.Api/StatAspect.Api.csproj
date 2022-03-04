@@ -7,18 +7,26 @@
    </PropertyGroup>
 
    <ItemGroup>
-      <Using Include="Microsoft.AspNetCore.Mvc" />
+	  <Using Include="AutoMapper" />
+	  <Using Include="MediatR" />
+	  <Using Include="Microsoft.AspNetCore.Mvc" />
       <Using Include="Newtonsoft.Json" />
    </ItemGroup>
 
    <ItemGroup>
-      <Folder Include="Interaction\Responses\" />
-      <Folder Include="Filters\" />
       <Folder Include="Settings\" />
    </ItemGroup>
 
    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+      <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj" />
    </ItemGroup>
 
 </Project>

@@ -8,6 +8,6 @@ public sealed class AddSearchKeyRequest
     /// <summary>
     /// XXX
     /// </summary>
-    [JsonProperty("value")]
-    public string Value { get; set; }
+    [JsonProperty("phrase")]
+    public string Phrase { get; set; }
 }

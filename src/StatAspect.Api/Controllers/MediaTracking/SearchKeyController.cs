@@ -1,32 +1,43 @@
 ﻿using StatAspect.Api.Interaction.Requests.MediaTracking;
+using StatAspect.Api.Interaction.Responses.MediaTracking;
+using StatAspect.Application.Queries.MediaTracking;
 
-namespace StatAspect.Api.Controllers;
+namespace StatAspect.Api.Controllers.MediaTracking;
 
 /// <summary>
-/// XXX
+/// Represents a search key controller.
 /// </summary>
+[ApiController]
 [Route("mediaTracking/[controller]")]
-public sealed class SearchKeyController : BaseController
+public sealed class SearchKeyController : ControllerBase
 {
-    public SearchKeyController()
+    private readonly IMediator _mediator;
+    private readonly IMapper _mapper;
+
+    public SearchKeyController(
+        IMediator mediator,
+        IMapper mapper)
     {
+        _mediator = mediator;
+        _mapper = mapper;
     }
 
     /// <summary>
-    /// XXX
+    /// Gets a specific search key.
     /// </summary>
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetAsync([FromQuery] int id)
+    public async Task<IActionResult> GetAsync([FromQuery] int id, CancellationToken cancellationToken)
     {
-        await Task.Delay(0);
-        return Ok();
+        var query = new GetSearchKeyQuery(id);
+        var result = await _mediator.Send(query, cancellationToken);
+        return Ok(_mapper.Map<SearchKeyResponse>(result));
     }
 
     /// <summary>
     /// XXX
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetAllAsync()
+    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken) // todo: Add CancellationToken paging, filtering, sorting
     {
         await Task.Delay(0);
         return Ok();

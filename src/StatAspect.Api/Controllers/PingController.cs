@@ -3,8 +3,9 @@
 /// <summary>
 /// Represents a ping controller for checking API availability.
 /// </summary>
+[ApiController]
 [Route("[controller]")]
-public sealed class PingController : BaseController
+public sealed class PingController : ControllerBase
 {
     public PingController()
     {
