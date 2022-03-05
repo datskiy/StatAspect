@@ -1,9 +1,11 @@
-﻿namespace StatAspect.Application.MediaTracking.Commands;
+﻿using StatAspect.Domain.MediaTracking.Identifiers;
+
+namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
 /// Represents a command to add a new search key.
 /// </summary>
-public sealed class AddSearchKeyCommand : IRequest<int>
+public sealed class AddSearchKeyCommand : IRequest<SearchKeyId>
 {
     /// <summary>
     /// Gets the name of the new search key.

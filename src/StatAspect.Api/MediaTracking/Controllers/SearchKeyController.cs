@@ -10,7 +10,7 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 /// </summary>
 [ApiController]
 [Route("mediaTracking/[controller]")]
-public sealed class SearchKeyController : ControllerBase //* 1) CONSIDER COMMON LAYER 2) REPOSITORY PLACEMENT 3) PAGING IN DDD*//
+public sealed class SearchKeyController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
@@ -53,26 +53,28 @@ public sealed class SearchKeyController : ControllerBase //* 1) CONSIDER COMMON 
     {
         var command = new AddSearchKeyCommand(request.Name, request.Description);
         var searchKeyId = await _mediator.Send(command);
-        return Created($"mediaTracking/searchKey/{searchKeyId}"/*todo: use ApiRouting.Get/{createdId}*/, new { Id = searchKeyId });
+        return Created($"mediaTracking/searchKey/{searchKeyId.Value}"/*todo: use ApiRouting.Get/{createdId}*/, new { Id = searchKeyId.Value });
     }
 
     /// <summary>
-    /// XXX
+    /// Updates a search key.
     /// </summary>
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateAsync([FromBody] UpdateSearchKeyRequest request)
+    public async Task<IActionResult> UpdateAsync([FromQuery] int id, [FromBody] UpdateSearchKeyRequest request)
     {
-        await Task.Delay(0);
+        var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
+        await _mediator.Send(command);
         return Ok();
     }
 
     /// <summary>
-    /// XXX
+    /// Deletes a search key.
     /// </summary>
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteAsync([FromQuery] int id)
     {
-        await Task.Delay(0);
+        var command = new DeleteSearchKeyCommand(id);
+        await _mediator.Send(command);
         return NoContent();
     }
 }

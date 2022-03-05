@@ -1,13 +1,19 @@
 ﻿namespace StatAspect.Api.MediaTracking.Models.Requests;
 
 /// <summary>
-/// XXX
+/// Updated search key request model.
 /// </summary>
 public sealed class UpdateSearchKeyRequest
 {
     /// <summary>
-    /// XXX
+    /// Updated name of the search key.
     /// </summary>
-    [JsonProperty("value")]
-    public string Value { get; set; }
+    [JsonProperty("name")]
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Updated description of the search key.
+    /// </summary>
+    [JsonProperty("description")]
+    public string? Description { get; set; }
 }

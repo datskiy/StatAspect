@@ -1,4 +1,6 @@
-﻿namespace StatAspect.Domain.MediaTracking.ValueObjects;
+﻿using StatAspect.Domain.MediaTracking.Identifiers;
+
+namespace StatAspect.Domain.MediaTracking.ValueObjects;
 
 /// <summary>
 /// Represents search key.
@@ -8,7 +10,7 @@ public sealed class SearchKey
     /// <summary>
     /// Gets a unique identifier for the current search key.
     /// </summary>
-    public int Id { get; set; }
+    public SearchKeyId Id { get; set; }
 
     /// <summary>
     /// Gets the name of the search key.
@@ -34,6 +36,7 @@ public sealed class SearchKey
     /// Initializes a new <see cref="SearchKey"/> instance.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="ArgumentOutOfRangeException"/>
     public SearchKey(
         int id,
         string name,
@@ -43,7 +46,7 @@ public sealed class SearchKey
     {
         Guard.Argument(() => name).NotNull();
 
-        Id = id;
+        Id = new SearchKeyId(id);
         Name = name;
         Description = description;
         CreationDate = creationDate;
