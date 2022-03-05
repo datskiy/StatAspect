@@ -10,7 +10,7 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 /// </summary>
 [ApiController]
 [Route("mediaTracking/[controller]")]
-public sealed class SearchKeyController : ControllerBase //* 1) FIX NAMESPACES 2) CONSIDER COMMON LAYER 3) PAGING IN DDD*//
+public sealed class SearchKeyController : ControllerBase //* 1) CONSIDER COMMON LAYER 2) REPOSITORY PLACEMENT 3) PAGING IN DDD*//
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;

@@ -1,6 +1,6 @@
 ﻿using StatAspect.Application.MediaTracking.Commands;
 
-namespace StatAspect.Application.Handlers.MediaTracking;
+namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a new search key addition request handler.
