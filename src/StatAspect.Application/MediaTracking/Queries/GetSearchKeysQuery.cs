@@ -1,6 +1,6 @@
-﻿using StatAspect.Domain.ValueObjects.MediaTracking;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects;
 
-namespace StatAspect.Application.Queries.MediaTracking;
+namespace StatAspect.Application.MediaTracking.Queries;
 
 /// <summary>
 /// Represents a query that performs a multiple search keys read operation.

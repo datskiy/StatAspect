@@ -1,9 +1,9 @@
-﻿namespace StatAspect.Domain.ValueObjects.MediaTracking;
+﻿namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
-/// Represents a new search key.
+/// Represents a command to add a new search key.
 /// </summary>
-public sealed class NewSearchKey
+public sealed class AddSearchKeyCommand : IRequest<int>
 {
     /// <summary>
     /// Gets the name of the new search key.
@@ -16,12 +16,10 @@ public sealed class NewSearchKey
     public string? Description { get; set; }
 
     /// <summary>
-    /// Initializes a new <see cref="NewSearchKey"/> instance.
+    /// Initializes a new <see cref="AddSearchKeyCommand"/> instance.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public NewSearchKey(
-        string name,
-        string? description)
+    public AddSearchKeyCommand(string name, string? description)
     {
         Guard.Argument(() => name).NotNull();
 

@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Api.Models.Responses.MediaTracking;
+﻿namespace StatAspect.Api.MediaTracking.Models.Responses;
 
 /// <summary>
 /// Search key response model.

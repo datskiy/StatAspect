@@ -1,7 +1,7 @@
-﻿using StatAspect.Application.Queries.MediaTracking;
-using StatAspect.Domain.ValueObjects.MediaTracking;
+﻿using StatAspect.Application.MediaTracking.Queries;
+using StatAspect.Domain.MediaTracking.ValueObjects;
 
-namespace StatAspect.Application.Handlers.MediaTracking;
+namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a search key read request handler.

@@ -1,4 +1,4 @@
-using StatAspect.Application.Queries.MediaTracking;
+using StatAspect.Application.MediaTracking.Queries;
 
 namespace StatAspect.Api;
 

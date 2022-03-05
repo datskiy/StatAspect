@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Api.Controllers;
+﻿namespace StatAspect.Api.General.Controllers;
 
 /// <summary>
 /// Represents a ping controller for checking API availability.

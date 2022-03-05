@@ -1,16 +1,16 @@
-﻿using StatAspect.Api.Models.Requests.MediaTracking;
-using StatAspect.Api.Models.Responses.MediaTracking;
-using StatAspect.Application.Commands.MediaTracking;
-using StatAspect.Application.Queries.MediaTracking;
+﻿using StatAspect.Api.MediaTracking.Models.Requests;
+using StatAspect.Api.MediaTracking.Models.Responses;
+using StatAspect.Application.MediaTracking.Commands;
+using StatAspect.Application.MediaTracking.Queries;
 
-namespace StatAspect.Api.Controllers.MediaTracking;
+namespace StatAspect.Api.MediaTracking.Controllers;
 
 /// <summary>
 /// Represents a search key controller.
 /// </summary>
 [ApiController]
 [Route("mediaTracking/[controller]")]
-public sealed class SearchKeyController : ControllerBase
+public sealed class SearchKeyController : ControllerBase //* 1) FIX NAMESPACES 2) CONSIDER COMMON LAYER 3) PAGING IN DDD*//
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;

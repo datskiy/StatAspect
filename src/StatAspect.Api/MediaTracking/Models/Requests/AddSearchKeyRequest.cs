@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Api.Models.Requests.MediaTracking;
+﻿namespace StatAspect.Api.MediaTracking.Models.Requests;
 
 /// <summary>
 /// New search key request model.

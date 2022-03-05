@@ -15,4 +15,8 @@
      <PackageReference Include="Dawn.Guard" Version="1.12.0" />
    </ItemGroup>
 
+   <ItemGroup>
+     <Folder Include="General\" />
+   </ItemGroup>
+
 </Project>

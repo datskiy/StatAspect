@@ -1,4 +1,4 @@
-﻿using StatAspect.Application.Commands.MediaTracking;
+﻿using StatAspect.Application.MediaTracking.Commands;
 
 namespace StatAspect.Application.Handlers.MediaTracking;
 

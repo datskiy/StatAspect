@@ -1,7 +1,7 @@
-﻿using StatAspect.Api.Models.Responses.MediaTracking;
-using StatAspect.Domain.ValueObjects.MediaTracking;
+﻿using StatAspect.Api.MediaTracking.Models.Responses;
+using StatAspect.Domain.MediaTracking.ValueObjects;
 
-namespace StatAspect.Api.MappingProfilers.MediaTracking;
+namespace StatAspect.Api.MediaTracking.MappingProfilers;
 
 /// <summary>
 /// Represent a mapping configuration provider for <see cref="SearchKey"/>.
