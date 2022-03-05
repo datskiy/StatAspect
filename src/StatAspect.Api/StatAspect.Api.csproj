@@ -13,10 +13,7 @@
 	 <Using Include="Microsoft.AspNetCore.Mvc" />
      <Using Include="Newtonsoft.Json" />
 	 <Using Include="System.Collections.Immutable" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <Folder Include="General\Settings\" />
+	 <Using Include="System.Reflection" />
    </ItemGroup>
 
    <ItemGroup>

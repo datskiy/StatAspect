@@ -1,4 +1,4 @@
-using StatAspect.Application.MediaTracking.Queries;
+using StatAspect.Api.General.Helpers;
 
 namespace StatAspect.Api;
 
@@ -6,10 +6,11 @@ public sealed class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
+        AssemblyHelper.PreloadRequiredAssemblies();
 
-        services.AddAutoMapper(typeof(Startup));
-        services.AddMediatR(typeof(Startup), typeof(GetSearchKeyQuery)); // todo: better way?
+        services.AddControllers();
+        services.AddAutoMapper(AssemblyHelper.GetApiAssembly());
+        services.AddMediatR(AssemblyHelper.GetApiAssembly(), AssemblyHelper.GetApplicationAssembly());
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
