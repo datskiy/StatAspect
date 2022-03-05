@@ -10,6 +10,7 @@ public sealed class SearchKeyProfiler : Profile
 {
     public SearchKeyProfiler()
     {
-        CreateMap<SearchKey, SearchKeyResponse>();
+        CreateMap<SearchKey, SearchKeyResponse>()
+            .ForMember(dest => dest.Id, exp => exp.MapFrom(src => src.Id.Value));
     }
 }
