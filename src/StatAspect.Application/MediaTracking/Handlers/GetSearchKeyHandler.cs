@@ -16,6 +16,6 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
     {
         Guard.Argument(() => request).NotNull();
 
-        return Task.FromResult<SearchKey?>(new SearchKey(1, "China attacks", "The main news from China attacks Kazakhstan", DateTime.Now, null));
+        return Task.FromResult<SearchKey?>(new SearchKey(1, "Urgent", "The main news of the Earch", DateTime.Now, null));
     }
 }

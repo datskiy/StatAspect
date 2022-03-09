@@ -17,7 +17,7 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
         Guard.Argument(() => request).NotNull();
 
         return Task.FromResult<IImmutableList<SearchKey>>(ImmutableList.Create(
-            new SearchKey(1, "China attacks", "The main news from China attacks Kazakhstan", DateTime.Now, null),
-            new SearchKey(2, "Russian", "Russian invasion metrics", DateTime.Now.AddDays(-7), DateTime.Now)));
+            new SearchKey(1, "Sport", "Something realated to sport all around the world", DateTime.Now, null),
+            new SearchKey(2, "Russian invades", "Russian invasion metrics", DateTime.Now.AddDays(-7), DateTime.Now)));
     }
 }

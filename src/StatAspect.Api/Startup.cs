@@ -6,7 +6,7 @@ public sealed class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        AssemblyHelper.PreloadRequiredAssemblies();
+        AssemblyHelper.PreloadAssemblies();
 
         services.AddControllers();
         services.AddAutoMapper(AssemblyHelper.GetApiAssembly());
