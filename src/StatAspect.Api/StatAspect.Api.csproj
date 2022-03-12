@@ -9,17 +9,24 @@
    <ItemGroup>
 	 <Using Include="AutoMapper" />
 	 <Using Include="Dawn" />
+	 <Using Include="FluentValidation" />
+	 <Using Include="FluentValidation.AspNetCore" />
 	 <Using Include="MediatR" />
+	 <Using Include="Microsoft.AspNetCore.Diagnostics" />
 	 <Using Include="Microsoft.AspNetCore.Mvc" />
-     <Using Include="Newtonsoft.Json" />
+	 <Using Include="Newtonsoft.Json" />
 	 <Using Include="System.Collections.Immutable" />
+	 <Using Include="System.Diagnostics" />
+	 <Using Include="System.Globalization" />
 	 <Using Include="System.Reflection" />
+	 <Using Include="System.Text" />
    </ItemGroup>
 
    <ItemGroup>
      <PackageReference Include="AutoMapper" Version="11.0.1" />
      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
      <PackageReference Include="Dawn.Guard" Version="1.12.0" />
+     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
      <PackageReference Include="MediatR" Version="10.0.1" />
      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

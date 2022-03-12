@@ -8,12 +8,15 @@
 
    <ItemGroup>
 	 <Using Include="Dawn" />
+	 <Using Include="FluentValidation" />
+	 <Using Include="FluentValidation.Resources" />
 	 <Using Include="MediatR" />
 	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>
 
    <ItemGroup>
      <PackageReference Include="Dawn.Guard" Version="1.12.0" />
+     <PackageReference Include="FluentValidation" Version="10.3.6" />
      <PackageReference Include="MediatR" Version="10.0.1" />
    </ItemGroup>
 

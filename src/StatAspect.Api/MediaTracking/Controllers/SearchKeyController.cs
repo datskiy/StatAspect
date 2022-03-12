@@ -9,7 +9,7 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 /// Represents a search key controller.
 /// </summary>
 [ApiController]
-[Route("mediaTracking/[controller]")]
+[Route("mediaTracking/searchKey")]
 public sealed class SearchKeyController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -27,7 +27,7 @@ public sealed class SearchKeyController : ControllerBase
     /// Gets a specific search key.
     /// </summary>
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetAsync([FromQuery] int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAsync([FromRoute] int id, CancellationToken cancellationToken)
     {
         var query = new GetSearchKeyQuery(id);
         var searchKey = await _mediator.Send(query, cancellationToken);
@@ -60,7 +60,7 @@ public sealed class SearchKeyController : ControllerBase
     /// Updates a search key.
     /// </summary>
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateAsync([FromQuery] int id, [FromBody] UpdateSearchKeyRequest request)
+    public async Task<IActionResult> UpdateAsync([FromRoute] int id, [FromBody] UpdateSearchKeyRequest request)
     {
         var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
         await _mediator.Send(command);
@@ -71,7 +71,7 @@ public sealed class SearchKeyController : ControllerBase
     /// Deletes a search key.
     /// </summary>
     [HttpDelete("{id:int}")]
-    public async Task<IActionResult> DeleteAsync([FromQuery] int id)
+    public async Task<IActionResult> DeleteAsync([FromRoute] int id)
     {
         var command = new DeleteSearchKeyCommand(id);
         await _mediator.Send(command);

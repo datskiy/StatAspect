@@ -9,9 +9,9 @@ public static class AssemblyHelper
     private const string ApplicationAssemblyName = "StatAspect.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"; // todo: move to config
 
     /// <summary>
-    /// Preloads assemblies that are required at the startup phase.
+    /// Preloads assemblies that are required for the startup phase.
     /// </summary>
-    public static void PreloadAssemblies()
+    public static void PreloadStartupRequiredAssemblies()
     {
         Assembly.Load(ApplicationAssemblyName);
     }

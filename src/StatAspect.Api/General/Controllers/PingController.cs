@@ -4,7 +4,7 @@
 /// Represents a ping controller for checking API availability.
 /// </summary>
 [ApiController]
-[Route("[controller]")]
+[Route("ping")]
 public sealed class PingController : ControllerBase
 {
     public PingController()
