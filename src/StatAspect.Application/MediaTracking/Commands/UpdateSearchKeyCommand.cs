@@ -6,7 +6,7 @@
 public sealed class UpdateSearchKeyCommand : IRequest
 {
     /// <summary>
-    /// Gets the target search key identifier.
+    /// Gets the search key identifier.
     /// </summary>
     public int Id { get; }
 
@@ -21,7 +21,7 @@ public sealed class UpdateSearchKeyCommand : IRequest
     public string? Description { get; set; }
 
     /// <summary>
-    /// Initializes a new <see cref="UpdateSearchKeyCommand"/> instance.
+    /// Initializes a new instance of <see cref="UpdateSearchKeyCommand"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public UpdateSearchKeyCommand(int id, string name, string? description)

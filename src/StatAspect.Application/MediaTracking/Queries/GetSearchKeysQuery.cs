@@ -8,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Queries;
 public sealed class GetSearchKeysQuery : IRequest<IImmutableList<SearchKey>>
 {
     /// <summary>
-    /// Initializes a new <see cref="GetSearchKeysQuery"/> instance.
+    /// Initializes a new instance of <see cref="GetSearchKeysQuery"/>.
     /// </summary>
     public GetSearchKeysQuery()
     {

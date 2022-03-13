@@ -8,7 +8,7 @@ public static class ApplicationBuilderExtensions
     /// <summary>
     /// Adds a middleware to the pipeline that will catch validation exceptions and convert them into a validation error response model.
     /// </summary>
-    /// <exception cref="ArgumentNullException">description</exception>
+    /// <exception cref="ArgumentNullException"/>
     public static void UseValidationExceptionHandler(this IApplicationBuilder applicationBuilder)
     {
         Guard.Argument(() => applicationBuilder).NotNull();

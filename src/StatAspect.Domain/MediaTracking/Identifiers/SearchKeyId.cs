@@ -11,7 +11,7 @@ public sealed record SearchKeyId // todo: inherit from base
     public int Value { get; }
 
     /// <summary>
-    /// Initializes a new <see cref="SearchKeyId"/> instance.
+    /// Initializes a new instance of <see cref="SearchKeyId"/>.
     /// </summary>
     /// <exception cref="ArgumentOutOfRangeException"/>
     public SearchKeyId(int value)

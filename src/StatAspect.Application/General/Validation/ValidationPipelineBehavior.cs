@@ -1,23 +1,28 @@
 ﻿namespace StatAspect.Application.General.Validation;
 
 /// <summary>
-/// XXX
+/// Represents validation pipeline behavior that allows requests to be validated before passing them through the handlers.
 /// </summary>
 public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : IRequest<TResponse>
+    where TRequest : class, IRequest<TResponse>
 {
-    private readonly IEnumerable<IValidator<TRequest>> _validators;
+    private readonly IImmutableList<IValidator<TRequest>> _validators;
 
     public ValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
     {
-        _validators = validators;
+        _validators = ImmutableList.Create(validators.ToArray());
     }
 
     /// <summary>
-    /// XXX
+    /// Preforms incoming request validation and passes it through the next delegate.
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="ValidationException"/>
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
+        Guard.Argument(() => request).NotNull();
+        Guard.Argument(() => next).NotNull();
+
         var context = new ValidationContext<TRequest>(request);
 
         var validationResults = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));

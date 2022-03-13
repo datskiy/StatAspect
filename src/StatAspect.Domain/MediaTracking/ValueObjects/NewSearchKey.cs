@@ -16,7 +16,7 @@ public sealed class NewSearchKey
     public string? Description { get; set; }
 
     /// <summary>
-    /// Initializes a new <see cref="NewSearchKey"/> instance.
+    /// Initializes a new instance of <see cref="NewSearchKey"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public NewSearchKey(

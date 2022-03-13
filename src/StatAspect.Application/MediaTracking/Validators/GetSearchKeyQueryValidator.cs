@@ -3,7 +3,7 @@
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
-/// XXX.
+/// Represents a search key read request validator.
 /// </summary>
 public sealed class GetSearchKeyQueryValidator : AbstractValidator<GetSearchKeyQuery>
 {

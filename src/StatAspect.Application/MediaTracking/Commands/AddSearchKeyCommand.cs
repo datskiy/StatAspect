@@ -18,7 +18,7 @@ public sealed class AddSearchKeyCommand : IRequest<SearchKeyId>
     public string? Description { get; set; }
 
     /// <summary>
-    /// Initializes a new <see cref="AddSearchKeyCommand"/> instance.
+    /// Initializes a new instance of <see cref="AddSearchKeyCommand"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public AddSearchKeyCommand(string name, string? description)

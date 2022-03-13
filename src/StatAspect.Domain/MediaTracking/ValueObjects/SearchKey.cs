@@ -3,7 +3,7 @@
 namespace StatAspect.Domain.MediaTracking.ValueObjects;
 
 /// <summary>
-/// Represents search key.
+/// Represents a search key.
 /// </summary>
 public sealed class SearchKey
 {
@@ -23,7 +23,7 @@ public sealed class SearchKey
     public string? Description { get; set; }
 
     /// <summary>
-    /// Gets the creation date of the current search key.
+    /// Gets the date the current search key was created.
     /// </summary>
     public DateTime CreationDate { get; set; }
 
@@ -33,7 +33,7 @@ public sealed class SearchKey
     public DateTime? LastUpdateDate { get; set; }
 
     /// <summary>
-    /// Initializes a new <see cref="SearchKey"/> instance.
+    /// Initializes a new instance of <see cref="SearchKey"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     /// <exception cref="ArgumentOutOfRangeException"/>

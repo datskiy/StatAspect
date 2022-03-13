@@ -4,7 +4,7 @@ using StatAspect.Domain.MediaTracking.ValueObjects;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search key read request handler.
+/// Represents a search keys read request handler.
 /// </summary>
 public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, IImmutableList<SearchKey>>
 {

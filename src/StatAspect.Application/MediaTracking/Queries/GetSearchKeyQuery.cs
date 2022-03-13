@@ -8,12 +8,12 @@ namespace StatAspect.Application.MediaTracking.Queries;
 public sealed class GetSearchKeyQuery : IRequest<SearchKey?>
 {
     /// <summary>
-    /// Gets the target search key identifier.
+    /// Gets the search key identifier.
     /// </summary>
     public int Id { get; }
 
     /// <summary>
-    /// Initializes a new <see cref="GetSearchKeyQuery"/> instance.
+    /// Initializes a new instance of <see cref="GetSearchKeyQuery"/>.
     /// </summary>
     public GetSearchKeyQuery(int id)
     {

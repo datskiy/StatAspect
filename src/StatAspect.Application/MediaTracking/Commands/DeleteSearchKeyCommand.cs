@@ -6,12 +6,12 @@
 public sealed class DeleteSearchKeyCommand : IRequest
 {
     /// <summary>
-    /// Gets the target search key identifier.
+    /// Gets the search key identifier.
     /// </summary>
     public int Id { get; }
 
     /// <summary>
-    /// Initializes a new <see cref="DeleteSearchKeyCommand"/> instance.
+    /// Initializes a new instance of <see cref="DeleteSearchKeyCommand"/>.
     /// </summary>
     public DeleteSearchKeyCommand(int id)
     {

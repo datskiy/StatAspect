@@ -11,7 +11,7 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Adds Fluent Validation services and custom pipeline behavior to the service collection.
     /// </summary>
-    /// <exception cref="ArgumentNullException">description</exception>
+    /// <exception cref="ArgumentNullException"/>
     public static void AddValidation(this IServiceCollection services, Assembly assembly)
     {
         Guard.Argument(() => services).NotNull();
