@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Api.MediaTracking.Models.Responses;
 
 /// <summary>
-/// Search key response model.
+/// A search key response model.
 /// </summary>
 public sealed class SearchKeyResponse
 {
@@ -12,19 +12,19 @@ public sealed class SearchKeyResponse
     public int Id { get; set; }
 
     /// <summary>
-    /// Name of the search key.
+    /// A name of the search key.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
 
     /// <summary>
-    /// Description of the search key.
+    /// A description of the search key.
     /// </summary>
     [JsonProperty("description")]
     public string? Description { get; set; }
 
     /// <summary>
-    /// Creation date of the current search key.
+    /// The date the current search key was created.
     /// </summary>
     [JsonProperty("creationDate")]
     public DateTime CreationDate { get; set; }

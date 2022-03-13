@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Application.General.Configuration;
+﻿namespace StatAspect.Application.General.Validation;
 
 /// <summary>
 /// XXX

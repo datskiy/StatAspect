@@ -9,7 +9,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, SearchKeyId>
 {
     /// <summary>
-    /// Returns the result of processing the <see cref="AddSearchKeyCommand"/> request.
+    /// Returns a result of processing the <see cref="AddSearchKeyCommand"/> request.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public Task<SearchKeyId> Handle(AddSearchKeyCommand request, CancellationToken cancellationToken)

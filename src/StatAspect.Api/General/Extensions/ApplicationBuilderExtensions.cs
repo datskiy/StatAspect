@@ -1,33 +1,18 @@
-﻿using StatAspect.Api.General.Helpers;
-using StatAspect.Application.General.Configuration;
-
-namespace StatAspect.Api.General.Extensions;
+﻿namespace StatAspect.Api.General.Extensions;
 
 /// <summary>
-/// XXX
+/// Provides a set of extension methods for objects that implement <see cref="IApplicationBuilder"/>.
 /// </summary>
-public static class ValidationExtensions
+public static class ApplicationBuilderExtensions
 {
     /// <summary>
-    /// KKK
+    /// Adds a middleware to the pipeline that will catch validation exceptions and convert them into a validation error response model.
     /// </summary>
-    public static void AddValidation(this IServiceCollection services, Assembly applicationAssembly)
-    {
-        services.AddFluentValidation(cfg =>
-        {
-            cfg.RegisterValidatorsFromAssembly(applicationAssembly);
-            cfg.ValidatorOptions.LanguageManager = new ValidationLocalizationManager
-            {
-                Culture = CultureHelper.GetGlobalCulture(),
-            };
-        });
-    }
-
-    /// <summary>
-    /// ZZZ
-    /// </summary>
+    /// <exception cref="ArgumentNullException">description</exception>
     public static void UseValidationExceptionHandler(this IApplicationBuilder applicationBuilder)
     {
+        Guard.Argument(() => applicationBuilder).NotNull();
+
         applicationBuilder.UseExceptionHandler(ab =>
         {
             ab.Run(async context =>
@@ -43,8 +28,11 @@ public static class ValidationExtensions
         });
     }
 
-    private static string GetErrorResponseJson(HttpContext context, ValidationException ex)
+    private static string GetErrorResponseJson(HttpContext context, ValidationException ex) // todo: think about creating a separate model.
     {
+        Guard.Argument(() => context).NotNull();
+        Guard.Argument(() => ex).NotNull();
+
         return JsonConvert.SerializeObject(new
         {
             type = $"https://tools.ietf.org/html/rfc7231#section-6.5.1",

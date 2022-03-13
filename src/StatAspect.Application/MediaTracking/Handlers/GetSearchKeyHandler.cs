@@ -9,7 +9,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
 {
     /// <summary>
-    /// Returns the result of processing the <see cref="GetSearchKeyQuery"/> request.
+    /// Returns a result of processing the <see cref="GetSearchKeyQuery"/> request.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public Task<SearchKey?> Handle(GetSearchKeyQuery request, CancellationToken cancellationToken)

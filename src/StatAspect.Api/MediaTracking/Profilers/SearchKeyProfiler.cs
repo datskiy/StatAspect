@@ -4,7 +4,7 @@ using StatAspect.Domain.MediaTracking.ValueObjects;
 namespace StatAspect.Api.MediaTracking.Profilers;
 
 /// <summary>
-/// Represents a mapping configuration profile for <see cref="SearchKey"/>.
+/// Represents a mapping configuration profile for <see cref="SearchKey"/> objects.
 /// </summary>
 public sealed class SearchKeyProfiler : Profile
 {

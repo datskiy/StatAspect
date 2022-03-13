@@ -8,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyCommand>
 {
     /// <summary>
-    /// Returns the result of processing the <see cref="DeleteSearchKeyCommand"/> request.
+    /// Returns a result of processing the <see cref="DeleteSearchKeyCommand"/> request.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public Task<Unit> Handle(DeleteSearchKeyCommand request, CancellationToken cancellationToken)

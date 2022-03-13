@@ -8,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 public sealed class UpdateSearchKeyHandler : IRequestHandler<UpdateSearchKeyCommand>
 {
     /// <summary>
-    /// Returns the result of processing the <see cref="UpdateSearchKeyCommand"/> request.
+    /// Returns a result of processing the <see cref="UpdateSearchKeyCommand"/> request.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public Task<Unit> Handle(UpdateSearchKeyCommand request, CancellationToken cancellationToken)
