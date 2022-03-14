@@ -10,12 +10,12 @@ public sealed class AddSearchKeyCommand : IRequest<SearchKeyId>
     /// <summary>
     /// Gets the name of the new search key.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; }
 
     /// <summary>
     /// Gets the description of the new search key.
     /// </summary>
-    public string? Description { get; set; }
+    public string? Description { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="AddSearchKeyCommand"/>.

@@ -10,27 +10,27 @@ public sealed class SearchKey
     /// <summary>
     /// Gets a unique identifier for the current search key.
     /// </summary>
-    public SearchKeyId Id { get; set; }
+    public SearchKeyId Id { get; }
 
     /// <summary>
     /// Gets the name of the search key.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; }
 
     /// <summary>
     /// Gets the description of the search key.
     /// </summary>
-    public string? Description { get; set; }
+    public string? Description { get; }
 
     /// <summary>
     /// Gets the date the current search key was created.
     /// </summary>
-    public DateTime CreationDate { get; set; }
+    public DateTime CreationDate { get; }
 
     /// <summary>
     /// Gets the date the current search key was last updated.
     /// </summary>
-    public DateTime? LastUpdateDate { get; set; }
+    public DateTime? LastUpdateDate { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="SearchKey"/>.

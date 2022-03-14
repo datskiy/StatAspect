@@ -13,12 +13,12 @@ public sealed class UpdateSearchKeyCommand : IRequest
     /// <summary>
     /// Gets the updated name of the search key.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; }
 
     /// <summary>
     /// Gets the updated description of the search key.
     /// </summary>
-    public string? Description { get; set; }
+    public string? Description { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="UpdateSearchKeyCommand"/>.
