@@ -9,6 +9,10 @@ public sealed class GetSearchKeysQueryValidator : AbstractValidator<GetSearchKey
 {
     public GetSearchKeysQueryValidator()
     {
-        // todo: add paging and other validation
+        RuleFor(q => q.Offset)
+            .GreaterThanOrEqualTo(0);
+
+        RuleFor(q => q.Limit)
+            .GreaterThan(0);
     }
 }

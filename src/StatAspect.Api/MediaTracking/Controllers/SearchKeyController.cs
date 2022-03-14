@@ -38,9 +38,9 @@ public sealed class SearchKeyController : ControllerBase
     /// Gets multiple search keys filtered by the specified paramerters.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetListAsync(CancellationToken cancellationToken) // todo: paging, filtering, sorting
+    public async Task<IActionResult> GetListAsync(CancellationToken cancellationToken, [FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue)
     {
-        var query = new GetSearchKeysQuery();
+        var query = new GetSearchKeysQuery(offset, limit);
         var searchKeys = await _mediator.Send(query, cancellationToken);
         return Ok(_mapper.Map<IEnumerable<SearchKeyResponse>>(searchKeys));
     }
