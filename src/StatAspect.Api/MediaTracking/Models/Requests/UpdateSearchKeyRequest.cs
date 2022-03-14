@@ -9,11 +9,11 @@ public sealed class UpdateSearchKeyRequest
     /// An updated name of the search key.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; set; }
+    public string Name { get; init; }
 
     /// <summary>
     /// An updated description of the search key.
     /// </summary>
     [JsonProperty("description")]
-    public string? Description { get; set; }
+    public string? Description { get; init; }
 }
