@@ -53,7 +53,7 @@ public sealed class SearchKeyController : ControllerBase
     {
         var command = new AddSearchKeyCommand(request.Name, request.Description);
         var searchKeyId = await _mediator.Send(command);
-        return Created($"mediaTracking/searchKey/{searchKeyId.Value}", new { Id = searchKeyId.Value }); // todo: to model?
+        return Created($"mediaTracking/searchKey/{searchKeyId.Value}", default);
     }
 
     /// <summary>

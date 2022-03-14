@@ -25,6 +25,7 @@ public sealed class Startup
 
         app.UseValidationExceptionHandler();
         app.UseHttpsRedirection();
+        app.UseHsts();
         app.UseRouting();
         app.UseEndpoints(endpoints => endpoints.MapControllers());
     }
