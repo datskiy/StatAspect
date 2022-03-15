@@ -8,12 +8,12 @@ namespace StatAspect.Application.MediaTracking.Queries;
 public sealed class GetSearchKeysQuery : IRequest<IImmutableList<SearchKey>>
 {
     /// <summary>
-    /// Gets the offset of the search key collection first item to return.
+    /// Gets the offset of the first search key entry to return.
     /// </summary>
     public int Offset { get; }
 
     /// <summary>
-    /// Gets the maximum number of the search key collection entries to return.
+    /// Gets the maximum number of search key entries to return.
     /// </summary>
     public int Limit { get; }
 

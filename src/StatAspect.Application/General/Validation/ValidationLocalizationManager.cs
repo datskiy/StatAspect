@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Application.General.Validation;
 
 /// <summary>
-/// Represents a validation localization manager that allows the default error messages to be overrided.
+/// Represents a validation localization manager that overrides default error messages.
 /// </summary>
 public sealed class ValidationLocalizationManager : LanguageManager
 {
@@ -32,7 +32,7 @@ public sealed class ValidationLocalizationManager : LanguageManager
         AddTranslation("en", "ScalePrecisionValidator", "{PropertyName} must not be more than {ExpectedPrecision} digits in total, with allowance for {ExpectedScale} decimals. {Digits} digits and {ActualScale} decimals were found.");
         AddTranslation("en", "EmptyValidator", "{PropertyName} must be empty.");
         AddTranslation("en", "NullValidator", "{PropertyName} must be empty.");
-        AddTranslation("en", "EnumValidator", "{PropertyName} has a range of values which does not include '{PropertyValue}'.");
+        AddTranslation("en", "EnumValidator", "{PropertyName} has a range of values which does not include {PropertyValue}.");
         AddTranslation("en", "Length_Simple", "{PropertyName} must be between {MinLength} and {MaxLength} characters.");
         AddTranslation("en", "MinimumLength_Simple", "The length of {PropertyName} must be at least {MinLength} characters.");
         AddTranslation("en", "MaximumLength_Simple", "The length of {PropertyName} must be {MaxLength} characters or fewer.");

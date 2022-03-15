@@ -6,7 +6,7 @@
 public static class ValidationExceptionExtensions
 {
     /// <summary>
-    /// Returns a field-based dictionary of validation errors retrieved from <see cref="ValidationException"/> instance.
+    /// Returns a field-based dictionary of validation errors retrieved from the target <see cref="ValidationException"/> instance.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static IImmutableDictionary<string, string[]> ToDictionary(this ValidationException ex)

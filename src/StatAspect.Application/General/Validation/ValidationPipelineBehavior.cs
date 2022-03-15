@@ -14,7 +14,7 @@ public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineB
     }
 
     /// <summary>
-    /// Preforms incoming request validation and passes it through the next delegate.
+    /// Performs incoming request validation and then passes it to the <see cref="RequestHandlerDelegate{TResponse}"/> delegate.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     /// <exception cref="ValidationException"/>

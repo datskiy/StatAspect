@@ -27,7 +27,7 @@ public sealed class SearchKeyController : ControllerBase
     /// Gets a specific search key.
     /// </summary>
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetAsync([FromRoute] int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAsync([FromRoute] int id, CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeyQuery(id);
         var searchKey = await _mediator.Send(query, cancellationToken);
@@ -38,7 +38,7 @@ public sealed class SearchKeyController : ControllerBase
     /// Gets multiple search keys filtered by the specified paramerters.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetListAsync(CancellationToken cancellationToken, [FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue)
+    public async Task<IActionResult> GetListAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue, CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeysQuery(offset, limit);
         var searchKeys = await _mediator.Send(query, cancellationToken);
