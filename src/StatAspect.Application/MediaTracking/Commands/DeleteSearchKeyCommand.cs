@@ -1,12 +1,14 @@
-﻿namespace StatAspect.Application.MediaTracking.Commands;
+﻿using StatAspect.SharedKernel.Markers;
+
+namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
 /// Represents a command to delete a search key.
 /// </summary>
-public sealed class DeleteSearchKeyCommand : IRequest
+public sealed class DeleteSearchKeyCommand : IRequest<OneOf<Success, NotFound>>
 {
     /// <summary>
-    /// Gets the search key identifier.
+    /// Gets the target search key identifier.
     /// </summary>
     public int Id { get; }
 

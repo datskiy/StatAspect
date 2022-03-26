@@ -1,5 +1,7 @@
 ﻿using StatAspect.Application.MediaTracking.Queries;
+using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects;
+using StatAspect.SharedKernel.Aggregates;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 
@@ -8,6 +10,13 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// </summary>
 public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, IImmutableList<SearchKey>>
 {
+    private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
+
+    public GetSearchKeysHandler(ISearchKeyQueryRepository searchKeyQueryRepository)
+    {
+        _searchKeyQueryRepository = searchKeyQueryRepository;
+    }
+
     /// <summary>
     /// Returns a result of processing the <see cref="GetSearchKeysQuery"/> request.
     /// </summary>
@@ -16,8 +25,7 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     {
         Guard.Argument(() => request).NotNull();
 
-        return Task.FromResult<IImmutableList<SearchKey>>(ImmutableList.Create(
-            new SearchKey(1, "Sport", "Something realated to sport all around the world", DateTime.Now, null),
-            new SearchKey(2, "Russian invades", "Russian invasion metrics", DateTime.Now.AddDays(-7), DateTime.Now)));
+        var selectionParams = new SelectionParams(request.Offset, request.Limit);
+        return _searchKeyQueryRepository.ReadMultipleAsync(selectionParams, cancellationToken);
     }
 }

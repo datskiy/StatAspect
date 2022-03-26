@@ -1,12 +1,14 @@
-﻿namespace StatAspect.Application.MediaTracking.Commands;
+﻿using StatAspect.SharedKernel.Markers;
+
+namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
 /// Represents a command to update a search key.
 /// </summary>
-public sealed class UpdateSearchKeyCommand : IRequest
+public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, AlreadyExists>>
 {
     /// <summary>
-    /// Gets the search key identifier.
+    /// Gets the target search key identifier.
     /// </summary>
     public int Id { get; }
 

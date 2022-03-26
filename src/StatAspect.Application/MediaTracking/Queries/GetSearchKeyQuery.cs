@@ -8,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Queries;
 public sealed class GetSearchKeyQuery : IRequest<SearchKey?>
 {
     /// <summary>
-    /// Gets the search key identifier.
+    /// Gets the target search key identifier.
     /// </summary>
     public int Id { get; }
 

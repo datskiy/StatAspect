@@ -52,8 +52,10 @@ public sealed class SearchKeyController : ControllerBase
     public async Task<IActionResult> AddAsync([FromBody] AddSearchKeyRequest request)
     {
         var command = new AddSearchKeyCommand(request.Name, request.Description);
-        var searchKeyId = await _mediator.Send(command);
-        return Created($"mediaTracking/searchKey/{searchKeyId.Value}", default);
+        var result = await _mediator.Send(command);
+        return result.Match<IActionResult>(
+            addedSearchKeyId => Created($"mediaTracking/searchKey/{addedSearchKeyId.Value}", default),
+            alreadyExists => BadRequest("ALREADY EXISTS")); // todo: to unified error model
     }
 
     /// <summary>
@@ -63,8 +65,11 @@ public sealed class SearchKeyController : ControllerBase
     public async Task<IActionResult> UpdateAsync([FromRoute] int id, [FromBody] UpdateSearchKeyRequest request)
     {
         var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
-        await _mediator.Send(command);
-        return Ok();
+        var result = await _mediator.Send(command);
+        return result.Match<IActionResult>(
+            success => Ok(),
+            notFound => NotFound(),
+            alreadyExists => BadRequest("ALREADY EXISTS")); // todo: to unified error model
     }
 
     /// <summary>
@@ -74,7 +79,9 @@ public sealed class SearchKeyController : ControllerBase
     public async Task<IActionResult> DeleteAsync([FromRoute] int id)
     {
         var command = new DeleteSearchKeyCommand(id);
-        await _mediator.Send(command);
-        return NoContent();
+        var result = await _mediator.Send(command);
+        return result.Match<IActionResult>(
+            success => Ok(),
+            notFound => NotFound());
     }
 }

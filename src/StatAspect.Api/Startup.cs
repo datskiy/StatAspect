@@ -16,6 +16,7 @@ public sealed class Startup
         services.AddAutoMapper(apiAssembly);
         services.AddValidation(applicationAssembly);
         services.AddMediatR(apiAssembly, applicationAssembly);
+        services.AddDependencies();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

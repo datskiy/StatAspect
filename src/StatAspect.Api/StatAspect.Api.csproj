@@ -34,6 +34,7 @@
 
    <ItemGroup>
      <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj" />
+     <ProjectReference Include="..\StatAspect.Infrastructure\StatAspect.Infrastructure.csproj" />
    </ItemGroup>
 
 </Project>

@@ -11,6 +11,7 @@
 	 <Using Include="FluentValidation" />
 	 <Using Include="FluentValidation.Resources" />
 	 <Using Include="MediatR" />
+	 <Using Include="OneOf" />
 	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>
 

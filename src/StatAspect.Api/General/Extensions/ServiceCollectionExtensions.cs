@@ -21,6 +21,19 @@ public static class ServiceCollectionExtensions
         services.AddValidationPipelineBehavior();
     }
 
+    /// <summary>
+    /// XXX
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    public static void AddDependencies(this IServiceCollection services)
+    {
+        Guard.Argument(() => services).NotNull();
+
+        DependencyHelper.ResolveTransient(services);
+        //todo: DependencyHelper.ResolveScoped(services);
+        //todo: DependencyHelper.ResolveSingleton(services);
+    }
+
     private static void AddFluentValidationServices(this IServiceCollection services, Assembly assembly)
     {
         Guard.Argument(() => services).NotNull();

@@ -8,15 +8,21 @@
 
    <ItemGroup>
 	 <Using Include="Dawn" />
+	 <Using Include="OneOf" />
 	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>
 
    <ItemGroup>
      <PackageReference Include="Dawn.Guard" Version="1.12.0" />
+     <PackageReference Include="OneOf" Version="3.0.216" />
    </ItemGroup>
 
    <ItemGroup>
      <Folder Include="General\" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\StatAspect.SharedKernel\StatAspect.SharedKernel.csproj" />
    </ItemGroup>
 
 </Project>

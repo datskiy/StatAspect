@@ -1,4 +1,6 @@
 ﻿using StatAspect.Application.MediaTracking.Queries;
+using StatAspect.Domain.MediaTracking.Identifiers;
+using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
@@ -8,6 +10,13 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// </summary>
 public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
 {
+    private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
+
+    public GetSearchKeyHandler(ISearchKeyQueryRepository searchKeyQueryRepository)
+    {
+        _searchKeyQueryRepository = searchKeyQueryRepository;
+    }
+
     /// <summary>
     /// Returns a result of processing the <see cref="GetSearchKeyQuery"/> request.
     /// </summary>
@@ -16,6 +25,7 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
     {
         Guard.Argument(() => request).NotNull();
 
-        return Task.FromResult<SearchKey?>(new SearchKey(1, "Urgent", "The main news of the Earch", DateTime.Now, null));
+        var searchKeyId = new SearchKeyId(request.Id);
+        return _searchKeyQueryRepository.ReadSingleAsync(searchKeyId, cancellationToken);
     }
 }
