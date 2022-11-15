@@ -5,7 +5,7 @@ using StatAspect.SharedKernel.Results;
 
 namespace StatAspect.Infrastructure.MediaTracking.Repositories.Implementations;
 
-public sealed class SearchKeyCommandRepository : ISearchKeyCommandRepository
+public sealed class SearchKeyCommandRepository : ISearchKeyCommandRepository // todo: guards
 {
     public Task<SearchKeyId> CreateAsync(NewSearchKey newSearchKey)
     {

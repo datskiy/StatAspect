@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 
 namespace StatAspect.Infrastructure.MediaTracking.Repositories.Implementations;
 
-public sealed class SearchKeyQueryRepository : ISearchKeyQueryRepository
+public sealed class SearchKeyQueryRepository : ISearchKeyQueryRepository // todo: guards
 {
     public Task<SearchKey?> ReadSingleAsync(SearchKeyId id, CancellationToken cancellationToken = default)
     {
