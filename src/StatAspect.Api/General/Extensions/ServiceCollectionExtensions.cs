@@ -9,20 +9,20 @@ namespace StatAspect.Api.General.Extensions;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds Fluent Validation services and custom pipeline behavior to the service collection.
+    /// Adds FluentValidation services and custom pipeline behavior to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static void AddValidation(this IServiceCollection services, Assembly assembly)
+    public static void AddValidation(this IServiceCollection services, Type type)
     {
         Guard.Argument(() => services).NotNull();
-        Guard.Argument(() => assembly).NotNull();
+        Guard.Argument(() => type).NotNull();
 
-        services.AddFluentValidationServices(assembly);
+        services.AddFluentValidationServices(type);
         services.AddValidationPipelineBehavior();
     }
 
     /// <summary>
-    /// XXX
+    /// Adds custom services to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static void AddDependencies(this IServiceCollection services)
@@ -30,29 +30,24 @@ public static class ServiceCollectionExtensions
         Guard.Argument(() => services).NotNull();
 
         DependencyHelper.ResolveTransient(services);
-        //todo: DependencyHelper.ResolveScoped(services);
-        //todo: DependencyHelper.ResolveSingleton(services);
+        DependencyHelper.ResolveScoped(services);
+        DependencyHelper.ResolveSingleton(services);
     }
 
-    private static void AddFluentValidationServices(this IServiceCollection services, Assembly assembly)
+    private static void AddFluentValidationServices(this IServiceCollection services, Type type)
     {
-        Guard.Argument(() => services).NotNull();
-        Guard.Argument(() => assembly).NotNull();
-
         services.AddFluentValidation(cfg =>
         {
-            cfg.RegisterValidatorsFromAssembly(assembly);
+            cfg.RegisterValidatorsFromAssemblyContaining(type);
             cfg.ValidatorOptions.LanguageManager = new ValidationLocalizationManager
             {
-                Culture = CultureHelper.GetGlobalCulture(),
+                Culture = CultureHelper.GetLocalizationCulture(),
             };
         });
     }
 
     private static void AddValidationPipelineBehavior(this IServiceCollection services)
     {
-        Guard.Argument(() => services).NotNull();
-
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
     }
 }

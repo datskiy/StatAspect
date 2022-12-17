@@ -2,13 +2,14 @@
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.Domain.MediaTracking.ValueObjects;
 using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.Results.Properties;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a search key update request handler.
 /// </summary>
-public sealed class UpdateSearchKeyHandler : IRequestHandler<UpdateSearchKeyCommand, OneOf<Success, NotFound, AlreadyExists>>
+public sealed class UpdateSearchKeyHandler : IRequestHandler<UpdateSearchKeyCommand, OneOf<Success, NotFound, AlreadyExists<Name>>>
 {
     private readonly ISearchKeyService _searchKeyService;
 
@@ -21,7 +22,7 @@ public sealed class UpdateSearchKeyHandler : IRequestHandler<UpdateSearchKeyComm
     /// Returns a result of processing the <see cref="UpdateSearchKeyCommand"/> request.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public Task<OneOf<Success, NotFound, AlreadyExists>> Handle(UpdateSearchKeyCommand request, CancellationToken cancellationToken)
+    public Task<OneOf<Success, NotFound, AlreadyExists<Name>>> Handle(UpdateSearchKeyCommand request, CancellationToken cancellationToken)
     {
         Guard.Argument(() => request).NotNull();
 

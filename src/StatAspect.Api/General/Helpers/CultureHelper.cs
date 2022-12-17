@@ -1,17 +1,17 @@
 ﻿namespace StatAspect.Api.General.Helpers;
 
 /// <summary>
-/// Provides static methods for accessing culture information.
+/// Provides static utility methods for working with culture information.
 /// </summary>
 public static class CultureHelper
 {
-    private const string GlobalCultureName = "en";
+    private const string LocalizationCultureName = "en";
 
     /// <summary>
-    /// Returns the global culture.
+    /// Returns the preferred localization culture.
     /// </summary>
-    public static CultureInfo GetGlobalCulture()
+    public static CultureInfo GetLocalizationCulture()
     {
-        return new CultureInfo(GlobalCultureName);
+        return new CultureInfo(LocalizationCultureName);
     }
 }

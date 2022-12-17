@@ -3,9 +3,8 @@
 /// <summary>
 /// Represents a ping controller for checking API availability.
 /// </summary>
-[ApiController]
 [Route("ping")]
-public sealed class PingController : ControllerBase
+public sealed class PingController : BaseController
 {
     public PingController()
     {
@@ -17,6 +16,6 @@ public sealed class PingController : ControllerBase
     [HttpGet]
     public IActionResult Ping()
     {
-        return Ok(true);
+        return Ok("Pong");
     }
 }

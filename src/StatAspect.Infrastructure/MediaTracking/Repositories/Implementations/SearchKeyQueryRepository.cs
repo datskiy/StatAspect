@@ -1,8 +1,8 @@
-﻿using StatAspect.Domain.MediaTracking.Identifiers;
+﻿using System.Collections.Immutable;
+using StatAspect.Domain.MediaTracking.Identifiers;
 using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects;
 using StatAspect.SharedKernel.Aggregates;
-using System.Collections.Immutable;
 
 namespace StatAspect.Infrastructure.MediaTracking.Repositories.Implementations;
 

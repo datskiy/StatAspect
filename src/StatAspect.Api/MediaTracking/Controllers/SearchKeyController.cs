@@ -1,4 +1,5 @@
-﻿using StatAspect.Api.MediaTracking.Models.Requests;
+﻿using StatAspect.Api.General.Controllers;
+using StatAspect.Api.MediaTracking.Models.Requests;
 using StatAspect.Api.MediaTracking.Models.Responses;
 using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Application.MediaTracking.Queries;
@@ -8,9 +9,8 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 /// <summary>
 /// Represents a search key controller.
 /// </summary>
-[ApiController]
 [Route("mediaTracking/searchKey")]
-public sealed class SearchKeyController : ControllerBase
+public sealed class SearchKeyController : BaseController
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
@@ -31,11 +31,13 @@ public sealed class SearchKeyController : ControllerBase
     {
         var query = new GetSearchKeyQuery(id);
         var searchKey = await _mediator.Send(query, cancellationToken);
-        return Ok(_mapper.Map<SearchKeyResponse>(searchKey));
+        return searchKey is not null
+            ? Ok(_mapper.Map<SearchKeyResponse>(searchKey))
+            : NotFound();
     }
 
     /// <summary>
-    /// Gets multiple search keys filtered by the specified paramerters.
+    /// Gets search key collection filtered by the specified paramerters.
     /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetListAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue, CancellationToken cancellationToken = default)
@@ -54,8 +56,8 @@ public sealed class SearchKeyController : ControllerBase
         var command = new AddSearchKeyCommand(request.Name, request.Description);
         var result = await _mediator.Send(command);
         return result.Match<IActionResult>(
-            addedSearchKeyId => Created($"mediaTracking/searchKey/{addedSearchKeyId.Value}", default),
-            alreadyExists => BadRequest("ALREADY EXISTS")); // todo: to unified error model
+            addedSearchKeyId => Created($"mediaTracking/searchKey/{addedSearchKeyId.Value}", default), // TODO: come up with smth
+            alreadyExists => Conflict(alreadyExists));
     }
 
     /// <summary>
@@ -69,7 +71,7 @@ public sealed class SearchKeyController : ControllerBase
         return result.Match<IActionResult>(
             success => Ok(),
             notFound => NotFound(),
-            alreadyExists => BadRequest("ALREADY EXISTS")); // todo: to unified error model
+            alreadyExists => Conflict(alreadyExists));
     }
 
     /// <summary>

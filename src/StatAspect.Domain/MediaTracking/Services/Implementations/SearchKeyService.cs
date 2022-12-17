@@ -2,6 +2,7 @@
 using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects;
 using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.Results.Properties;
 
 namespace StatAspect.Domain.MediaTracking.Services.Implementations;
 
@@ -18,28 +19,28 @@ public sealed class SearchKeyService : ISearchKeyService
         _searchKeyCommandRepository = searchKeyCommandRepository;
     }
 
-    public async Task<OneOf<SearchKeyId, AlreadyExists>> AddAsync(NewSearchKey newSearchKey)
+    public async Task<OneOf<SearchKeyId, AlreadyExists<Name>>> AddAsync(NewSearchKey newSearchKey)
     {
         Guard.Argument(() => newSearchKey).NotNull();
 
-        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name);
+        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // lock??? (SemaphoreSlimWrapper)
         if (sameNamedSearchKeyExists)
-            return new AlreadyExists();
+            return new AlreadyExists<Name>();
 
         return await _searchKeyCommandRepository.CreateAsync(newSearchKey);
     }
 
-    public async Task<OneOf<Success, NotFound, AlreadyExists>> UpdateAsync(ModifiedSearchKey modifiedSearchKey)
+    public async Task<OneOf<Success, NotFound, AlreadyExists<Name>>> UpdateAsync(ModifiedSearchKey modifiedSearchKey)
     {
         Guard.Argument(() => modifiedSearchKey).NotNull();
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id);
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // lock??? (SemaphoreSlimWrapper)
         if (!targetSearchKeyExists)
             return new NotFound();
 
         var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Name);
         if (sameNamedSearchKeyExists)
-            return new AlreadyExists();
+            return new AlreadyExists<Name>();
 
         return await _searchKeyCommandRepository.UpdateAsync(modifiedSearchKey);
     }
@@ -48,7 +49,7 @@ public sealed class SearchKeyService : ISearchKeyService
     {
         Guard.Argument(() => id).NotNull();
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id);
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id); // should we do the same for delete methods???
         if (!targetSearchKeyExists)
             return new NotFound();
 

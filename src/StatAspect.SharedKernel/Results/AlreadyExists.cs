@@ -1,5 +1,7 @@
-﻿namespace StatAspect.SharedKernel.Results;
+﻿using StatAspect.SharedKernel.Results.Properties.Abstractions;
 
-public struct AlreadyExists
+namespace StatAspect.SharedKernel.Results;
+
+public struct AlreadyExists<T> where T : struct, IResultPropertyName
 {
 }

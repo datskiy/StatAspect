@@ -19,9 +19,9 @@ public static class ValidationExceptionExtensions
             {
                 PropertyName = grp.Key,
                 ErrorMessages = ex.Errors
-                    .Where(flr => flr.PropertyName.Equals(grp.Key, StringComparison.OrdinalIgnoreCase))
+                    .Where(flr => flr.PropertyName == grp.Key)
                     .Select(flr => flr.ErrorMessage)
             })
-            .ToImmutableDictionary(k => k.PropertyName, v => v.ErrorMessages.ToArray());
+            .ToImmutableDictionary(key => key.PropertyName, val => val.ErrorMessages.ToArray());
     }
 }

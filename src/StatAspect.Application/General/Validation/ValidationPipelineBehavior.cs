@@ -3,14 +3,13 @@
 /// <summary>
 /// Represents validation pipeline behavior that allows requests to be validated before passing them through the handlers.
 /// </summary>
-public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : class, IRequest<TResponse>
+public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
 {
     private readonly IImmutableList<IValidator<TRequest>> _validators;
 
     public ValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
     {
-        _validators = ImmutableList.Create(validators.ToArray());
+        _validators = validators.ToImmutableList();
     }
 
     /// <summary>
