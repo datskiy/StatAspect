@@ -2,6 +2,6 @@
 
 namespace StatAspect.SharedKernel.Results;
 
-public struct AlreadyExists<T> where T : struct, IResultPropertyName
+public struct AlreadyExists<TPropName> where TPropName : struct, IResultPropertyName
 {
 }

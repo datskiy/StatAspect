@@ -3,13 +3,26 @@
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
-/// Represents a search key update request validator.
+/// Represents a search key update command validator.
+/// <remarks>
+/// <list type="bullet">
+/// <item>Usable via reflection only.</item>
+/// </list>
+/// </remarks>
 /// </summary>
 public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSearchKeyCommand>
 {
     private const int MaxNameLength = 20;
     private const int MaxDescriptionLength = 50;
 
+    /// <summary>
+    /// Initializes a new instance of <see cref="UpdateSearchKeyCommandValidator"/>.
+    /// <remarks>
+    /// <list type="bullet">
+    /// <item>Usable via reflection only.</item>
+    /// </list>
+    /// </remarks>
+    /// </summary>
     public UpdateSearchKeyCommandValidator()
     {
         RuleFor(c => c.Name)

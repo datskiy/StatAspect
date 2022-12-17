@@ -7,6 +7,11 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a search key read request handler.
+/// <remarks>
+/// <list type="bullet">
+/// <item>Usable via reflection only.</item>
+/// </list>
+/// </remarks>
 /// </summary>
 public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
 {
@@ -19,12 +24,14 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
 
     /// <summary>
     /// Returns a result of processing the <see cref="GetSearchKeyQuery"/> request.
+    /// <remarks>
+    /// <list type="bullet">
+    /// <item>Usable via reflection only.</item>
+    /// </list>
+    /// </remarks>
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
     public Task<SearchKey?> Handle(GetSearchKeyQuery request, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => request).NotNull();
-
         var searchKeyId = new SearchKeyId(request.Id);
         return _searchKeyQueryRepository.ReadSingleAsync(searchKeyId, cancellationToken);
     }
