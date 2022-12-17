@@ -24,7 +24,7 @@ public sealed class SearchKeyController : BaseController
     }
 
     /// <summary>
-    /// Gets a specific search key.
+    /// Gets a specified search key.
     /// </summary>
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetAsync([FromRoute] int id, CancellationToken cancellationToken = default)
@@ -56,7 +56,7 @@ public sealed class SearchKeyController : BaseController
         var command = new AddSearchKeyCommand(request.Name, request.Description);
         var result = await _mediator.Send(command);
         return result.Match<IActionResult>(
-            addedSearchKeyId => Created($"mediaTracking/searchKey/{addedSearchKeyId.Value}", default), // TODO: come up with smth
+            addedSearchKeyId => Created<SearchKeyController>(addedSearchKeyId),
             alreadyExists => Conflict(alreadyExists));
     }
 

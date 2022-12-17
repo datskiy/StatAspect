@@ -18,6 +18,7 @@
 	 <Using Include="System.Collections.Immutable" />
 	 <Using Include="System.Diagnostics" />
 	 <Using Include="System.Globalization" />
+	 <Using Include="System.Net.Mime" />
 	 <Using Include="System.Reflection" />
 	 <Using Include="System.Text" />
    </ItemGroup>

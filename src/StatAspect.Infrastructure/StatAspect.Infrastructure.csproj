@@ -7,6 +7,10 @@
    </PropertyGroup>
 
    <ItemGroup>
+	 <Using Include="System.Collections.Immutable" />
+   </ItemGroup>
+
+   <ItemGroup>
      <ProjectReference Include="..\StatAspect.Domain\StatAspect.Domain.csproj" />
    </ItemGroup>
 

@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-using StatAspect.Api.General.Models.Response;
+﻿using StatAspect.Api.General.Models.Response;
 
 namespace StatAspect.Api.General.Extensions;
 
