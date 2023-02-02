@@ -1,4 +1,5 @@
 ﻿using StatAspect.Application.MediaTracking.Commands;
+using StatAspect.Application.MediaTracking.Validators.Requirements;
 
 namespace StatAspect.Application.MediaTracking.Validators;
 
@@ -12,9 +13,6 @@ namespace StatAspect.Application.MediaTracking.Validators;
 /// </summary>
 public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSearchKeyCommand>
 {
-    private const int MaxNameLength = 20;
-    private const int MaxDescriptionLength = 50;
-
     /// <summary>
     /// Initializes a new instance of <see cref="UpdateSearchKeyCommandValidator"/>.
     /// <remarks>
@@ -28,11 +26,11 @@ public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSe
         RuleFor(c => c.Name)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(MaxNameLength);
+            .MaximumLength(SearchKeyRequirements.MaxNameLength);
 
         RuleFor(c => c.Description)
             .NotEmpty()
-            .MaximumLength(MaxDescriptionLength)
+            .MaximumLength(SearchKeyRequirements.MaxDescriptionLength)
             .When(c => c.Description is not null);
     }
 }
