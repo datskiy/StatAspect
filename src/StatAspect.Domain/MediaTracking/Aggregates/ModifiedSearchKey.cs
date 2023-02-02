@@ -1,4 +1,4 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 
 namespace StatAspect.Domain.MediaTracking.Aggregates;
 

@@ -1,6 +1,6 @@
 ﻿using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Services;
-using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
+using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.Results;
 
 namespace StatAspect.Application.MediaTracking.Handlers;

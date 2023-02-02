@@ -1,4 +1,4 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 
 namespace StatAspect.Domain.MediaTracking.Aggregates;
 
@@ -36,7 +36,6 @@ public sealed class SearchKey
     /// Initializes a new instance of <see cref="SearchKey"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    /// <exception cref="ArgumentOutOfRangeException"/>
     public SearchKey(
         Guid id,
         string name,
@@ -45,7 +44,7 @@ public sealed class SearchKey
         DateTime? lastUpdateDate)
     {
         Guard.Argument(() => name).NotNull();
-        //TODO: add validation?
+
         Id = new SearchKeyId(id);
         Name = name;
         Description = description;
