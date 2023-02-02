@@ -38,7 +38,7 @@ public sealed class SearchKey
     /// <exception cref="ArgumentNullException"/>
     /// <exception cref="ArgumentOutOfRangeException"/>
     public SearchKey(
-        int id,
+        Guid id,
         string name,
         string? description,
         DateTime creationDate,

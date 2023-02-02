@@ -23,6 +23,6 @@ public sealed class DeleteSearchKeyCommandValidator : AbstractValidator<DeleteSe
     public DeleteSearchKeyCommandValidator()
     {
         RuleFor(c => c.Id)
-            .GreaterThan(0);
+            .NotEmpty();
     }
 }

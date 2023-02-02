@@ -11,7 +11,7 @@ public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, A
     /// <summary>
     /// Gets the target search key identifier.
     /// </summary>
-    public int Id { get; }
+    public Guid Id { get; }
 
     /// <summary>
     /// Gets an updated name of the search key.
@@ -27,7 +27,7 @@ public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, A
     /// Initializes a new instance of <see cref="UpdateSearchKeyCommand"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public UpdateSearchKeyCommand(int id, string name, string? description)
+    public UpdateSearchKeyCommand(Guid id, string name, string? description)
     {
         Guard.Argument(() => name).NotNull();
 

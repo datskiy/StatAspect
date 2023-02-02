@@ -5,10 +5,10 @@
 /// </summary>
 public abstract record ObjectId
 {
-    private readonly int _value;
+    private readonly Guid _value;
 
     /// <exception cref="ArgumentOutOfRangeException"/>
-    protected ObjectId(int value)
+    protected ObjectId(Guid value)
     {
         Guard.Argument(() => value).GreaterThan(default);
 
@@ -20,5 +20,5 @@ public abstract record ObjectId
         return $"{_value}";
     }
 
-    public static explicit operator int(ObjectId id) => id._value;
+    public static explicit operator Guid(ObjectId id) => id._value;
 }

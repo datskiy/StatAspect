@@ -10,12 +10,12 @@ public sealed class GetSearchKeyQuery : IRequest<SearchKey?>
     /// <summary>
     /// Gets the target search key identifier.
     /// </summary>
-    public int Id { get; }
+    public Guid Id { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="GetSearchKeyQuery"/>.
     /// </summary>
-    public GetSearchKeyQuery(int id)
+    public GetSearchKeyQuery(Guid id)
     {
         Id = id;
     }

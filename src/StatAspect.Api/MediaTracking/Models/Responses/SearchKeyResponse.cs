@@ -9,7 +9,7 @@ public sealed class SearchKeyResponse
     /// Gets or inits a unique identifier for the current search key.
     /// </summary>
     [JsonProperty("id")]
-    public required int Id { get; init; }
+    public required Guid Id { get; init; }
 
     /// <summary>
     /// Gets or inits a name of the search key.

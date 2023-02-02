@@ -9,14 +9,14 @@ public sealed class SearchKeyQueryRepository : ISearchKeyQueryRepository // todo
 {
     public Task<SearchKey?> ReadSingleAsync(SearchKeyId id, CancellationToken cancellationToken = default)
     {
-        return Task.FromResult<SearchKey?>(new SearchKey(1, "XXX", "Xxx xxx xxx", DateTime.Now, null)); //todo: implement
+        return Task.FromResult<SearchKey?>(new SearchKey(Guid.NewGuid(), "XXX", "Xxx xxx xxx", DateTime.Now, null)); //todo: implement
     }
 
     public Task<IImmutableList<SearchKey>> ReadMultipleAsync(SelectionParams selectionParams, CancellationToken cancellationToken = default)
     {
         return Task.FromResult<IImmutableList<SearchKey>>(ImmutableList.Create(
-            new SearchKey(1, "Qwe", "Qwe qwe qwe qwe", DateTime.Now, null),
-            new SearchKey(2, "Zxc zxc", "Zxc zxc zxc", DateTime.Now.AddDays(-7), DateTime.Now))); //todo: implement
+            new SearchKey(Guid.NewGuid(), "Qwe", "Qwe qwe qwe qwe", DateTime.Now, null),
+            new SearchKey(Guid.NewGuid(), "Zxc zxc", "Zxc zxc zxc", DateTime.Now.AddDays(-7), DateTime.Now))); //todo: implement
     }
 
     public Task<bool> ExistsAsync(SearchKeyId id, CancellationToken cancellationToken = default)

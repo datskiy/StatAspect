@@ -26,8 +26,8 @@ public sealed class SearchKeyController : BaseController
     /// <summary>
     /// Gets a specified search key.
     /// </summary>
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetAsync([FromRoute] int id, CancellationToken cancellationToken = default)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetAsync([FromRoute] Guid id, CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeyQuery(id);
         var searchKey = await _mediator.Send(query, cancellationToken);
@@ -63,8 +63,8 @@ public sealed class SearchKeyController : BaseController
     /// <summary>
     /// Updates a search key.
     /// </summary>
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateAsync([FromRoute] int id, [FromBody] UpdateSearchKeyRequest request)
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] UpdateSearchKeyRequest request)
     {
         var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
         var result = await _mediator.Send(command);
@@ -77,8 +77,8 @@ public sealed class SearchKeyController : BaseController
     /// <summary>
     /// Deletes a search key.
     /// </summary>
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> DeleteAsync([FromRoute] int id)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
         var command = new DeleteSearchKeyCommand(id);
         var result = await _mediator.Send(command);

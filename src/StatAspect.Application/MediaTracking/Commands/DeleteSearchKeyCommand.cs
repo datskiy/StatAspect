@@ -10,12 +10,12 @@ public sealed class DeleteSearchKeyCommand : IRequest<OneOf<Success, NotFound>>
     /// <summary>
     /// Gets the target search key identifier.
     /// </summary>
-    public int Id { get; }
+    public Guid Id { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="DeleteSearchKeyCommand"/>.
     /// </summary>
-    public DeleteSearchKeyCommand(int id)
+    public DeleteSearchKeyCommand(Guid id)
     {
         Id = id;
     }

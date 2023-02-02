@@ -27,7 +27,7 @@ public sealed class ModifiedSearchKey
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public ModifiedSearchKey(
-        int id,
+        Guid id,
         string name,
         string? description)
     {

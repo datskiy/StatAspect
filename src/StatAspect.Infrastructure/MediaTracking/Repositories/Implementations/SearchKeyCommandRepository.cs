@@ -9,7 +9,7 @@ public sealed class SearchKeyCommandRepository : ISearchKeyCommandRepository // 
 {
     public Task<SearchKeyId> CreateAsync(NewSearchKey newSearchKey)
     {
-        return Task.FromResult(new SearchKeyId(777)); //todo: implement
+        return Task.FromResult(new SearchKeyId(Guid.NewGuid())); //todo: implement
     }
 
     public Task<Success> UpdateAsync(ModifiedSearchKey modifiedSearchKey)

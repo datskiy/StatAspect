@@ -23,6 +23,6 @@ public sealed class GetSearchKeyQueryValidator : AbstractValidator<GetSearchKeyQ
     public GetSearchKeyQueryValidator()
     {
         RuleFor(q => q.Id)
-            .GreaterThan(0);
+            .NotEmpty();
     }
 }
