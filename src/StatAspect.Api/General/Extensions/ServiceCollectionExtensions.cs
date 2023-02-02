@@ -41,7 +41,7 @@ public static class ServiceCollectionExtensions
             cfg.RegisterValidatorsFromAssemblyContaining(type);
             cfg.ValidatorOptions.LanguageManager = new ValidationLocalizationManager
             {
-                Culture = CultureHelper.GetLocalizationCulture(),
+                Culture = CultureHelper.GetLocalizationCulture()
             };
         });
     }

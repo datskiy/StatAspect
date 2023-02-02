@@ -1,6 +1,6 @@
-﻿using StatAspect.Domain.MediaTracking.Identifiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
 
-namespace StatAspect.Domain.MediaTracking.ValueObjects;
+namespace StatAspect.Domain.MediaTracking.Aggregates;
 
 /// <summary>
 /// Represents a search key.
@@ -45,7 +45,7 @@ public sealed class SearchKey
         DateTime? lastUpdateDate)
     {
         Guard.Argument(() => name).NotNull();
-
+        //TODO: add validation?
         Id = new SearchKeyId(id);
         Name = name;
         Description = description;

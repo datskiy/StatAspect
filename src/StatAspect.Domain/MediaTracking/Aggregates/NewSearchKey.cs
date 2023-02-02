@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Domain.MediaTracking.ValueObjects;
+﻿namespace StatAspect.Domain.MediaTracking.Aggregates;
 
 /// <summary>
 /// Represents a new search key.

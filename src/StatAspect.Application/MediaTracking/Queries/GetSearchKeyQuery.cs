@@ -1,4 +1,4 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects;
+﻿using StatAspect.Domain.MediaTracking.Aggregates;
 
 namespace StatAspect.Application.MediaTracking.Queries;
 

@@ -1,6 +1,6 @@
-﻿using StatAspect.Domain.MediaTracking.Identifiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
 
-namespace StatAspect.Domain.MediaTracking.ValueObjects;
+namespace StatAspect.Domain.MediaTracking.Aggregates;
 
 /// <summary>
 /// Represents a modified search key.

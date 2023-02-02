@@ -1,7 +1,7 @@
 ﻿using StatAspect.Application.MediaTracking.Queries;
-using StatAspect.Domain.MediaTracking.Identifiers;
+using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
-using StatAspect.Domain.MediaTracking.ValueObjects;
+using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 

@@ -1,4 +1,4 @@
-﻿using StatAspect.Domain.MediaTracking.Identifiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
 using StatAspect.SharedKernel.Results;
 using StatAspect.SharedKernel.Results.Properties;
 

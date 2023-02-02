@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Domain.MediaTracking.Identifiers.Abstractions;
+﻿namespace StatAspect.Domain.General.ValueObjects.Abstractions.Identifiers;
 
 /// <summary>
 /// Represents a base object unique identifier.
@@ -13,6 +13,11 @@ public abstract record ObjectId
         Guard.Argument(() => value).GreaterThan(default);
 
         _value = value;
+    }
+
+    public sealed override string ToString()
+    {
+        return $"{_value}";
     }
 
     public static explicit operator int(ObjectId id) => id._value;

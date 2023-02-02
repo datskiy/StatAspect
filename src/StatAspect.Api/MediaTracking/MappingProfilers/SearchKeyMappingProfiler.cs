@@ -1,5 +1,5 @@
 ﻿using StatAspect.Api.MediaTracking.Models.Responses;
-using StatAspect.Domain.MediaTracking.ValueObjects;
+using StatAspect.Domain.MediaTracking.Aggregates;
 
 namespace StatAspect.Api.MediaTracking.Profilers;
 

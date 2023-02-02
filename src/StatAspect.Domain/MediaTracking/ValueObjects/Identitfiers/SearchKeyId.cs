@@ -1,6 +1,6 @@
-﻿using StatAspect.Domain.MediaTracking.Identifiers.Abstractions;
+﻿using StatAspect.Domain.General.ValueObjects.Abstractions.Identifiers;
 
-namespace StatAspect.Domain.MediaTracking.Identifiers;
+namespace StatAspect.Domain.MediaTracking.ValueObjects.Identitfiers;
 
 /// <summary>
 /// Represents a search key unique identifier.

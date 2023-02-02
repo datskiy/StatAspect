@@ -1,6 +1,6 @@
 ﻿using StatAspect.Api.General.Helpers;
 using StatAspect.Api.General.Models.Response;
-using StatAspect.Domain.MediaTracking.Identifiers.Abstractions;
+using StatAspect.Domain.General.ValueObjects.Abstractions.Identifiers;
 using StatAspect.SharedKernel.Results;
 using StatAspect.SharedKernel.Results.Properties.Abstractions;
 
