@@ -30,8 +30,11 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     /// </list>
     /// </remarks>
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery request, CancellationToken cancellationToken)
     {
+        Guard.Argument(() => request).NotNull();
+
         var selectionParams = new SelectionParams(request.Offset, request.Limit);
         return _searchKeyQueryRepository.ReadMultipleAsync(selectionParams, cancellationToken);
     }

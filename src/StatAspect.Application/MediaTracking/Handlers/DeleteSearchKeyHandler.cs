@@ -30,8 +30,11 @@ public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyComm
     /// </list>
     /// </remarks>
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand request, CancellationToken cancellationToken)
     {
+        Guard.Argument(() => request).NotNull();
+
         var searchKeyId = new SearchKeyId(request.Id);
         return _searchKeyService.DeleteAsync(searchKeyId);
     }

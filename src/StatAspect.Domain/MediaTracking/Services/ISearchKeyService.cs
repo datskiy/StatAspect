@@ -6,22 +6,25 @@ using StatAspect.SharedKernel.Results.Properties;
 namespace StatAspect.Domain.MediaTracking.Services;
 
 /// <summary>
-/// XXX
+/// Represents a search key service.
 /// </summary>
 public interface ISearchKeyService
 {
     /// <summary>
-    /// XXX
+    /// Adds a new search key.
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     Task<OneOf<SearchKeyId, AlreadyExists<Name>>> AddAsync(NewSearchKey newSearchKey);
 
     /// <summary>
-    /// XXX
+    /// Updates a search key.
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     Task<OneOf<Success, NotFound, AlreadyExists<Name>>> UpdateAsync(ModifiedSearchKey modifiedSearchKey);
 
     /// <summary>
-    /// XXX
+    /// Deletes a search key.
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     Task<OneOf<Success, NotFound>> DeleteAsync(SearchKeyId id);
 }

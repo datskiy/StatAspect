@@ -31,8 +31,11 @@ public sealed class UpdateSearchKeyHandler : IRequestHandler<UpdateSearchKeyComm
     /// </list>
     /// </remarks>
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     public Task<OneOf<Success, NotFound, AlreadyExists<Name>>> Handle(UpdateSearchKeyCommand request, CancellationToken cancellationToken)
     {
+        Guard.Argument(() => request).NotNull();
+
         var modifiedSearchKey = new ModifiedSearchKey(request.Id, request.Name, request.Description);
         return _searchKeyService.UpdateAsync(modifiedSearchKey);
     }

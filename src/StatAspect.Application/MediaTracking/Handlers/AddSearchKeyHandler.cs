@@ -32,8 +32,11 @@ public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, O
     /// </list>
     /// </remarks>
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     public Task<OneOf<SearchKeyId, AlreadyExists<Name>>> Handle(AddSearchKeyCommand request, CancellationToken cancellationToken)
     {
+        Guard.Argument(() => request).NotNull();
+
         var newSearchKey = new NewSearchKey(request.Name, request.Description);
         return _searchKeyService.AddAsync(newSearchKey);
     }

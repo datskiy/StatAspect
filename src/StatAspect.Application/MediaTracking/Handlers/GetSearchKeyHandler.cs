@@ -30,8 +30,11 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
     /// </list>
     /// </remarks>
     /// </summary>
+    /// <exception cref="ArgumentNullException"/>
     public Task<SearchKey?> Handle(GetSearchKeyQuery request, CancellationToken cancellationToken)
     {
+        Guard.Argument(() => request).NotNull();
+
         var searchKeyId = new SearchKeyId(request.Id);
         return _searchKeyQueryRepository.ReadSingleAsync(searchKeyId, cancellationToken);
     }
