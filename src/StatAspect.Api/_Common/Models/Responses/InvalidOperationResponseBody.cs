@@ -15,5 +15,5 @@ public sealed class InvalidOperationResponseBody
     /// Gets or inits an error description.
     /// </summary>
     [JsonProperty("error")]
-    public string Error { get; init; }
+    public required string Error { get; init; }
 }

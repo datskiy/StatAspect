@@ -19,7 +19,7 @@ public sealed class AuthenticationController : BaseController
     }
 
     /// <summary>
-    /// Generates and returns a personal access token, if provided with valid credentials.
+    /// Generates and returns a personal access token, if provided with valid user credentials.
     /// </summary>
     [HttpGet("token")]
     public async Task<IActionResult> GetTokenAsync([FromBody] AccessTokenRequestBody request)

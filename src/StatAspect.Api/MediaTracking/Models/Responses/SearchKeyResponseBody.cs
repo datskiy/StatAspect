@@ -15,7 +15,7 @@ public sealed class SearchKeyResponseBody
     /// Gets or inits a name of the search key.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; init; }
+    public required string Name { get; init; }
 
     /// <summary>
     /// Gets or inits a description of the search key.

@@ -33,5 +33,5 @@ public sealed class ValidationFailureResponseBody
     /// Gets or inits a failure related collection of errors.
     /// </summary>
     [JsonProperty("errors")]
-    public IEnumerable<KeyValuePair<string, string[]>> Errors { get; init; }
+    public required IEnumerable<KeyValuePair<string, string[]>> Errors { get; init; }
 }
