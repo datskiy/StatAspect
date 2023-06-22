@@ -23,7 +23,7 @@ public sealed class SearchKeyService : ISearchKeyService
     {
         Guard.Argument(() => newSearchKey).NotNull();
 
-        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // lock??? (SemaphoreSlimWrapper)
+        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // TODO: lock??? (SemaphoreSlimWrapper)
         if (sameNamedSearchKeyExists)
             return new AlreadyExists<Name>();
 
@@ -34,7 +34,7 @@ public sealed class SearchKeyService : ISearchKeyService
     {
         Guard.Argument(() => modifiedSearchKey).NotNull();
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // lock??? (SemaphoreSlimWrapper)
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // TODO: lock??? (SemaphoreSlimWrapper)
         if (!targetSearchKeyExists)
             return new NotFound();
 
@@ -49,7 +49,7 @@ public sealed class SearchKeyService : ISearchKeyService
     {
         Guard.Argument(() => id).NotNull();
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id); // should we do the same for delete methods???
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id); // TODO: should we do the same for delete methods???
         if (!targetSearchKeyExists)
             return new NotFound();
 

@@ -1,3 +1,5 @@
+// ReSharper disable ClassNeverInstantiated.Global
+
 namespace StatAspect.Api;
 
 public sealed class Program

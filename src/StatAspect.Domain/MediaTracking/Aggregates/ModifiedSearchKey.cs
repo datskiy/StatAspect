@@ -13,12 +13,12 @@ public sealed class ModifiedSearchKey
     public SearchKeyId Id { get; }
 
     /// <summary>
-    /// Gets the modified name of the search key.
+    /// Gets a modified name of the search key.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// Gets the modified description of the search key.
+    /// Gets a modified description of the search key.
     /// </summary>
     public string? Description { get; }
 

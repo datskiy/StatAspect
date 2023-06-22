@@ -3,7 +3,7 @@
 /// <summary>
 /// XXX
 /// </summary>
-public sealed class SelectionParams
+public sealed class SelectionParams // TODO: implement, tests
 {
     /// <summary>
     /// XXX

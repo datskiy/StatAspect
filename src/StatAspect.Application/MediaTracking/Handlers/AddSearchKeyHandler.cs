@@ -1,4 +1,6 @@
-﻿using StatAspect.Application.MediaTracking.Commands;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
@@ -11,7 +13,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// Represents a new search key addition request handler.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -28,16 +30,16 @@ public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, O
     /// Returns a result of processing the <see cref="AddSearchKeyCommand"/> request.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public Task<OneOf<SearchKeyId, AlreadyExists<Name>>> Handle(AddSearchKeyCommand request, CancellationToken cancellationToken)
+    public Task<OneOf<SearchKeyId, AlreadyExists<Name>>> Handle(AddSearchKeyCommand command, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => request).NotNull();
+        Guard.Argument(() => command).NotNull();
 
-        var newSearchKey = new NewSearchKey(request.Name, request.Description);
+        var newSearchKey = new NewSearchKey(command.Name, command.Description);
         return _searchKeyService.AddAsync(newSearchKey);
     }
 }

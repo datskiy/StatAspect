@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # Application settings
 src/StatAspect.Api/Properties/
+
+# Rider
+.idea/

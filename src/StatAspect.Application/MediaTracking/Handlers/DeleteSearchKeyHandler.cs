@@ -1,4 +1,6 @@
-﻿using StatAspect.Application.MediaTracking.Commands;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.Results;
@@ -9,7 +11,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// Represents a search key deletion request handler.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -26,16 +28,16 @@ public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyComm
     /// Returns a result of processing the <see cref="DeleteSearchKeyCommand"/> request.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand request, CancellationToken cancellationToken)
+    public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand command, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => request).NotNull();
+        Guard.Argument(() => command).NotNull();
 
-        var searchKeyId = new SearchKeyId(request.Id);
+        var searchKeyId = new SearchKeyId(command.Id);
         return _searchKeyService.DeleteAsync(searchKeyId);
     }
 }

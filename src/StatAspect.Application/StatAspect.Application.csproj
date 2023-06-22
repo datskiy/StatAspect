@@ -25,4 +25,8 @@
      <ProjectReference Include="..\StatAspect.Domain\StatAspect.Domain.csproj" />
    </ItemGroup>
 
+   <ItemGroup>
+     <Folder Include="_Core\" />
+   </ItemGroup>
+
 </Project>

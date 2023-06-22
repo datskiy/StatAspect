@@ -1,4 +1,6 @@
-﻿using StatAspect.Application.MediaTracking.Queries;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Queries;
 
 namespace StatAspect.Application.MediaTracking.Validators;
 
@@ -6,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Validators;
 /// Represents a search key getting query validator.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -16,7 +18,7 @@ public sealed class GetSearchKeyQueryValidator : AbstractValidator<GetSearchKeyQ
     /// Initializes a new instance of <see cref="GetSearchKeyQueryValidator"/>.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>

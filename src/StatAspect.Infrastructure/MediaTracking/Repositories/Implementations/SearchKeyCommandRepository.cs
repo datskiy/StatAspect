@@ -5,20 +5,20 @@ using StatAspect.SharedKernel.Results;
 
 namespace StatAspect.Infrastructure.MediaTracking.Repositories.Implementations;
 
-public sealed class SearchKeyCommandRepository : ISearchKeyCommandRepository // todo: guards
+public sealed class SearchKeyCommandRepository : ISearchKeyCommandRepository // TODO: guards
 {
     public Task<SearchKeyId> CreateAsync(NewSearchKey newSearchKey)
     {
-        return Task.FromResult(new SearchKeyId(Guid.NewGuid())); //todo: implement
+        return Task.FromResult(new SearchKeyId(Guid.NewGuid())); // TODO: implement
     }
 
     public Task<Success> UpdateAsync(ModifiedSearchKey modifiedSearchKey)
     {
-        return Task.FromResult(new Success()); //todo: implement
+        return Task.FromResult(new Success()); // TODO: implement
     }
 
     public Task<Success> DeleteAsync(SearchKeyId id)
     {
-        return Task.FromResult(new Success()); //todo: implement
+        return Task.FromResult(new Success()); // TODO: implement
     }
 }

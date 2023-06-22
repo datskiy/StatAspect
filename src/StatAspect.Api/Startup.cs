@@ -1,5 +1,5 @@
-using StatAspect.Api.General.Extensions;
-using StatAspect.Api.General.Helpers;
+using StatAspect.Api._Common.Extensions;
+using StatAspect.Api._Common.Helpers;
 
 namespace StatAspect.Api;
 
@@ -7,7 +7,7 @@ namespace StatAspect.Api;
 /// Represents the application entry point for setting up configuration and wiring up services the application will use.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -17,7 +17,7 @@ public sealed class Startup
     /// Configures application services.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>
@@ -37,7 +37,7 @@ public sealed class Startup
     /// Configures application pipeline.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>

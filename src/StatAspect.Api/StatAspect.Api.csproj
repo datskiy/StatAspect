@@ -12,6 +12,7 @@
 	 <Using Include="FluentValidation" />
 	 <Using Include="FluentValidation.AspNetCore" />
 	 <Using Include="MediatR" />
+	 <Using Include="Microsoft.AspNetCore.Authorization" />
 	 <Using Include="Microsoft.AspNetCore.Diagnostics" />
 	 <Using Include="Microsoft.AspNetCore.Mvc" />
 	 <Using Include="Newtonsoft.Json" />
@@ -36,6 +37,10 @@
    <ItemGroup>
      <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj" />
      <ProjectReference Include="..\StatAspect.Infrastructure\StatAspect.Infrastructure.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Folder Include="_Core\" />
    </ItemGroup>
 
 </Project>

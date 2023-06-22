@@ -21,4 +21,8 @@
      <ProjectReference Include="..\StatAspect.SharedKernel\StatAspect.SharedKernel.csproj" />
    </ItemGroup>
 
+   <ItemGroup>
+     <Folder Include="_Core\" />
+   </ItemGroup>
+
 </Project>

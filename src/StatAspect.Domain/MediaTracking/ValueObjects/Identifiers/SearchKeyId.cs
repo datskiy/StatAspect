@@ -1,4 +1,4 @@
-﻿using StatAspect.Domain.General.ValueObjects.Abstractions.Identifiers;
+﻿using StatAspect.Domain._Common.ValueObjects.Abstractions.Identifiers;
 
 namespace StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 

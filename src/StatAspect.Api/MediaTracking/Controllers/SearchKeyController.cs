@@ -1,4 +1,7 @@
-﻿using StatAspect.Api.General.Controllers;
+﻿// ReSharper disable UnusedParameter.Local
+// ReSharper disable ConvertClosureToMethodGroup
+
+using StatAspect.Api._Common.Controllers.Abstractions;
 using StatAspect.Api.MediaTracking.Models.Requests;
 using StatAspect.Api.MediaTracking.Models.Responses;
 using StatAspect.Application.MediaTracking.Commands;
@@ -9,7 +12,7 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 /// <summary>
 /// Represents a search key controller.
 /// </summary>
-[Route("mediaTracking/searchKey")]
+[Route("media-tracking/search-keys")]
 public sealed class SearchKeyController : BaseController
 {
     private readonly IMediator _mediator;
@@ -24,7 +27,7 @@ public sealed class SearchKeyController : BaseController
     }
 
     /// <summary>
-    /// Gets a specified search key.
+    /// Returns a specified search key.
     /// </summary>
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetAsync([FromRoute] Guid id, CancellationToken cancellationToken = default)
@@ -32,26 +35,26 @@ public sealed class SearchKeyController : BaseController
         var query = new GetSearchKeyQuery(id);
         var searchKey = await _mediator.Send(query, cancellationToken);
         return searchKey is not null
-            ? Ok(_mapper.Map<SearchKeyResponse>(searchKey))
+            ? Ok(_mapper.Map<SearchKeyResponseBody>(searchKey))
             : NotFound();
     }
 
     /// <summary>
-    /// Gets search key collection filtered by the specified paramerters.
+    /// Returns search key collection filtered by the specified parameters.
     /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetListAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue, CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeysQuery(offset, limit);
         var searchKeys = await _mediator.Send(query, cancellationToken);
-        return Ok(_mapper.Map<IEnumerable<SearchKeyResponse>>(searchKeys));
+        return Ok(_mapper.Map<IEnumerable<SearchKeyResponseBody>>(searchKeys));
     }
 
     /// <summary>
     /// Adds a new search key.
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> AddAsync([FromBody] AddSearchKeyRequest request)
+    public async Task<IActionResult> AddAsync([FromBody] NewSearchKeyRequestBody request)
     {
         var command = new AddSearchKeyCommand(request.Name, request.Description);
         var result = await _mediator.Send(command);
@@ -64,7 +67,7 @@ public sealed class SearchKeyController : BaseController
     /// Updates a search key.
     /// </summary>
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] UpdateSearchKeyRequest request)
+    public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] ModifiedSearchKeyRequestBody request)
     {
         var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
         var result = await _mediator.Send(command);

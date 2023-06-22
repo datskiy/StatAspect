@@ -1,4 +1,6 @@
-﻿using StatAspect.Application.MediaTracking.Queries;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Queries;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
@@ -6,10 +8,10 @@ using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search key read request handler.
+/// Represents a search key getting request handler.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -26,16 +28,16 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
     /// Returns a result of processing the <see cref="GetSearchKeyQuery"/> request.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public Task<SearchKey?> Handle(GetSearchKeyQuery request, CancellationToken cancellationToken)
+    public Task<SearchKey?> Handle(GetSearchKeyQuery query, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => request).NotNull();
+        Guard.Argument(() => query).NotNull();
 
-        var searchKeyId = new SearchKeyId(request.Id);
+        var searchKeyId = new SearchKeyId(query.Id);
         return _searchKeyQueryRepository.ReadSingleAsync(searchKeyId, cancellationToken);
     }
 }

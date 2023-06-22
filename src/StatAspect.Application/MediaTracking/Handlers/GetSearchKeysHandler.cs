@@ -1,4 +1,6 @@
-﻿using StatAspect.Application.MediaTracking.Queries;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Queries;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.SharedKernel.Aggregates;
@@ -6,10 +8,10 @@ using StatAspect.SharedKernel.Aggregates;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search keys read request handler.
+/// Represents a search keys getting request handler.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -26,16 +28,16 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     /// Returns a result of processing the <see cref="GetSearchKeysQuery"/> request.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery request, CancellationToken cancellationToken)
+    public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery query, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => request).NotNull();
+        Guard.Argument(() => query).NotNull();
 
-        var selectionParams = new SelectionParams(request.Offset, request.Limit);
+        var selectionParams = new SelectionParams(query.Offset, query.Limit);
         return _searchKeyQueryRepository.ReadMultipleAsync(selectionParams, cancellationToken);
     }
 }

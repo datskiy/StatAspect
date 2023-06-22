@@ -7,7 +7,7 @@ namespace StatAspect.Domain.MediaTracking.Repositories;
 /// <summary>
 /// XXX
 /// </summary>
-public interface ISearchKeyQueryRepository
+public interface ISearchKeyQueryRepository// TODO: implement
 {
     /// <summary>
     /// XXX

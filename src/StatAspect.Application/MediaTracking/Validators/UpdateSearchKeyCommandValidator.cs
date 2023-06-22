@@ -1,5 +1,7 @@
-﻿using StatAspect.Application.MediaTracking.Commands;
-using StatAspect.Application.MediaTracking.Validators.Requirements;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Commands;
+using StatAspect.Domain.MediaTracking.Metas;
 
 namespace StatAspect.Application.MediaTracking.Validators;
 
@@ -7,7 +9,7 @@ namespace StatAspect.Application.MediaTracking.Validators;
 /// Represents a search key update command validator.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -17,7 +19,7 @@ public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSe
     /// Initializes a new instance of <see cref="UpdateSearchKeyCommandValidator"/>.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>
@@ -26,11 +28,11 @@ public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSe
         RuleFor(c => c.Name)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(SearchKeyRequirements.MaxNameLength);
+            .MaximumLength(SearchKeyMeta.MaxNameLength);
 
         RuleFor(c => c.Description)
             .NotEmpty()
-            .MaximumLength(SearchKeyRequirements.MaxDescriptionLength)
+            .MaximumLength(SearchKeyMeta.MaxDescriptionLength)
             .When(c => c.Description is not null);
     }
 }

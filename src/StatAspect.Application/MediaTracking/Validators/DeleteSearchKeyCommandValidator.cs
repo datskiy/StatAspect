@@ -1,4 +1,6 @@
-﻿using StatAspect.Application.MediaTracking.Commands;
+﻿// ReSharper disable UnusedType.Global
+
+using StatAspect.Application.MediaTracking.Commands;
 
 namespace StatAspect.Application.MediaTracking.Validators;
 
@@ -6,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Validators;
 /// Represents a search key deletion command validator.
 /// <remarks>
 /// <list type="bullet">
-/// <item>Usable via reflection only.</item>
+/// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
@@ -16,7 +18,7 @@ public sealed class DeleteSearchKeyCommandValidator : AbstractValidator<DeleteSe
     /// Initializes a new instance of <see cref="DeleteSearchKeyCommandValidator"/>.
     /// <remarks>
     /// <list type="bullet">
-    /// <item>Usable via reflection only.</item>
+    /// <item>Reflection only.</item>
     /// </list>
     /// </remarks>
     /// </summary>

@@ -1,4 +1,6 @@
-﻿using StatAspect.SharedKernel.Results.Properties.Abstractions;
+﻿// ReSharper disable UnusedTypeParameter
+
+using StatAspect.SharedKernel.Results.Properties.Abstractions;
 
 namespace StatAspect.SharedKernel.Results;
 
