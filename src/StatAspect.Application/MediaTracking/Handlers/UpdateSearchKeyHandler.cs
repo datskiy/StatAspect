@@ -4,7 +4,7 @@ using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.SharedKernel.Results;
-using StatAspect.SharedKernel.Results.Properties;
+using StatAspect.SharedKernel.Results.TargetProperties;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 

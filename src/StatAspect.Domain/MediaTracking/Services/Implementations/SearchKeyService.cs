@@ -2,7 +2,7 @@
 using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.Results;
-using StatAspect.SharedKernel.Results.Properties;
+using StatAspect.SharedKernel.Results.TargetProperties;
 
 namespace StatAspect.Domain.MediaTracking.Services.Implementations;
 
@@ -27,7 +27,7 @@ public sealed class SearchKeyService : ISearchKeyService
         if (sameNamedSearchKeyExists)
             return new AlreadyExists<Name>();
 
-        return await _searchKeyCommandRepository.CreateAsync(newSearchKey);
+        return await _searchKeyCommandRepository.AddAsync(newSearchKey);
     }
 
     public async Task<OneOf<Success, NotFound, AlreadyExists<Name>>> UpdateAsync(ModifiedSearchKey modifiedSearchKey)

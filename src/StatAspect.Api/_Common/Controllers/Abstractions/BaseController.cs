@@ -2,7 +2,7 @@
 using StatAspect.Api._Common.Models.Responses;
 using StatAspect.Domain._Common.ValueObjects.Abstractions.Identifiers;
 using StatAspect.SharedKernel.Results;
-using StatAspect.SharedKernel.Results.Properties.Abstractions;
+using StatAspect.SharedKernel.Results.TargetProperties.Abstractions;
 
 namespace StatAspect.Api._Common.Controllers.Abstractions;
 
@@ -15,7 +15,7 @@ public abstract class BaseController : ControllerBase
     /// <summary>
     /// Creates a <see cref="ConflictObjectResult"/> with already existing property info and produces a <see cref="StatusCodes.Status409Conflict"/> response.
     /// </summary>
-    protected ConflictObjectResult Conflict<T>(AlreadyExists<T> result) where T : struct, IResultPropertyName
+    protected ConflictObjectResult Conflict<T>(AlreadyExists<T> result) where T : struct, IResultTargetPropertyName
     {
         return Conflict(new InvalidOperationResponseBody
         {

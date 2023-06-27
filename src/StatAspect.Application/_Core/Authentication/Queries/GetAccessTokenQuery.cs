@@ -1,4 +1,4 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
+﻿using StatAspect.Domain._Core.Authentication.Aggregates;
 using StatAspect.SharedKernel.Results;
 
 namespace StatAspect.Application._Core.Authentication.Queries;
@@ -6,15 +6,15 @@ namespace StatAspect.Application._Core.Authentication.Queries;
 /// <summary>
 /// Represents a query for getting a generated user access token.
 /// </summary>
-public sealed class GetAccessTokenQuery : IRequest<OneOf<SearchKeyId, AccessDenied>>
+public sealed class GetAccessTokenQuery : IRequest<OneOf<AccessToken, AccessDenied>>
 {
     /// <summary>
-    /// Gets a username.
+    /// Gets user's name.
     /// </summary>
     public string Username { get; }
 
     /// <summary>
-    /// Gets a user password.
+    /// Gets user's password.
     /// </summary>
     public string Password { get; }
 

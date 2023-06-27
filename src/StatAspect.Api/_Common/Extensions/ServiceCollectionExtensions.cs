@@ -1,5 +1,5 @@
 ﻿using StatAspect.Api._Common.Helpers;
-using StatAspect.Application._Common.Validation;
+using StatAspect.Application._Common.Settings;
 
 namespace StatAspect.Api._Common.Extensions;
 

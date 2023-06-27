@@ -10,6 +10,7 @@
 	 <Using Include="Dawn" />
 	 <Using Include="OneOf" />
 	 <Using Include="System.Collections.Immutable" />
+     <Using Include="System.Data.Common" />
    </ItemGroup>
 
    <ItemGroup>
@@ -19,10 +20,6 @@
 
    <ItemGroup>
      <ProjectReference Include="..\StatAspect.SharedKernel\StatAspect.SharedKernel.csproj" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <Folder Include="_Core\" />
    </ItemGroup>
 
 </Project>

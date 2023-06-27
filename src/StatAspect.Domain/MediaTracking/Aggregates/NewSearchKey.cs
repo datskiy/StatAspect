@@ -6,12 +6,12 @@
 public sealed class NewSearchKey
 {
     /// <summary>
-    /// Gets a name of the new search key.
+    /// Gets the name of the new search key.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// Gets a description of the new search key.
+    /// Gets the description of the new search key.
     /// </summary>
     public string? Description { get; }
 

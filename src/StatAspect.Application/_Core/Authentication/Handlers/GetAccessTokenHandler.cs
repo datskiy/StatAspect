@@ -1,32 +1,39 @@
 ﻿// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedParameter.Local
 
 using StatAspect.Application._Core.Authentication.Queries;
-using StatAspect.Application.MediaTracking.Queries;
 using StatAspect.Domain._Core.Authentication.Aggregates;
-using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
+using StatAspect.Domain._Core.Authentication.Managers;
+using StatAspect.Domain._Core.UserRegistry.Managers;
 using StatAspect.SharedKernel.Results;
 
 namespace StatAspect.Application._Core.Authentication.Handlers;
 
 /// <summary>
-/// Represents a generated user access token getting request handler.
+/// Represents an access token getting request handler.
 /// <remarks>
 /// <list type="bullet">
 /// <item>Reflection only.</item>
 /// </list>
 /// </remarks>
 /// </summary>
-public sealed class GetAccessTokenHandler : IRequestHandler<GetAccessTokenQuery, OneOf<SearchKeyId, AccessDenied>>
+public sealed class GetAccessTokenHandler : IRequestHandler<GetAccessTokenQuery, OneOf<AccessToken, AccessDenied>>
 {
-    //private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
+    private readonly IUserCredentialsManager _userCredentialsManager;
+    private readonly IAccessTokenManager _accessTokenManager;
 
-    public GetAccessTokenHandler(/*ISearchKeyQueryRepository searchKeyQueryRepository*/)
+    public GetAccessTokenHandler(
+        IUserCredentialsManager userCredentialsManager, 
+        IAccessTokenManager accessTokenManager)
     {
-        //_searchKeyQueryRepository = searchKeyQueryRepository;
+        _userCredentialsManager = userCredentialsManager;
+        _accessTokenManager = accessTokenManager;
     }
+    
+    private static Task<OneOf<AccessToken, AccessDenied>> AccessDeniedResult => Task.FromResult<OneOf<AccessToken, AccessDenied>>(new AccessDenied());
 
     /// <summary>
-    /// Returns a result of processing the <see cref="GetSearchKeyQuery"/> request. // TODO: fix all
+    /// Returns a result of processing the <see cref="GetAccessTokenQuery"/> request.
     /// <remarks>
     /// <list type="bullet">
     /// <item>Reflection only.</item>
@@ -34,20 +41,14 @@ public sealed class GetAccessTokenHandler : IRequestHandler<GetAccessTokenQuery,
     /// </remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public async Task<OneOf<SearchKeyId, AccessDenied>> Handle(GetAccessTokenQuery request, CancellationToken cancellationToken)
+    public async Task<OneOf<AccessToken, AccessDenied>> Handle(GetAccessTokenQuery query, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => request).NotNull();
-
-        var userCredentials = new UserCredentials(request.Username, request.Password /*TODO: to hash*/);
-        // var userIdentity = repo.SingleOrDefault(userIdentity);
-        // if(userIdentity is null)
-        //     return new AccessDenied();
-        //
-        // return accessTokenService.Issue(userIdentity, duration: new TimeSpan(0, 0, 45));
-        /*
-         * accessTokenGenerator.Generate();??
-         *
-        */
-        return await Task.FromResult(new SearchKeyId(Guid.NewGuid()));
+        Guard.Argument(() => query).NotNull();
+        
+        var verificationResult = await _userCredentialsManager.VerifyAsync(query.Username, query.Password, cancellationToken);
+        return await verificationResult.Match<Task<OneOf<AccessToken, AccessDenied>>>(
+            async matchedUserCredentials => await _accessTokenManager.IssueAsync(matchedUserCredentials.UserId, new TimeSpan(0, 0, 69)),
+            notFound => AccessDeniedResult,
+            mismatched => AccessDeniedResult);
     }
 }

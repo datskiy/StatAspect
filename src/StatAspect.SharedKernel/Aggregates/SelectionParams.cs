@@ -1,23 +1,24 @@
 ﻿namespace StatAspect.SharedKernel.Aggregates;
 
 /// <summary>
-/// XXX
+/// Represents collection selection params.
 /// </summary>
 public sealed class SelectionParams // TODO: implement, tests
 {
     /// <summary>
-    /// XXX
+    /// Gets selection offset.
     /// </summary>
     public int Offset { get; }
 
     /// <summary>
-    /// XXX
+    /// Gets selection limit.
     /// </summary>
     public int Limit { get; }
 
     /// <summary>
-    /// XXX
+    /// Initializes a new instance of <see cref="SelectionParams"/>.
     /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException"/>
     public SelectionParams(int offset = 0, int limit = int.MaxValue)
     {
         Guard.Argument(() => offset).NotNegative();

@@ -7,10 +7,10 @@ public abstract record ObjectId
 {
     private readonly Guid _value;
 
-    /// <exception cref="ArgumentOutOfRangeException"/>
+    /// <exception cref="ArgumentException"/>
     protected ObjectId(Guid value)
     {
-        Guard.Argument(() => value).GreaterThan(default);
+        Guard.Argument(() => value).NotEqual(default);
 
         _value = value;
     }

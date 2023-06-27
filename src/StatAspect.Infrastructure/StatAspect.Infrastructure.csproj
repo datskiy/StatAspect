@@ -7,11 +7,17 @@
    </PropertyGroup>
 
    <ItemGroup>
+     <Using Include="Dawn" />
+     <Using Include="OneOf" />
 	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>
 
    <ItemGroup>
      <ProjectReference Include="..\StatAspect.Domain\StatAspect.Domain.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Folder Include="_Common\" />
    </ItemGroup>
 
 </Project>

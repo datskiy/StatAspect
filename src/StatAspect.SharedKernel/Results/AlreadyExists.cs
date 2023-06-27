@@ -1,9 +1,12 @@
 ﻿// ReSharper disable UnusedTypeParameter
 
-using StatAspect.SharedKernel.Results.Properties.Abstractions;
+using StatAspect.SharedKernel.Results.TargetProperties.Abstractions;
 
 namespace StatAspect.SharedKernel.Results;
 
-public struct AlreadyExists<TPropName> where TPropName : struct, IResultPropertyName
+/// <summary>
+/// Represents an «AlreadyExists» result.
+/// </summary>
+public struct AlreadyExists<TPropName> where TPropName : struct, IResultTargetPropertyName
 {
 }

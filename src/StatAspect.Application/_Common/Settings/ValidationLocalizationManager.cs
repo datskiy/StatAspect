@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Application._Common.Validation;
+﻿namespace StatAspect.Application._Common.Settings;
 
 /// <summary>
 /// Represents a validation localization manager that overrides default error messages.

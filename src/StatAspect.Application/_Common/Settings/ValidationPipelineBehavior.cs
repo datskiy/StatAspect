@@ -1,4 +1,4 @@
-﻿namespace StatAspect.Application._Common.Validation;
+﻿namespace StatAspect.Application._Common.Settings;
 
 /// <summary>
 /// Represents validation pipeline behavior that allows requests to be validated before passing them to the handlers.

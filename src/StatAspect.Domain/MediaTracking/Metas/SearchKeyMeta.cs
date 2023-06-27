@@ -3,7 +3,7 @@
 /// <summary>
 /// Provides metadata that describes search key constraints.
 /// </summary>
-public static class SearchKeyMeta
+public static class SearchKeyMeta // TODO: to value objects, use as `SearchKeyName.MaxLength`
 {
     /// <summary>
     /// Represents the maximum length of a search key name.

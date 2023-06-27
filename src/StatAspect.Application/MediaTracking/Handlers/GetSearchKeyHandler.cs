@@ -38,6 +38,6 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
         Guard.Argument(() => query).NotNull();
 
         var searchKeyId = new SearchKeyId(query.Id);
-        return _searchKeyQueryRepository.ReadSingleAsync(searchKeyId, cancellationToken);
+        return _searchKeyQueryRepository.GetSingleAsync(searchKeyId, cancellationToken);
     }
 }

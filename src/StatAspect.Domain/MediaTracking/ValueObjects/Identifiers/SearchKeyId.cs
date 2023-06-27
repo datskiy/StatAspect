@@ -10,7 +10,7 @@ public sealed record SearchKeyId : ObjectId
     /// <summary>
     /// Initializes a new instance of <see cref="SearchKeyId"/>.
     /// </summary>
-    /// <exception cref="ArgumentOutOfRangeException"/>
+    /// <exception cref="ArgumentException"/>
     public SearchKeyId(Guid value) : base(value)
     {
     }

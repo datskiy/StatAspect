@@ -6,31 +6,31 @@
 public sealed class SearchKeyResponseBody
 {
     /// <summary>
-    /// Gets or inits a unique identifier for the current search key.
+    /// Gets or inits a search key unique identifier.
     /// </summary>
     [JsonProperty("id")]
     public Guid Id { get; init; }
 
     /// <summary>
-    /// Gets or inits a name of the search key.
+    /// Gets or inits a search key name.
     /// </summary>
     [JsonProperty("name")]
     public required string Name { get; init; }
 
     /// <summary>
-    /// Gets or inits a description of the search key.
+    /// Gets or inits a search key description.
     /// </summary>
     [JsonProperty("description")]
     public string? Description { get; init; }
 
     /// <summary>
-    /// Gets or inits a date the search key was created.
+    /// Gets or inits a search key creation date.
     /// </summary>
     [JsonProperty("creationDate")]
     public DateTime CreationDate { get; init; }
 
     /// <summary>
-    /// Gets or inits a date the search key was last updated.
+    /// Gets or inits a search key last update date.
     /// </summary>
     [JsonProperty("lastUpdateDate")]
     public DateTime? LastUpdateDate { get; init; }

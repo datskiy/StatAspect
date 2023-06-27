@@ -8,27 +8,27 @@ namespace StatAspect.Domain.MediaTracking.Aggregates;
 public sealed class SearchKey
 {
     /// <summary>
-    /// Gets a unique identifier for the current search key.
+    /// Gets a search key unique identifier.
     /// </summary>
     public SearchKeyId Id { get; }
 
     /// <summary>
-    /// Gets the name of the search key.
+    /// Gets a search key name.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// Gets the description of the search key.
+    /// Gets a search key description.
     /// </summary>
     public string? Description { get; }
 
     /// <summary>
-    /// Gets the date the current search key was created.
+    /// Gets a search key creation date.
     /// </summary>
     public DateTime CreationDate { get; }
 
     /// <summary>
-    /// Gets the date the current search key was last updated.
+    /// Gets a search key last update date.
     /// </summary>
     public DateTime? LastUpdateDate { get; }
 
@@ -43,7 +43,7 @@ public sealed class SearchKey
         DateTime creationDate,
         DateTime? lastUpdateDate)
     {
-        Guard.Argument(() => name).NotNull();
+        Guard.Argument(() => name).NotNull(); // TODO: add meta checks (rather value objects)
 
         Id = new SearchKeyId(id);
         Name = name;

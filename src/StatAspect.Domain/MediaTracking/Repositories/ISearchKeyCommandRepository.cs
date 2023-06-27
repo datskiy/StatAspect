@@ -5,22 +5,28 @@ using StatAspect.SharedKernel.Results;
 namespace StatAspect.Domain.MediaTracking.Repositories;
 
 /// <summary>
-/// XXX
+/// Represents a search key command repository.
 /// </summary>
 public interface ISearchKeyCommandRepository // TODO: implement
 {
     /// <summary>
-    /// XXX
+    /// Adds a new search key entity.
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="DbException"/>
     /// </summary>
-    Task<SearchKeyId> CreateAsync(NewSearchKey newSearchKey);
+    Task<SearchKeyId> AddAsync(NewSearchKey newSearchKey);
 
     /// <summary>
-    /// XXX
+    /// Updates a search key entity.
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="DbException"/>
     /// </summary>
     Task<Success> UpdateAsync(ModifiedSearchKey modifiedSearchKey);
 
     /// <summary>
-    /// XXX
+    /// Deletes a search key entity.
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="DbException"/>
     /// </summary>
     Task<Success> DeleteAsync(SearchKeyId id);
 }

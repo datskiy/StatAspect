@@ -7,12 +7,12 @@ namespace StatAspect.Infrastructure.MediaTracking.Repositories.Implementations;
 
 public sealed class SearchKeyQueryRepository : ISearchKeyQueryRepository // TODO: guards
 {
-    public Task<SearchKey?> ReadSingleAsync(SearchKeyId id, CancellationToken cancellationToken = default)
+    public Task<SearchKey?> GetSingleAsync(SearchKeyId id, CancellationToken cancellationToken = default)
     {
         return Task.FromResult<SearchKey?>(new SearchKey(Guid.NewGuid(), "XXX", "Xxx xxx xxx", DateTime.Now, null)); // TODO: implement
     }
 
-    public Task<IImmutableList<SearchKey>> ReadMultipleAsync(SelectionParams selectionParams, CancellationToken cancellationToken = default)
+    public Task<IImmutableList<SearchKey>> GetAllAsync(SelectionParams selectionParams, CancellationToken cancellationToken = default)
     {
         return Task.FromResult<IImmutableList<SearchKey>>(ImmutableList.Create(
             new SearchKey(Guid.NewGuid(), "Qwe", "Qwe qwe qwe qwe", DateTime.Now, null),

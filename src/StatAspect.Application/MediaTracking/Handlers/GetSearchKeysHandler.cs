@@ -38,6 +38,6 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
         Guard.Argument(() => query).NotNull();
 
         var selectionParams = new SelectionParams(query.Offset, query.Limit);
-        return _searchKeyQueryRepository.ReadMultipleAsync(selectionParams, cancellationToken);
+        return _searchKeyQueryRepository.GetAllAsync(selectionParams, cancellationToken);
     }
 }
