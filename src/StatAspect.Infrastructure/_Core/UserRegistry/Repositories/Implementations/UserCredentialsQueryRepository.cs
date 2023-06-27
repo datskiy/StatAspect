@@ -9,7 +9,7 @@ public sealed class UserCredentialsQueryRepository : IUserCredentialsQueryReposi
     public Task<UserCredentials?> GetSingleAsync(string username, CancellationToken cancellationToken = default)
     {
         Guard.Argument(() => username).NotNull();
-        
+
         return Task.FromResult((UserCredentials?)new UserCredentials(new UserId(Guid.NewGuid()), "qwerty", "hashed", "salted"));
     }
 }

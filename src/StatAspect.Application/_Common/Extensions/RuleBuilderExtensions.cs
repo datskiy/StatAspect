@@ -15,7 +15,7 @@ public static class RuleBuilderExtensions
     public static IRuleBuilderOptions<T, string> EnglishLettersOnly<T>(this IRuleBuilder<T, string> ruleBuilder)
     {
         Guard.Argument(() => ruleBuilder).NotNull();
-        
+
         return ruleBuilder
             .Matches("^[a-zA-Z]+$")
             .WithMessage("{PropertyName} must only contain letters of the English alphabet.");

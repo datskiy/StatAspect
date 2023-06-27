@@ -23,13 +23,13 @@ public sealed class GetAccessTokenHandler : IRequestHandler<GetAccessTokenQuery,
     private readonly IAccessTokenManager _accessTokenManager;
 
     public GetAccessTokenHandler(
-        IUserCredentialsManager userCredentialsManager, 
+        IUserCredentialsManager userCredentialsManager,
         IAccessTokenManager accessTokenManager)
     {
         _userCredentialsManager = userCredentialsManager;
         _accessTokenManager = accessTokenManager;
     }
-    
+
     private static Task<OneOf<AccessToken, AccessDenied>> AccessDeniedResult => Task.FromResult<OneOf<AccessToken, AccessDenied>>(new AccessDenied());
 
     /// <summary>
@@ -44,7 +44,7 @@ public sealed class GetAccessTokenHandler : IRequestHandler<GetAccessTokenQuery,
     public async Task<OneOf<AccessToken, AccessDenied>> Handle(GetAccessTokenQuery query, CancellationToken cancellationToken)
     {
         Guard.Argument(() => query).NotNull();
-        
+
         var verificationResult = await _userCredentialsManager.VerifyAsync(query.Username, query.Password, cancellationToken);
         return await verificationResult.Match<Task<OneOf<AccessToken, AccessDenied>>>(
             async matchedUserCredentials => await _accessTokenManager.IssueAsync(matchedUserCredentials.UserId, new TimeSpan(0, 0, 69)),

@@ -9,17 +9,17 @@ public sealed class AccessToken
     /// Gets an access token string.
     /// </summary>
     public string Token { get; }
-    
+
     /// <summary>
     /// Gets an access token issue date.
     /// </summary>
     public DateTime IssueDate { get; }
-    
+
     /// <summary>
     /// Gets an access token expiration date.
     /// </summary>
     public DateTime ExpirationDate { get; }
-    
+
     /// <summary>
     /// Initializes a new instance of <see cref="AccessToken"/>.
     /// </summary>
@@ -27,7 +27,7 @@ public sealed class AccessToken
     public AccessToken(string token, DateTime issueDate, DateTime expirationDate)
     {
         Guard.Argument(() => token).NotNull(); // TODO: validation (exp < issue)
-        
+
         Token = token;
         IssueDate = issueDate;
         ExpirationDate = expirationDate;

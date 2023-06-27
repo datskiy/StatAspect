@@ -14,7 +14,7 @@ public interface ISearchKeyQueryRepository// TODO: implement
     /// Throws an exception if there is more than one element found.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    /// <exception cref="InvalidOperationException"/> 
+    /// <exception cref="InvalidOperationException"/>
     Task<SearchKey?> GetSingleAsync(SearchKeyId id, CancellationToken cancellationToken = default); // TODO: rename
 
     /// <summary>

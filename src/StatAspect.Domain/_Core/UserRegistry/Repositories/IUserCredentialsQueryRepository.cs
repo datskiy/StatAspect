@@ -12,6 +12,6 @@ public interface IUserCredentialsQueryRepository
     /// Throws an exception if there is more than one element found.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    /// <exception cref="InvalidOperationException"/> 
+    /// <exception cref="InvalidOperationException"/>
     Task<UserCredentials?> GetSingleAsync(string username, CancellationToken cancellationToken = default);
 }

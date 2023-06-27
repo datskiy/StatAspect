@@ -18,11 +18,11 @@ public sealed class UserCredentialsManager : IUserCredentialsManager
     {
         Guard.Argument(() => username).NotNull();
         Guard.Argument(() => password).NotNull();
-        
+
         var userCredentials = await _userCredentialsQueryRepository.GetSingleAsync(username, cancellationToken);
         if (userCredentials is null)
             return new NotFound();
-        
+
         // var doesPasswordMatch = _passwordManager.Matches(password, userCredentials.PasswordHash, userCredentials.PasswordSalt); // TODO: implement
         // if(!doesPasswordMatch)
         //  return new Mismatched();

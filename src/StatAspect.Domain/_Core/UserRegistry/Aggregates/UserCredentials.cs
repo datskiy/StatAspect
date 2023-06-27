@@ -21,7 +21,7 @@ public sealed class UserCredentials
     /// Gets a user password hash.
     /// </summary>
     public string PasswordHash { get; } // TODO: to password value object
-    
+
     /// <summary>
     /// Gets a user password salt.
     /// </summary>
@@ -32,16 +32,16 @@ public sealed class UserCredentials
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public UserCredentials(
-        UserId userId, 
-        string username, 
-        string passwordHash, 
+        UserId userId,
+        string username,
+        string passwordHash,
         string passwordSalt)
     {
         Guard.Argument(() => userId).NotNull();
         Guard.Argument(() => username).NotNull();
         Guard.Argument(() => passwordHash).NotNull();
         Guard.Argument(() => passwordSalt).NotNull();
-        
+
         UserId = userId;
         Username = username;
         PasswordHash = passwordHash;
