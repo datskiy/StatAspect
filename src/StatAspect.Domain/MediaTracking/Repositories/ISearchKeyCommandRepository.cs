@@ -10,7 +10,7 @@ namespace StatAspect.Domain.MediaTracking.Repositories;
 public interface ISearchKeyCommandRepository // TODO: implement
 {
     /// <summary>
-    /// Adds a new search key entity.
+    /// Adds a search key entity.
     /// <exception cref="ArgumentNullException"/>
     /// <exception cref="DbException"/>
     /// </summary>

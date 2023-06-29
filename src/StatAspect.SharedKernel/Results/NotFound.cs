@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.SharedKernel.Results;
 
 /// <summary>
-/// Represents a «NotFound» result.
+/// Represents a <see cref="NotFound"/> result.
 /// </summary>
 public struct NotFound
 {

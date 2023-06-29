@@ -8,7 +8,7 @@ namespace StatAspect.Api._Common.Extensions;
 public static class ApplicationBuilderExtensions
 {
     /// <summary>
-    /// Adds a middleware to the pipeline for catching validation exceptions and converting them into a unified validation error response model.
+    /// Adds a middleware to the pipeline for catching validation exceptions and converting them into a unified validation error response body.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static void UseValidationExceptionHandler(this IApplicationBuilder applicationBuilder)
@@ -34,7 +34,7 @@ public static class ApplicationBuilderExtensions
     {
         return JsonConvert.SerializeObject(new ValidationFailureResponseBody
         {
-            Errors = ex.ToDictionary()
+            Errors = ex.ToImmutableDictionary()
         });
     }
 }

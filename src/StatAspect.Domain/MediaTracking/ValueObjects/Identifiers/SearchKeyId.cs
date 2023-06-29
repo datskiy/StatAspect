@@ -3,7 +3,7 @@
 namespace StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 
 /// <summary>
-/// Represents a search key unique identifier.
+/// Represents a unique search key identifier.
 /// </summary>
 public sealed record SearchKeyId : ObjectId
 {

@@ -8,7 +8,7 @@ public static class CultureHelper
     private const string LocalizationCultureName = "en";
 
     /// <summary>
-    /// Returns the preferred localization culture.
+    /// Returns default localization culture.
     /// </summary>
     public static CultureInfo GetLocalizationCulture()
     {

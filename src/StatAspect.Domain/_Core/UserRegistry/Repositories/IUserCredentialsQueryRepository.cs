@@ -3,7 +3,7 @@
 namespace StatAspect.Domain._Core.UserRegistry.Repositories;
 
 /// <summary>
-/// Represents user credentials query repository.
+/// Represents a user credentials query repository.
 /// </summary>
 public interface IUserCredentialsQueryRepository
 {

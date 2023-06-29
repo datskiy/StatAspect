@@ -3,7 +3,7 @@
 namespace StatAspect.Api._Core.Availability.Controllers;
 
 /// <summary>
-/// Represents a ping controller for checking API availability.
+/// Represents a ping controller for API availability checking.
 /// </summary>
 [Route("ping")]
 public sealed class PingController : BaseController

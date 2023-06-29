@@ -9,7 +9,7 @@ public static class ValidationExceptionExtensions
     /// Returns a field-based dictionary of validation errors retrieved from the target <see cref="ValidationException"/> instance.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static IImmutableDictionary<string, string[]> ToDictionary(this ValidationException ex)
+    public static IImmutableDictionary<string, string[]> ToImmutableDictionary(this ValidationException ex)
     {
         Guard.Argument(() => ex).NotNull();
 

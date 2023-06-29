@@ -10,12 +10,12 @@ namespace StatAspect.Application.MediaTracking.Commands;
 public sealed class AddSearchKeyCommand : IRequest<OneOf<SearchKeyId, AlreadyExists<Name>>>
 {
     /// <summary>
-    /// Gets a name of the new search key.
+    /// Gets a new search key name.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// Gets a description of the new search key.
+    /// Gets a new search key description.
     /// </summary>
     public string? Description { get; }
 

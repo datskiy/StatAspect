@@ -8,22 +8,22 @@ namespace StatAspect.Domain._Core.UserRegistry.Aggregates;
 public sealed class UserCredentials
 {
     /// <summary>
-    /// Gets a user unique identifier.
+    /// Gets a unique user identifier.
     /// </summary>
     public UserId UserId { get; }
 
     /// <summary>
-    /// Gets a user name.
+    /// Gets a username.
     /// </summary>
     public string Username { get; }
 
     /// <summary>
-    /// Gets a user password hash.
+    /// Gets a password hash.
     /// </summary>
     public string PasswordHash { get; } // TODO: to password value object
 
     /// <summary>
-    /// Gets a user password salt.
+    /// Gets a password salt.
     /// </summary>
     public string PasswordSalt { get; } // TODO: to password value object (SecurePassword?)
 

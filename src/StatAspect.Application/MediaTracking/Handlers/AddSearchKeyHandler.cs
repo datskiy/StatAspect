@@ -10,7 +10,7 @@ using StatAspect.SharedKernel.Results.TargetProperties;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a new search key addition request handler.
+/// Represents a search key addition request handler.
 /// <remarks>
 /// <list type="bullet">
 /// <item>Reflection only.</item>

@@ -8,7 +8,7 @@ namespace StatAspect.Application._Common.Extensions;
 public static class RuleBuilderExtensions
 {
     /// <summary>
-    /// Defines an English alphabet validator on the current rule builder, but only for string properties.
+    /// Defines an English alphabet validator on the target rule builder, but only for string properties.
     /// Validation will fail if any symbols of the string are outside of the range of the English alphabet.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>

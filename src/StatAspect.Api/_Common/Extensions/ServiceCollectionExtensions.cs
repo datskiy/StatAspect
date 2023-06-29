@@ -9,7 +9,7 @@ namespace StatAspect.Api._Common.Extensions;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds FluentValidation services and custom pipeline behavior to the service collection.
+    /// Adds <see cref="FluentValidation"/> services and a custom pipeline behavior to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static void AddValidation(this IServiceCollection services, Type type)

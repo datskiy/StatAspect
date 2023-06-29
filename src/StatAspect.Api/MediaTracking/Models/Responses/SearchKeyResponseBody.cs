@@ -1,12 +1,12 @@
 ﻿namespace StatAspect.Api.MediaTracking.Models.Responses;
 
 /// <summary>
-/// Represents a search key response model.
+/// Represents a search key response body.
 /// </summary>
 public sealed class SearchKeyResponseBody
 {
     /// <summary>
-    /// Gets or inits a search key unique identifier.
+    /// Gets or inits a unique search key identifier.
     /// </summary>
     [JsonProperty("id")]
     public Guid Id { get; init; }

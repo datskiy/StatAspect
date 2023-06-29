@@ -1,12 +1,12 @@
 ﻿namespace StatAspect.Api._Core.Authentication.Models.Responses;
 
 /// <summary>
-/// Represents a search key response model.
+/// Represents a search key response body.
 /// </summary>
 public sealed class AccessTokenResponseBody
 {
     /// <summary>
-    /// Gets or inits an access token string.
+    /// Gets or inits an access token value.
     /// </summary>
     [JsonProperty("token")]
     public required string Token { get; init; }

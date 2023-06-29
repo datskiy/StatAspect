@@ -8,7 +8,7 @@ namespace StatAspect.Api._Common.Helpers;
 public static class StartupHelper
 {
     /// <summary>
-    /// Returns the API layer default initialization type.
+    /// Returns the <see cref="StatAspect.Api"/> layer default initialization type.
     /// </summary>
     public static Type GetApiLayerInitType()
     {
@@ -16,7 +16,7 @@ public static class StartupHelper
     }
 
     /// <summary>
-    /// Returns the application layer default initialization type.
+    /// Returns the <see cref="StatAspect.Application"/> layer default initialization type.
     /// </summary>
     public static Type GetApplicationLayerInitType()
     {

@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Application
 {
     /// <summary>
-    /// Represents an application layer default initializer.
+    /// Represents an <see cref="StatAspect.Application"/> layer default initializer.
     /// <remarks>
     /// <list type="bullet">
     /// <item>Reflection only.</item>

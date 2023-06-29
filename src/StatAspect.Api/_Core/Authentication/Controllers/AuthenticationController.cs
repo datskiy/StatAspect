@@ -26,7 +26,7 @@ public sealed class AuthenticationController : BaseController
     }
 
     /// <summary>
-    /// Generates and returns an access token, if provided with valid user credentials.
+    /// Generates and returns an access token if provided with valid user credentials.
     /// </summary>
     [AllowAnonymous]
     [HttpGet("token")]

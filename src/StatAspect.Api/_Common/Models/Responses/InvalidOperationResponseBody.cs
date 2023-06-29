@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Api._Common.Models.Responses;
 
 /// <summary>
-/// Represents a unified invalid operation response model.
+/// Represents a unified invalid operation response body.
 /// </summary>
 public sealed class InvalidOperationResponseBody
 {

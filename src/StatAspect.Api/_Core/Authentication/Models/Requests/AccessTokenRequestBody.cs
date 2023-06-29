@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Api._Core.Authentication.Models.Requests;
 
 /// <summary>
-/// Represents an access token request model.
+/// Represents an access token request body.
 /// </summary>
 public sealed class AccessTokenRequestBody
 {

@@ -13,7 +13,7 @@ namespace StatAspect.Api._Common.Controllers.Abstractions;
 public abstract class BaseController : ControllerBase
 {
     /// <summary>
-    /// Creates a <see cref="ConflictObjectResult"/> with already existing property info and produces a <see cref="StatusCodes.Status409Conflict"/> response.
+    /// Creates a <see cref="ConflictObjectResult"/> with <see cref="AlreadyExists{TPropName}"/> target property info and produces a <see cref="StatusCodes.Status409Conflict"/> response.
     /// </summary>
     protected ConflictObjectResult Conflict<T>(AlreadyExists<T> result) where T : struct, IResultTargetPropertyName
     {

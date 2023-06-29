@@ -14,12 +14,12 @@ public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, A
     public Guid Id { get; }
 
     /// <summary>
-    /// Gets an updated name of the search key.
+    /// Gets a modified search key name.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// Gets an updated description of the search key.
+    /// Gets a modified search key.
     /// </summary>
     public string? Description { get; }
 

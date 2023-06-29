@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Domain._Common.ValueObjects.Abstractions.Identifiers;
 
 /// <summary>
-/// Represents a base object unique identifier.
+/// Represents a base unique object identifier.
 /// </summary>
 public abstract record ObjectId
 {

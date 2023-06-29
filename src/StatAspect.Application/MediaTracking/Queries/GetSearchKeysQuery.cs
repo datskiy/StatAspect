@@ -3,17 +3,17 @@
 namespace StatAspect.Application.MediaTracking.Queries;
 
 /// <summary>
-/// Represents a query for getting filtered search keys.
+/// Represents a query for getting search keys.
 /// </summary>
 public sealed class GetSearchKeysQuery : IRequest<IImmutableList<SearchKey>>
 {
     /// <summary>
-    /// Gets an offset of the first search key entry to return.
+    /// Gets a search key selection offset.
     /// </summary>
     public int Offset { get; }
 
     /// <summary>
-    /// Gets a number limit of search key entries to return.
+    /// Gets a search key selection limit.
     /// </summary>
     public int Limit { get; }
 

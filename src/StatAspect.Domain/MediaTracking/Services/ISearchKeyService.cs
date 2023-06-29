@@ -11,7 +11,7 @@ namespace StatAspect.Domain.MediaTracking.Services;
 public interface ISearchKeyService
 {
     /// <summary>
-    /// Adds a new search key.
+    /// Adds a search key.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     Task<OneOf<SearchKeyId, AlreadyExists<Name>>> AddAsync(NewSearchKey newSearchKey);

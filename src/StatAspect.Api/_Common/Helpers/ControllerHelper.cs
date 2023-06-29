@@ -8,11 +8,11 @@ namespace StatAspect.Api._Common.Helpers;
 public static class ControllerHelper
 {
     /// <summary>
-    /// Returns the first <see cref="RouteAttribute"/> template value of the specified controller.
+    /// Returns the first <see cref="RouteAttribute"/> template parameter of the applied controller type, or a default value if no templates parameters were specified.
     /// </summary>
-    public static string? GetRouteTemplate<T>() where T : BaseController
+    public static string? GetRouteTemplate<TController>() where TController : BaseController
     {
-        return (typeof(T)
+        return (typeof(TController)
             .GetCustomAttributes(typeof(RouteAttribute), inherit: false)
             .FirstOrDefault() as RouteAttribute)?.Template;
     }

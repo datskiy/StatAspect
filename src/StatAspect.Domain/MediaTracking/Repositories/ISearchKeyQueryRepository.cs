@@ -10,7 +10,7 @@ namespace StatAspect.Domain.MediaTracking.Repositories;
 public interface ISearchKeyQueryRepository// TODO: implement
 {
     /// <summary>
-    /// Returns the only search key entity corresponding the specified identifier, otherwise returns null.
+    /// Returns the only search key entity that corresponds the specified identifier, otherwise returns null.
     /// Throws an exception if there is more than one element found.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>

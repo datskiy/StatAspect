@@ -8,7 +8,7 @@ namespace StatAspect.Domain.MediaTracking.Aggregates;
 public sealed class SearchKey
 {
     /// <summary>
-    /// Gets a search key unique identifier.
+    /// Gets a unique search key identifier.
     /// </summary>
     public SearchKeyId Id { get; }
 

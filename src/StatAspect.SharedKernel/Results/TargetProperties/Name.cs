@@ -3,7 +3,7 @@
 namespace StatAspect.SharedKernel.Results.TargetProperties;
 
 /// <summary>
-/// Represents a «Name» result target property.
+/// Represents a <see cref="Name"/> result target property.
 /// </summary>
 public struct Name : IResultTargetPropertyName
 {

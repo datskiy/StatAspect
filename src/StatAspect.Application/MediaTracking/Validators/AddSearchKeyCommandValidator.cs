@@ -6,7 +6,7 @@ using StatAspect.Domain.MediaTracking.Metas;
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
-/// Represents a new search key addition command validator.
+/// Represents a search key addition command validator.
 /// <remarks>
 /// <list type="bullet">
 /// <item>Reflection only.</item>

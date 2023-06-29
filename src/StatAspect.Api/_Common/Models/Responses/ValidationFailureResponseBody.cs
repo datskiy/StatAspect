@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.Api._Common.Models.Responses;
 
 /// <summary>
-/// Represents a unified validation failure response model.
+/// Represents a unified validation failure response body.
 /// </summary>
 public sealed class ValidationFailureResponseBody
 {
@@ -24,7 +24,7 @@ public sealed class ValidationFailureResponseBody
     public int StatusCode => StatusCodes.Status400BadRequest;
 
     /// <summary>
-    /// Gets a failure related request unique identifier.
+    /// Gets a unique failure related request identifier.
     /// </summary>
     [JsonProperty("traceId")]
     public string TraceId => Activity.Current!.Id!;

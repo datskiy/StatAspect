@@ -3,7 +3,7 @@
 namespace StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
 
 /// <summary>
-/// Represents a user unique identifier.
+/// Represents a unique user identifier.
 /// </summary>
 public sealed record UserId : ObjectId
 {
