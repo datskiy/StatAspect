@@ -18,6 +18,6 @@ public sealed class GetSearchKeyQueryValidator : AbstractValidator<GetSearchKeyQ
     public GetSearchKeyQueryValidator()
     {
         RuleFor(q => q.Id)
-            .SetValidator(SearchKeyId.GetValidator("id"));
+            .SetValidator(SearchKeyId.GetValidator(nameof(GetSearchKeyQuery.Id)));
     }
 }

@@ -19,13 +19,13 @@ public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSe
     public UpdateSearchKeyCommandValidator()
     {
         RuleFor(c => c.Id)
-            .SetValidator(SearchKeyId.GetValidator("id"));
+            .SetValidator(SearchKeyId.GetValidator(nameof(UpdateSearchKeyCommand.Id)));
 
         RuleFor(c => c.Name)
-            .SetValidator(SearchKeyName.GetValidator("name"));
+            .SetValidator(SearchKeyName.GetValidator(nameof(UpdateSearchKeyCommand.Name)));
 
         RuleFor(c => c.Description)
-            .SetValidator(SearchKeyDescription.GetValidator("description")!)
+            .SetValidator(SearchKeyDescription.GetValidator(nameof(UpdateSearchKeyCommand.Description))!)
             .When(c => c.Description is not null);
     }
 }

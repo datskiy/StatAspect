@@ -1,9 +1,10 @@
 ﻿// ReSharper disable UnusedType.Global
 
 using StatAspect.Application.MediaTracking.Queries;
+using StatAspect.Domain._Common.Aggregates;
+using StatAspect.Domain._Common.ValueObjects;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
-using StatAspect.SharedKernel.Aggregates;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 
@@ -29,7 +30,10 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     {
         ArgumentNullException.ThrowIfNull(query);
 
-        var selectionParams = new SelectionParams(query.Offset, query.Limit);
+        var selectionParams = new SelectionParams(
+            new SelectionOffset(query.Offset),
+            new SelectionLimit(query.Limit));
+
         return _searchKeyQueryRepository.GetAllAsync(selectionParams, cancellationToken);
     }
 }

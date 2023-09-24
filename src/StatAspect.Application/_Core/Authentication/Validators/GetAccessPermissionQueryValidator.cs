@@ -18,9 +18,9 @@ public sealed class GetAccessPermissionQueryValidator : AbstractValidator<GetAcc
     public GetAccessPermissionQueryValidator()
     {
         RuleFor(q => q.Username)
-            .SetValidator(Username.GetValidator("username"));
+            .SetValidator(Username.GetValidator(nameof(GetAccessPermissionQuery.Username)));
 
         RuleFor(q => q.Password)
-            .SetValidator(Password.GetValidator("password"));
+            .SetValidator(Password.GetValidator(nameof(GetAccessPermissionQuery.Password)));
     }
 }

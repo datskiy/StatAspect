@@ -18,10 +18,10 @@ public sealed class AddSearchKeyCommandValidator : AbstractValidator<AddSearchKe
     public AddSearchKeyCommandValidator()
     {
         RuleFor(c => c.Name)
-            .SetValidator(SearchKeyName.GetValidator("name"));
+            .SetValidator(SearchKeyName.GetValidator(nameof(AddSearchKeyCommand.Name)));
 
         RuleFor(c => c.Description)
-            .SetValidator(SearchKeyDescription.GetValidator("description")!)
+            .SetValidator(SearchKeyDescription.GetValidator(nameof(AddSearchKeyCommand.Description))!)
             .When(c => c.Description is not null);
     }
 }

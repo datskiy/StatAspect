@@ -14,9 +14,4 @@ public static class UserCredentialsSpecification
     /// TODO: desc
     /// </summary>
     public const int MinPasswordLength = 9;
-
-    /// <summary>
-    /// TODO: desc
-    /// </summary>
-    public const int MaxPasswordLength = int.MaxValue;
 }

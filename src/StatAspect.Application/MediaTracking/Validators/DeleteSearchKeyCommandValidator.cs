@@ -18,6 +18,6 @@ public sealed class DeleteSearchKeyCommandValidator : AbstractValidator<DeleteSe
     public DeleteSearchKeyCommandValidator()
     {
         RuleFor(c => c.Id)
-            .SetValidator(SearchKeyId.GetValidator("id"));
+            .SetValidator(SearchKeyId.GetValidator(nameof(DeleteSearchKeyCommand.Id)));
     }
 }

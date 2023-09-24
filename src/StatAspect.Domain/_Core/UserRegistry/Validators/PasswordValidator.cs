@@ -20,7 +20,6 @@ public sealed class PasswordValidator : AbstractValidator<string>
             .NotNull()
             .NotEmpty()
             .MinimumLength(UserCredentialsSpecification.MinPasswordLength)
-            .MaximumLength(UserCredentialsSpecification.MaxPasswordLength)
             .UseCustomParamName(paramName);
     }
 }

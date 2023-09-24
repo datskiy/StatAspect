@@ -3,7 +3,7 @@ namespace StatAspect.Domain._Common.ValueObjects.Abstractions;
 /// <summary>
 /// ***
 /// </summary>
-public interface IIntegrityObject<T>
+public interface IIntegrityObject<in T>
 {
     /// <summary>
     /// ***

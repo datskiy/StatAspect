@@ -1,6 +1,7 @@
 ﻿// ReSharper disable UnusedType.Global
 
 using StatAspect.Application.MediaTracking.Queries;
+using StatAspect.Domain._Common.ValueObjects;
 
 namespace StatAspect.Application.MediaTracking.Validators;
 
@@ -16,10 +17,10 @@ public sealed class GetSearchKeysQueryValidator : AbstractValidator<GetSearchKey
     /// </summary>
     public GetSearchKeysQueryValidator()
     {
-        RuleFor(q => q.Offset) // TODO: fix
-            .GreaterThanOrEqualTo(0);
+        RuleFor(q => q.Offset)
+            .SetValidator(SelectionOffset.GetValidator(nameof(GetSearchKeysQuery.Offset)));
 
         RuleFor(q => q.Limit)
-            .GreaterThan(0);
+            .SetValidator(SelectionLimit.GetValidator(nameof(GetSearchKeysQuery.Limit)));
     }
 }
