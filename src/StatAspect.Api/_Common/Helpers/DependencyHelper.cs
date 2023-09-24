@@ -22,10 +22,10 @@ public static class DependencyHelper
     /// <exception cref="ArgumentNullException"/>
     public static void ResolveTransient(IServiceCollection services)
     {
-        Guard.Argument(() => services).NotNull();
+        ArgumentNullException.ThrowIfNull(services);
 
         //_Core
-        services.AddTransient<IAccessTokenManager, AccessTokenManager>();
+        services.AddTransient<IAccessPermissionManager, AccessPermissionManager>();
         services.AddTransient<IUserCredentialsManager, UserCredentialsManager>();
         services.AddTransient<IUserCredentialsQueryRepository, UserCredentialsQueryRepository>();
 
@@ -41,7 +41,7 @@ public static class DependencyHelper
     /// <exception cref="ArgumentNullException"/>
     public static void ResolveScoped(IServiceCollection services)
     {
-        Guard.Argument(() => services).NotNull();
+        ArgumentNullException.ThrowIfNull(services);
 
         // no dependencies yet...
     }
@@ -52,7 +52,7 @@ public static class DependencyHelper
     /// <exception cref="ArgumentNullException"/>
     public static void ResolveSingleton(IServiceCollection services)
     {
-        Guard.Argument(() => services).NotNull();
+        ArgumentNullException.ThrowIfNull(services);
 
         // no dependencies yet...
     }

@@ -6,25 +6,17 @@ using StatAspect.Domain._Core.Authentication.Aggregates;
 namespace StatAspect.Api._Core.Authentication.MappingProfiles;
 
 /// <summary>
-/// Represents a mapping configuration profile between <see cref="AccessToken"/> and <see cref="AccessTokenResponseBody"/> objects.
-/// <remarks>
-/// <list type="bullet">
-/// <item>Reflection only.</item>
-/// </list>
-/// </remarks>
+/// Represents a mapping configuration profile between <see cref="AccessPermission"/> and <see cref="AccessPermissionResponseBody"/> objects.
+/// <remarks>Reflection only.</remarks>
 /// </summary>
-public sealed class AccessTokenMappingProfile : Profile
+public sealed class AccessPermissionMappingProfile : Profile
 {
     /// <summary>
-    /// Initializes a new instance of <see cref="AccessTokenMappingProfile"/>.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// Initializes a new instance of <see cref="AccessPermissionMappingProfile"/>.
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
-    public AccessTokenMappingProfile()
+    public AccessPermissionMappingProfile()
     {
-        CreateMap<AccessToken, AccessTokenResponseBody>();
+        CreateMap<AccessPermission, AccessPermissionResponseBody>();
     }
 }

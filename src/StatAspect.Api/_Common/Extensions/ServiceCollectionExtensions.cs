@@ -14,8 +14,8 @@ public static class ServiceCollectionExtensions
     /// <exception cref="ArgumentNullException"/>
     public static void AddValidation(this IServiceCollection services, Type type)
     {
-        Guard.Argument(() => services).NotNull();
-        Guard.Argument(() => type).NotNull();
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(type);
 
         services.AddFluentValidationServices(type);
         services.AddValidationPipelineBehavior();
@@ -27,7 +27,7 @@ public static class ServiceCollectionExtensions
     /// <exception cref="ArgumentNullException"/>
     public static void AddDependencies(this IServiceCollection services)
     {
-        Guard.Argument(() => services).NotNull();
+        ArgumentNullException.ThrowIfNull(services);
 
         DependencyHelper.ResolveTransient(services);
         DependencyHelper.ResolveScoped(services);
@@ -39,10 +39,6 @@ public static class ServiceCollectionExtensions
         services.AddFluentValidation(cfg =>
         {
             cfg.RegisterValidatorsFromAssemblyContaining(type);
-            cfg.ValidatorOptions.LanguageManager = new ValidationLocalizationManager
-            {
-                Culture = CultureHelper.GetLocalizationCulture()
-            };
         });
     }
 

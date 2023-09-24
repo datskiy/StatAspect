@@ -11,7 +11,7 @@ public static class ValidationExceptionExtensions
     /// <exception cref="ArgumentNullException"/>
     public static IImmutableDictionary<string, string[]> ToImmutableDictionary(this ValidationException ex)
     {
-        Guard.Argument(() => ex).NotNull();
+        ArgumentNullException.ThrowIfNull(ex);
 
         return ex.Errors
             .GroupBy(flr => flr.PropertyName)

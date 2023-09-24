@@ -1,6 +1,6 @@
 ﻿using StatAspect.Api._Common.Helpers;
 using StatAspect.Api._Common.Models.Responses;
-using StatAspect.Domain._Common.ValueObjects.Abstractions.Identifiers;
+using StatAspect.Domain._Common.ValueObjects.Abstractions;
 using StatAspect.SharedKernel.Results;
 using StatAspect.SharedKernel.Results.TargetProperties.Abstractions;
 
@@ -19,15 +19,18 @@ public abstract class BaseController : ControllerBase
     {
         return Conflict(new InvalidOperationResponseBody
         {
-            Error = $"The entity with specified '{result.GetType().GetGenericArguments()[0].Name}' already exists"
+            Error = $"The entity with specified '{result.GetType().GetGenericArguments()[0].Name}' already exists."
         });
     }
 
     /// <summary>
     /// Creates a <see cref="CreatedResult"/> that provides a link to the created entity and produces a <see cref="StatusCodes.Status201Created"/> response.
     /// </summary>
-    protected CreatedResult Created<T>(ObjectId createdId) where T : BaseController
+    /// <exception cref="ArgumentNullException"/>;
+    protected CreatedResult Created<T>(ValueObject<Guid> createdId) where T : BaseController
     {
+        ArgumentNullException.ThrowIfNull(createdId);
+
         return Created($"{ControllerHelper.GetRouteTemplate<T>()}/{createdId}", value: null);
     }
 }

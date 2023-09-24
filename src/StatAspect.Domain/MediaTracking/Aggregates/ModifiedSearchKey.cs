@@ -1,4 +1,5 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects;
+using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 
 namespace StatAspect.Domain.MediaTracking.Aggregates;
 
@@ -15,25 +16,25 @@ public sealed class ModifiedSearchKey
     /// <summary>
     /// Gets a modified search key name.
     /// </summary>
-    public string Name { get; }
+    public SearchKeyName Name { get; }
 
     /// <summary>
     /// Gets a modified search key description.
     /// </summary>
-    public string? Description { get; }
+    public SearchKeyDescription? Description { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="ModifiedSearchKey"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public ModifiedSearchKey(
-        Guid id,
-        string name,
-        string? description)
+        SearchKeyId id,
+        SearchKeyName name,
+        SearchKeyDescription? description)
     {
-        Guard.Argument(() => name).NotNull();
+        ArgumentNullException.ThrowIfNull(name);
 
-        Id = new SearchKeyId(id);
+        Id = id;
         Name = name;
         Description = description;
     }

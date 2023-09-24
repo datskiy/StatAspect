@@ -1,4 +1,5 @@
-﻿using StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
+﻿using StatAspect.Domain._Core.UserRegistry.ValueObjects;
+using StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
 
 namespace StatAspect.Domain._Core.UserRegistry.Aggregates;
 
@@ -15,17 +16,17 @@ public sealed class UserCredentials
     /// <summary>
     /// Gets a username.
     /// </summary>
-    public string Username { get; }
+    public Username Username { get; }
 
     /// <summary>
     /// Gets a password hash.
     /// </summary>
-    public string PasswordHash { get; } // TODO: to password value object
+    public PasswordHash PasswordHash { get; }
 
     /// <summary>
     /// Gets a password salt.
     /// </summary>
-    public string PasswordSalt { get; } // TODO: to password value object (SecurePassword?)
+    public PasswordSalt PasswordSalt { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="UserCredentials"/>.
@@ -33,14 +34,14 @@ public sealed class UserCredentials
     /// <exception cref="ArgumentNullException"/>
     public UserCredentials(
         UserId userId,
-        string username,
-        string passwordHash,
-        string passwordSalt)
+        Username username,
+        PasswordHash passwordHash,
+        PasswordSalt passwordSalt)
     {
-        Guard.Argument(() => userId).NotNull();
-        Guard.Argument(() => username).NotNull();
-        Guard.Argument(() => passwordHash).NotNull();
-        Guard.Argument(() => passwordSalt).NotNull();
+        ArgumentNullException.ThrowIfNull(userId);
+        ArgumentNullException.ThrowIfNull(username);
+        ArgumentNullException.ThrowIfNull(passwordHash);
+        ArgumentNullException.ThrowIfNull(passwordSalt);
 
         UserId = userId;
         Username = username;

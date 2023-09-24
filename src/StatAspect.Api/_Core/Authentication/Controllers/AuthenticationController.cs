@@ -26,16 +26,16 @@ public sealed class AuthenticationController : BaseController
     }
 
     /// <summary>
-    /// Generates and returns an access token if provided with valid user credentials.
+    /// Generates and returns an access permission if provided with valid user credentials.
     /// </summary>
     [AllowAnonymous]
     [HttpGet("token")]
-    public async Task<IActionResult> GetAccessTokenAsync([FromBody] AccessTokenRequestBody request) // TODO: bf/dos protection
+    public async Task<IActionResult> GetAccessPermissionAsync([FromBody] AccessPermissionRequestBody request) // TODO: bf/dos protection
     {
-        var query = new GetAccessTokenQuery(request.Username, request.Password);
+        var query = new GetAccessPermissionQuery(request.Username, request.Password);
         var result = await _mediator.Send(query);
         return result.Match<IActionResult>(
-            accessToken => Ok(_mapper.Map<AccessTokenResponseBody>(accessToken)),
+            accessPermission => Ok(_mapper.Map<AccessPermissionResponseBody>(accessPermission)),
             accessDenied => Unauthorized());
     }
 }

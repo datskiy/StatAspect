@@ -1,4 +1,5 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects;
+using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 
 namespace StatAspect.Domain.MediaTracking.Aggregates;
 
@@ -15,37 +16,37 @@ public sealed class SearchKey
     /// <summary>
     /// Gets a search key name.
     /// </summary>
-    public string Name { get; }
+    public SearchKeyName Name { get; }
 
     /// <summary>
     /// Gets a search key description.
     /// </summary>
-    public string? Description { get; }
+    public SearchKeyDescription? Description { get; }
 
     /// <summary>
     /// Gets a search key creation date.
     /// </summary>
-    public DateTime CreationDate { get; }
+    public DateTime CreationDate { get; } // TODO: validate?
 
     /// <summary>
     /// Gets a search key last update date.
     /// </summary>
-    public DateTime? LastUpdateDate { get; }
+    public DateTime? LastUpdateDate { get; } // TODO: validate?
 
     /// <summary>
     /// Initializes a new instance of <see cref="SearchKey"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public SearchKey(
-        Guid id,
-        string name,
-        string? description,
+        SearchKeyId id,
+        SearchKeyName name,
+        SearchKeyDescription? description,
         DateTime creationDate,
         DateTime? lastUpdateDate)
     {
-        Guard.Argument(() => name).NotNull(); // TODO: add meta checks (rather value objects)
+        ArgumentNullException.ThrowIfNull(name);
 
-        Id = new SearchKeyId(id);
+        Id = id;
         Name = name;
         Description = description;
         CreationDate = creationDate;

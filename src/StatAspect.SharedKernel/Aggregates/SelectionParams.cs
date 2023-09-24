@@ -19,11 +19,9 @@ public sealed class SelectionParams // TODO: implement, tests
     /// Initializes a new instance of <see cref="SelectionParams"/>.
     /// </summary>
     /// <exception cref="ArgumentOutOfRangeException"/>
-    public SelectionParams(int offset = 0, int limit = int.MaxValue)
+    public SelectionParams(int offset = 0, int limit = int.MaxValue) // TODO: move to domain + value objects
     {
-        Guard.Argument(() => offset).NotNegative();
-        Guard.Argument(() => limit).GreaterThan(default);
-
+        // TODO: validator
         Offset = offset;
         Limit = limit;
     }

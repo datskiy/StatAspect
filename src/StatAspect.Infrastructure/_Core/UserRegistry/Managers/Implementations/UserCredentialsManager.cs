@@ -1,6 +1,7 @@
-﻿using StatAspect.Domain._Core.UserRegistry.Aggregates;
-using StatAspect.Domain._Core.UserRegistry.Managers;
+﻿using StatAspect.Domain._Core.UserRegistry.Managers;
 using StatAspect.Domain._Core.UserRegistry.Repositories;
+using StatAspect.Domain._Core.UserRegistry.ValueObjects;
+using StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.Results;
 
 namespace StatAspect.Infrastructure._Core.UserRegistry.Managers.Implementations;
@@ -14,10 +15,10 @@ public sealed class UserCredentialsManager : IUserCredentialsManager
         _userCredentialsQueryRepository = userCredentialsQueryRepository;
     }
 
-    public async Task<OneOf<UserCredentials, NotFound, Mismatched>> VerifyAsync(string username, string password, CancellationToken cancellationToken = default)
+    public async Task<OneOf<UserId, NotFound, Mismatched>> VerifyAsync(Username username, Password password, CancellationToken cancellationToken = default)
     {
-        Guard.Argument(() => username).NotNull();
-        Guard.Argument(() => password).NotNull();
+        ArgumentNullException.ThrowIfNull(username);
+        ArgumentNullException.ThrowIfNull(password);
 
         var userCredentials = await _userCredentialsQueryRepository.GetSingleAsync(username, cancellationToken);
         if (userCredentials is null)
@@ -27,6 +28,6 @@ public sealed class UserCredentialsManager : IUserCredentialsManager
         // if(!doesPasswordMatch)
         //  return new Mismatched();
 
-        return userCredentials;
+        return userCredentials.UserId;
     }
 }

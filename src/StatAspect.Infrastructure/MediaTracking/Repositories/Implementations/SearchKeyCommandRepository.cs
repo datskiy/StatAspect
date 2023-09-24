@@ -9,21 +9,21 @@ public sealed class SearchKeyCommandRepository : ISearchKeyCommandRepository
 {
     public Task<SearchKeyId> AddAsync(NewSearchKey newSearchKey)
     {
-        Guard.Argument(() => newSearchKey).NotNull();
+        ArgumentNullException.ThrowIfNull(newSearchKey);
 
         return Task.FromResult(new SearchKeyId(Guid.NewGuid())); // TODO: implement
     }
 
     public Task<Success> UpdateAsync(ModifiedSearchKey modifiedSearchKey)
     {
-        Guard.Argument(() => modifiedSearchKey).NotNull();
+        ArgumentNullException.ThrowIfNull(modifiedSearchKey);
 
         return Task.FromResult(new Success()); // TODO: implement
     }
 
     public Task<Success> DeleteAsync(SearchKeyId id)
     {
-        Guard.Argument(() => id).NotNull();
+        ArgumentNullException.ThrowIfNull(id);
 
         return Task.FromResult(new Success()); // TODO: implement
     }

@@ -2,11 +2,7 @@
 {
     /// <summary>
     /// Represents an <see cref="StatAspect.Application"/> layer default initializer.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     public static class ApplicationInitializer
     {

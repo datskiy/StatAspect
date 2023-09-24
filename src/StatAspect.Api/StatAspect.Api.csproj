@@ -8,7 +8,6 @@
 
    <ItemGroup>
 	 <Using Include="AutoMapper" />
-	 <Using Include="Dawn" />
 	 <Using Include="FluentValidation" />
 	 <Using Include="FluentValidation.AspNetCore" />
 	 <Using Include="MediatR" />
@@ -27,7 +26,6 @@
    <ItemGroup>
      <PackageReference Include="AutoMapper" Version="11.0.1" />
      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-     <PackageReference Include="Dawn.Guard" Version="1.12.0" />
      <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
      <PackageReference Include="MediatR" Version="10.0.1" />
      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />

@@ -4,9 +4,9 @@ using StatAspect.SharedKernel.Results;
 namespace StatAspect.Application._Core.Authentication.Queries;
 
 /// <summary>
-/// Represents a query for getting an access token.
+/// Represents a query for getting an access permission.
 /// </summary>
-public sealed class GetAccessTokenQuery : IRequest<OneOf<AccessToken, AccessDenied>>
+public sealed class GetAccessPermissionQuery : IRequest<OneOf<AccessPermission, AccessDenied>>
 {
     /// <summary>
     /// Gets a username.
@@ -19,13 +19,13 @@ public sealed class GetAccessTokenQuery : IRequest<OneOf<AccessToken, AccessDeni
     public string Password { get; }
 
     /// <summary>
-    /// Initializes a new instance of <see cref="GetAccessTokenQuery"/>.
+    /// Initializes a new instance of <see cref="GetAccessPermissionQuery"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public GetAccessTokenQuery(string username, string password)
+    public GetAccessPermissionQuery(string username, string password)
     {
-        Guard.Argument(() => username).NotNull();
-        Guard.Argument(() => password).NotNull();
+        ArgumentNullException.ThrowIfNull(username);
+        ArgumentNullException.ThrowIfNull(password);
 
         Username = username;
         Password = password;

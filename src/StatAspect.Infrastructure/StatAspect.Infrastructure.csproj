@@ -7,7 +7,6 @@
    </PropertyGroup>
 
    <ItemGroup>
-     <Using Include="Dawn" />
      <Using Include="OneOf" />
 	 <Using Include="System.Collections.Immutable" />
    </ItemGroup>

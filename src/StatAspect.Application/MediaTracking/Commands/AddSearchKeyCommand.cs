@@ -25,7 +25,7 @@ public sealed class AddSearchKeyCommand : IRequest<OneOf<SearchKeyId, AlreadyExi
     /// <exception cref="ArgumentNullException"/>
     public AddSearchKeyCommand(string name, string? description)
     {
-        Guard.Argument(() => name).NotNull();
+        ArgumentNullException.ThrowIfNull(name);
 
         Name = name;
         Description = description;

@@ -2,11 +2,7 @@
 
 /// <summary>
 /// Represents validation pipeline behavior that allows requests to be validated before passing them to the handlers.
-/// <remarks>
-/// <list type="bullet">
-/// <item>Reflection only.</item>
-/// </list>
-/// </remarks>
+/// <remarks>Reflection only.</remarks>
 /// </summary>
 public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
 {
@@ -19,11 +15,7 @@ public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineB
 
     /// <summary>
     /// Performs incoming request validation and then passes it to the <see cref="RequestHandlerDelegate{TResponse}"/> delegate.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {

@@ -9,11 +9,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a search keys getting request handler.
-/// <remarks>
-/// <list type="bullet">
-/// <item>Reflection only.</item>
-/// </list>
-/// </remarks>
+/// <remarks>Reflection only.</remarks>
 /// </summary>
 public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, IImmutableList<SearchKey>>
 {
@@ -26,16 +22,12 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
 
     /// <summary>
     /// Returns a result of processing the <see cref="GetSearchKeysQuery"/> request.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery query, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => query).NotNull();
+        ArgumentNullException.ThrowIfNull(query);
 
         var selectionParams = new SelectionParams(query.Offset, query.Limit);
         return _searchKeyQueryRepository.GetAllAsync(selectionParams, cancellationToken);

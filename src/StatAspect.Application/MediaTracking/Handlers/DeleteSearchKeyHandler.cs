@@ -9,11 +9,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a search key deletion request handler.
-/// <remarks>
-/// <list type="bullet">
-/// <item>Reflection only.</item>
-/// </list>
-/// </remarks>
+/// <remarks>Reflection only.</remarks>
 /// </summary>
 public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyCommand, OneOf<Success, NotFound>>
 {
@@ -26,16 +22,12 @@ public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyComm
 
     /// <summary>
     /// Returns a result of processing the <see cref="DeleteSearchKeyCommand"/> request.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand command, CancellationToken cancellationToken)
     {
-        Guard.Argument(() => command).NotNull();
+        ArgumentNullException.ThrowIfNull(command);
 
         var searchKeyId = new SearchKeyId(command.Id);
         return _searchKeyService.DeleteAsync(searchKeyId);

@@ -1,4 +1,5 @@
 ﻿using StatAspect.Domain.MediaTracking.Aggregates;
+using StatAspect.Domain.MediaTracking.ValueObjects;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.Aggregates;
 
@@ -33,5 +34,5 @@ public interface ISearchKeyQueryRepository// TODO: implement
     /// Determines whether there are any search key entities that match the specified name.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    Task<bool> ExistsAsync(string name, CancellationToken cancellationToken = default);
+    Task<bool> ExistsAsync(SearchKeyName name, CancellationToken cancellationToken = default);
 }

@@ -5,21 +5,13 @@ namespace StatAspect.Api;
 
 /// <summary>
 /// Represents the application entry point for setting up configuration and wiring up services the application will use.
-/// <remarks>
-/// <list type="bullet">
-/// <item>Reflection only.</item>
-/// </list>
-/// </remarks>
+/// <remarks>Reflection only.</remarks>
 /// </summary>
 public sealed class Startup
 {
     /// <summary>
     /// Configures application services.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     public void ConfigureServices(IServiceCollection services)
     {
@@ -35,11 +27,7 @@ public sealed class Startup
 
     /// <summary>
     /// Configures application pipeline.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {

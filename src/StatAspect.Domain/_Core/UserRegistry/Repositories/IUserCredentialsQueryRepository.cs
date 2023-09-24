@@ -1,4 +1,5 @@
 ﻿using StatAspect.Domain._Core.UserRegistry.Aggregates;
+using StatAspect.Domain._Core.UserRegistry.ValueObjects;
 
 namespace StatAspect.Domain._Core.UserRegistry.Repositories;
 
@@ -13,5 +14,5 @@ public interface IUserCredentialsQueryRepository
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     /// <exception cref="InvalidOperationException"/>
-    Task<UserCredentials?> GetSingleAsync(string username, CancellationToken cancellationToken = default);
+    Task<UserCredentials?> GetSingleAsync(Username username, CancellationToken cancellationToken = default);
 }

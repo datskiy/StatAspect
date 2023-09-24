@@ -9,7 +9,7 @@ public sealed class ModifiedSearchKeyRequestBody
     /// Gets or inits a modified search key name.
     /// </summary>
     [JsonProperty("name")]
-    public required string Name { get; init; }
+    public string Name { get; init; }
 
     /// <summary>
     /// Gets or inits a modified search key description.

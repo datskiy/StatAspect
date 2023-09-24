@@ -13,7 +13,7 @@ public static class ApplicationBuilderExtensions
     /// <exception cref="ArgumentNullException"/>
     public static void UseValidationExceptionHandler(this IApplicationBuilder applicationBuilder)
     {
-        Guard.Argument(() => applicationBuilder).NotNull();
+        ArgumentNullException.ThrowIfNull(applicationBuilder);
 
         applicationBuilder.UseExceptionHandler(ab =>
         {

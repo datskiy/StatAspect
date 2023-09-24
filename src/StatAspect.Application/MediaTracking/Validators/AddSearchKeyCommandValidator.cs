@@ -1,38 +1,27 @@
 ﻿// ReSharper disable UnusedType.Global
 
 using StatAspect.Application.MediaTracking.Commands;
-using StatAspect.Domain.MediaTracking.Metas;
+using StatAspect.Domain.MediaTracking.ValueObjects;
 
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
 /// Represents a search key addition command validator.
-/// <remarks>
-/// <list type="bullet">
-/// <item>Reflection only.</item>
-/// </list>
-/// </remarks>
+/// <remarks>Reflection only.</remarks>
 /// </summary>
 public sealed class AddSearchKeyCommandValidator : AbstractValidator<AddSearchKeyCommand>
 {
     /// <summary>
     /// Initializes a new instance of <see cref="AddSearchKeyCommandValidator"/>.
-    /// <remarks>
-    /// <list type="bullet">
-    /// <item>Reflection only.</item>
-    /// </list>
-    /// </remarks>
+    /// <remarks>Reflection only.</remarks>
     /// </summary>
     public AddSearchKeyCommandValidator()
     {
         RuleFor(c => c.Name)
-            .NotNull()
-            .NotEmpty()
-            .MaximumLength(SearchKeyMeta.MaxNameLength);
+            .SetValidator(SearchKeyName.GetValidator("name"));
 
         RuleFor(c => c.Description)
-            .NotEmpty()
-            .MaximumLength(SearchKeyMeta.MaxDescriptionLength)
+            .SetValidator(SearchKeyDescription.GetValidator("description")!)
             .When(c => c.Description is not null);
     }
 }

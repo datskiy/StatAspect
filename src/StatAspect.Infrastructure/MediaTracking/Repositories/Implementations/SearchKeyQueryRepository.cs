@@ -1,5 +1,6 @@
 ﻿using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
+using StatAspect.Domain.MediaTracking.ValueObjects;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.Aggregates;
 
@@ -9,14 +10,14 @@ public sealed class SearchKeyQueryRepository : ISearchKeyQueryRepository // TODO
 {
     public Task<SearchKey?> GetSingleAsync(SearchKeyId id, CancellationToken cancellationToken = default)
     {
-        return Task.FromResult<SearchKey?>(new SearchKey(Guid.NewGuid(), "XXX", "Xxx xxx xxx", DateTime.Now, null)); // TODO: implement
+        return Task.FromResult<SearchKey?>(new SearchKey(new SearchKeyId(Guid.NewGuid()), new SearchKeyName("XXX"), new SearchKeyDescription("Xxx xxx xxx"), DateTime.Now, null)); // TODO: implement
     }
 
     public Task<IImmutableList<SearchKey>> GetAllAsync(SelectionParams selectionParams, CancellationToken cancellationToken = default)
     {
         return Task.FromResult<IImmutableList<SearchKey>>(ImmutableList.Create(
-            new SearchKey(Guid.NewGuid(), "Qwe", "Qwe qwe qwe qwe", DateTime.Now, null),
-            new SearchKey(Guid.NewGuid(), "Zxc zxc", "Zxc zxc zxc", DateTime.Now.AddDays(-7), DateTime.Now))); // TODO: implement
+            new SearchKey(new SearchKeyId(Guid.NewGuid()), new SearchKeyName("Qwe"), new SearchKeyDescription("QWeq qweqwe"), DateTime.Now, null),
+            new SearchKey(new SearchKeyId(Guid.NewGuid()), new SearchKeyName("Zxc"), new SearchKeyDescription("Z X C"), DateTime.Now.AddDays(-7), DateTime.Now))); // TODO: implement
     }
 
     public Task<bool> ExistsAsync(SearchKeyId id, CancellationToken cancellationToken = default)
@@ -24,7 +25,7 @@ public sealed class SearchKeyQueryRepository : ISearchKeyQueryRepository // TODO
         return Task.FromResult(true); // TODO: implement
     }
 
-    public Task<bool> ExistsAsync(string name, CancellationToken cancellationToken = default)
+    public Task<bool> ExistsAsync(SearchKeyName name, CancellationToken cancellationToken = default)
     {
         return Task.FromResult(false); // TODO: implement
     }

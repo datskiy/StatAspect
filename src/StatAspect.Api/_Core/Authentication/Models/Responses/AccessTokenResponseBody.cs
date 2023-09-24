@@ -1,24 +1,24 @@
 ﻿namespace StatAspect.Api._Core.Authentication.Models.Responses;
 
 /// <summary>
-/// Represents a search key response body.
+/// Represents a search key response body. // TODO: desc
 /// </summary>
-public sealed class AccessTokenResponseBody
+public sealed class AccessPermissionResponseBody
 {
     /// <summary>
-    /// Gets or inits an access token value.
+    /// Gets or inits an access permission value.
     /// </summary>
     [JsonProperty("token")]
     public required string Token { get; init; }
     
     /// <summary>
-    /// Gets or inits an access token issue date.
+    /// Gets or inits an access permission issue date.
     /// </summary>
     [JsonProperty("issueDate")]
     public DateTime IssueDate { get; init; }
 
     /// <summary>
-    /// Gets or inits an access token expiration date.
+    /// Gets or inits an access permission expiration date.
     /// </summary>
     [JsonProperty("expirationDate")]
     public DateTime ExpirationDate { get; init; }

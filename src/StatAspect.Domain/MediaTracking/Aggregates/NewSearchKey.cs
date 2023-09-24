@@ -1,4 +1,6 @@
-﻿namespace StatAspect.Domain.MediaTracking.Aggregates;
+﻿using StatAspect.Domain.MediaTracking.ValueObjects;
+
+namespace StatAspect.Domain.MediaTracking.Aggregates;
 
 /// <summary>
 /// Represents a new search key.
@@ -8,22 +10,20 @@ public sealed class NewSearchKey
     /// <summary>
     /// Gets a new search key name.
     /// </summary>
-    public string Name { get; }
+    public SearchKeyName Name { get; }
 
     /// <summary>
     /// Gets a new search key description.
     /// </summary>
-    public string? Description { get; }
+    public SearchKeyDescription? Description { get; }
 
     /// <summary>
     /// Initializes a new instance of <see cref="NewSearchKey"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public NewSearchKey(
-        string name,
-        string? description)
+    public NewSearchKey(SearchKeyName name, SearchKeyDescription? description)
     {
-        Guard.Argument(() => name).NotNull();
+        ArgumentNullException.ThrowIfNull(name);
 
         Name = name;
         Description = description;

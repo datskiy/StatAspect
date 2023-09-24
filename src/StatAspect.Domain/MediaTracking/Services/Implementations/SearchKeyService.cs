@@ -21,9 +21,9 @@ public sealed class SearchKeyService : ISearchKeyService
 
     public async Task<OneOf<SearchKeyId, AlreadyExists<Name>>> AddAsync(NewSearchKey newSearchKey)
     {
-        Guard.Argument(() => newSearchKey).NotNull();
+        ArgumentNullException.ThrowIfNull(newSearchKey);
 
-        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // TODO: lock??? (SemaphoreSlimWrapper)
+        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // TODO: lock??? (Redis Lock)
         if (sameNamedSearchKeyExists)
             return new AlreadyExists<Name>();
 
@@ -32,9 +32,9 @@ public sealed class SearchKeyService : ISearchKeyService
 
     public async Task<OneOf<Success, NotFound, AlreadyExists<Name>>> UpdateAsync(ModifiedSearchKey modifiedSearchKey)
     {
-        Guard.Argument(() => modifiedSearchKey).NotNull();
+        ArgumentNullException.ThrowIfNull(modifiedSearchKey);
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // TODO: lock??? (SemaphoreSlimWrapper)
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // TODO: lock??? (Redis Lock)
         if (!targetSearchKeyExists)
             return new NotFound();
 
@@ -47,7 +47,7 @@ public sealed class SearchKeyService : ISearchKeyService
 
     public async Task<OneOf<Success, NotFound>> DeleteAsync(SearchKeyId id)
     {
-        Guard.Argument(() => id).NotNull();
+        ArgumentNullException.ThrowIfNull(id);
 
         var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id); // TODO: should we do the same for delete methods???
         if (!targetSearchKeyExists)

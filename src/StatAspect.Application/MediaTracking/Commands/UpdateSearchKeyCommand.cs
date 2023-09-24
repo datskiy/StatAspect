@@ -29,7 +29,7 @@ public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, A
     /// <exception cref="ArgumentNullException"/>
     public UpdateSearchKeyCommand(Guid id, string name, string? description)
     {
-        Guard.Argument(() => name).NotNull();
+        ArgumentNullException.ThrowIfNull(name);
 
         Id = id;
         Name = name;
