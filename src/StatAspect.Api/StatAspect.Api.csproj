@@ -1,44 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-   <PropertyGroup>
-     <TargetFramework>net7.0</TargetFramework>
-     <Nullable>enable</Nullable>
-     <ImplicitUsings>enable</ImplicitUsings>
-   </PropertyGroup>
-
-   <ItemGroup>
-	 <Using Include="AutoMapper" />
-	 <Using Include="FluentValidation" />
-	 <Using Include="FluentValidation.AspNetCore" />
-	 <Using Include="MediatR" />
-	 <Using Include="Microsoft.AspNetCore.Authorization" />
-	 <Using Include="Microsoft.AspNetCore.Diagnostics" />
-	 <Using Include="Microsoft.AspNetCore.Mvc" />
-	 <Using Include="Newtonsoft.Json" />
-	 <Using Include="System.Collections.Immutable" />
-	 <Using Include="System.Diagnostics" />
-	 <Using Include="System.Globalization" />
-	 <Using Include="System.Net.Mime" />
-	 <Using Include="System.Reflection" />
-	 <Using Include="System.Text" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <PackageReference Include="AutoMapper" Version="11.0.1" />
-     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
-     <PackageReference Include="MediatR" Version="10.0.1" />
-     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
-     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj" />
-     <ProjectReference Include="..\StatAspect.Infrastructure\StatAspect.Infrastructure.csproj" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <Folder Include="_Core\" />
-   </ItemGroup>
-
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+    <ItemGroup>
+        <Using Include="AutoMapper"/>
+        <Using Include="FluentValidation"/>
+        <Using Include="FluentValidation.AspNetCore"/>
+        <Using Include="MediatR"/>
+        <Using Include="Microsoft.AspNetCore.Authorization"/>
+        <Using Include="Microsoft.AspNetCore.Diagnostics"/>
+        <Using Include="Microsoft.AspNetCore.Mvc"/>
+        <Using Include="Newtonsoft.Json"/>
+        <Using Include="System.Collections.Immutable"/>
+        <Using Include="System.Diagnostics"/>
+        <Using Include="System.Globalization"/>
+        <Using Include="System.Net.Mime"/>
+        <Using Include="System.Reflection"/>
+        <Using Include="System.Text"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="11.0.1"/>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0"/>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6"/>
+        <PackageReference Include="MediatR" Version="10.0.1"/>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj"/>
+        <ProjectReference Include="..\StatAspect.Infrastructure\StatAspect.Infrastructure.csproj"/>
+    </ItemGroup>
 </Project>

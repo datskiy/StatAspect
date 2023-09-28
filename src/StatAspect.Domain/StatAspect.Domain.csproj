@@ -1,28 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-   <PropertyGroup>
-     <TargetFramework>net7.0</TargetFramework>
-     <Nullable>enable</Nullable>
-     <ImplicitUsings>enable</ImplicitUsings>
-   </PropertyGroup>
-
-   <ItemGroup>
-     <Using Include="FluentValidation" />
-     <Using Include="FluentValidation.Resources" />
-	 <Using Include="OneOf" />
-	 <Using Include="System.Collections.Immutable" />
-     <Using Include="System.Data.Common" />
-     <Using Include="System.IdentityModel.Tokens.Jwt" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <PackageReference Include="FluentValidation" Version="10.3.6" />
-     <PackageReference Include="OneOf" Version="3.0.216" />
-     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.0" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <ProjectReference Include="..\StatAspect.SharedKernel\StatAspect.SharedKernel.csproj" />
-   </ItemGroup>
-    
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+    <ItemGroup>
+        <Using Include="FluentValidation"/>
+        <Using Include="FluentValidation.Resources"/>
+        <Using Include="OneOf"/>
+        <Using Include="System.Collections.Immutable"/>
+        <Using Include="System.Data.Common"/>
+        <Using Include="System.IdentityModel.Tokens.Jwt"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="10.3.6"/>
+        <PackageReference Include="OneOf" Version="3.0.216"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.0"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\StatAspect.SharedKernel\StatAspect.SharedKernel.csproj"/>
+    </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ public sealed class AccessPermissionResponseBody
     /// </summary>
     [JsonProperty("token")]
     public string Token { get; }
-    
+
     /// <summary>
     /// Gets an access permission issue date.
     /// </summary>
