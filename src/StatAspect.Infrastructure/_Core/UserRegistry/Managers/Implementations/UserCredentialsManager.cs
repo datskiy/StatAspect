@@ -15,7 +15,7 @@ public sealed class UserCredentialsManager : IUserCredentialsManager
         _userCredentialsQueryRepository = userCredentialsQueryRepository;
     }
 
-    public async Task<OneOf<UserId, NotFound, Mismatched>> VerifyAsync(Username username, Password password, CancellationToken cancellationToken = default)
+    public async Task<OneOf<UserId, NotFound, Mismatched>> VerifyAsync(Username username, Password password, CancellationToken cancellationToken = default) // TODO: implement
     {
         ArgumentNullException.ThrowIfNull(username);
         ArgumentNullException.ThrowIfNull(password);
@@ -24,7 +24,7 @@ public sealed class UserCredentialsManager : IUserCredentialsManager
         if (userCredentials is null)
             return new NotFound();
 
-        // var doesPasswordMatch = _passwordManager.Matches(password, userCredentials.PasswordHash, userCredentials.PasswordSalt); // TODO: implement
+        // var doesPasswordMatch = _passwordManager.Matches(password, userCredentials.PasswordHash, userCredentials.PasswordSalt);
         // if(!doesPasswordMatch)
         //  return new Mismatched();
 

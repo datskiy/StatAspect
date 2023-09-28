@@ -7,7 +7,7 @@ namespace StatAspect.Infrastructure._Core.UserRegistry.Repositories.Implementati
 
 public sealed class UserCredentialsQueryRepository : IUserCredentialsQueryRepository
 {
-    public Task<UserCredentials?> GetSingleAsync(Username username, CancellationToken cancellationToken = default)
+    public Task<UserCredentials?> GetSingleAsync(Username username, CancellationToken cancellationToken = default) // TODO: implement
     {
         ArgumentNullException.ThrowIfNull(username);
 

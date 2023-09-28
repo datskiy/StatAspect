@@ -8,22 +8,22 @@ namespace StatAspect.Domain.MediaTracking.Services.Implementations;
 
 public sealed class SearchKeyService : ISearchKeyService
 {
-    private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
     private readonly ISearchKeyCommandRepository _searchKeyCommandRepository;
+    private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
 
     public SearchKeyService(
-        ISearchKeyQueryRepository searchKeyQueryRepository,
-        ISearchKeyCommandRepository searchKeyCommandRepository)
+        ISearchKeyCommandRepository searchKeyCommandRepository,
+        ISearchKeyQueryRepository searchKeyQueryRepository)
     {
-        _searchKeyQueryRepository = searchKeyQueryRepository;
         _searchKeyCommandRepository = searchKeyCommandRepository;
+        _searchKeyQueryRepository = searchKeyQueryRepository;
     }
 
     public async Task<OneOf<SearchKeyId, AlreadyExists<Name>>> AddAsync(NewSearchKey newSearchKey)
     {
         ArgumentNullException.ThrowIfNull(newSearchKey);
 
-        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // TODO: lock??? (Redis Lock)
+        var sameNamedSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(newSearchKey.Name); // TODO: Redis Lock
         if (sameNamedSearchKeyExists)
             return new AlreadyExists<Name>();
 
@@ -34,7 +34,7 @@ public sealed class SearchKeyService : ISearchKeyService
     {
         ArgumentNullException.ThrowIfNull(modifiedSearchKey);
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // TODO: lock??? (Redis Lock)
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(modifiedSearchKey.Id); // TODO: Redis Lock
         if (!targetSearchKeyExists)
             return new NotFound();
 
@@ -49,7 +49,7 @@ public sealed class SearchKeyService : ISearchKeyService
     {
         ArgumentNullException.ThrowIfNull(id);
 
-        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id); // TODO: should we do the same for delete methods???
+        var targetSearchKeyExists = await _searchKeyQueryRepository.ExistsAsync(id);
         if (!targetSearchKeyExists)
             return new NotFound();
 

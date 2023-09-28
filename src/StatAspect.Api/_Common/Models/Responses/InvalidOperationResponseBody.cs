@@ -1,19 +1,27 @@
 ﻿namespace StatAspect.Api._Common.Models.Responses;
 
 /// <summary>
-/// Represents a unified invalid operation response body.
+/// Represents an invalid operation response body.
 /// </summary>
 public sealed class InvalidOperationResponseBody
 {
     /// <summary>
-    /// Gets an error title.
+    /// Gets a default error title.
     /// </summary>
     [JsonProperty("title")]
     public string Title => "Invalid operation attempt declined.";
 
     /// <summary>
-    /// Gets or inits an error description.
+    /// Gets an error description.
     /// </summary>
     [JsonProperty("error")]
-    public required string Error { get; init; }
+    public string Error { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="InvalidOperationResponseBody"/>.
+    /// </summary>
+    public InvalidOperationResponseBody(string error)
+    {
+        Error = error;
+    }
 }

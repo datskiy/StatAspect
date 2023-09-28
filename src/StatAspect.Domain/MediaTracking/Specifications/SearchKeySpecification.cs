@@ -8,10 +8,10 @@ public static class SearchKeySpecification
     /// <summary>
     /// The maximum length of a search key name.
     /// </summary>
-    public const int MaxNameLength = 50;
+    public const int NameMaxLength = 50;
 
     /// <summary>
     /// The maximum length of a search key description.
     /// </summary>
-    public const int MaxDescriptionLength = 300;
+    public const int DescriptionMaxLength = 300;
 }

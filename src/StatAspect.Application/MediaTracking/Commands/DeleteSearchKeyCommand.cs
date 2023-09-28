@@ -3,7 +3,7 @@
 namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
-/// Represents a command to delete a search key.
+/// Represents a search key deletion command.
 /// </summary>
 public sealed class DeleteSearchKeyCommand : IRequest<OneOf<Success, NotFound>>
 {

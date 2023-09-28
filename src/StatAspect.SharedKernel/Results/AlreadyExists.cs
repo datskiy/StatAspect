@@ -5,8 +5,8 @@ using StatAspect.SharedKernel.Results.TargetProperties.Abstractions;
 namespace StatAspect.SharedKernel.Results;
 
 /// <summary>
-/// Represents an <see cref="AlreadyExists{TPropName}"/> result.
+/// Represents a result that is used when a specified entity already exists in the system.
 /// </summary>
-public struct AlreadyExists<TPropName> where TPropName : struct, IResultTargetPropertyName
+public struct AlreadyExists<TProp> where TProp : struct, IResultTargetPropertyName
 {
 }

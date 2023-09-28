@@ -1,7 +1,7 @@
 ﻿namespace StatAspect.SharedKernel.Results;
 
 /// <summary>
-/// Represents an <see cref="AccessDenied"/> result.
+/// Represents a result that is used when an operation is inaccessible due to the lack of permission.
 /// </summary>
 public struct AccessDenied
 {

@@ -8,8 +8,8 @@ using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search key getting request handler.
-/// <remarks>Reflection only.</remarks>
+/// Represents a <see cref="GetSearchKeyQuery"/> handler.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
 {
@@ -21,15 +21,12 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
     }
 
     /// <summary>
-    /// Returns a result of processing the <see cref="GetSearchKeyQuery"/> request.
-    /// <remarks>Reflection only.</remarks>
+    /// Handles the <see cref="GetSearchKeyQuery"/> request.
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
     public Task<SearchKey?> Handle(GetSearchKeyQuery query, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(query);
-
-        var searchKeyId = new SearchKeyId(query.Id);
-        return _searchKeyQueryRepository.GetSingleAsync(searchKeyId, cancellationToken);
+        var targetSearchKeyId = new SearchKeyId(query.Id);
+        return _searchKeyQueryRepository.GetSingleAsync(targetSearchKeyId, cancellationToken);
     }
 }

@@ -11,8 +11,8 @@ using StatAspect.SharedKernel.Results.TargetProperties;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search key addition request handler.
-/// <remarks>Reflection only.</remarks>
+/// Represents an <see cref="AddSearchKeyCommand"/> handler.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, OneOf<SearchKeyId, AlreadyExists<Name>>>
 {
@@ -24,17 +24,14 @@ public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, O
     }
 
     /// <summary>
-    /// Returns a result of processing the <see cref="AddSearchKeyCommand"/> request.
-    /// <remarks>Reflection only.</remarks>
+    /// Handles the <see cref="AddSearchKeyCommand"/> request.
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
     public Task<OneOf<SearchKeyId, AlreadyExists<Name>>> Handle(AddSearchKeyCommand command, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(command);
-
         var newSearchKey = new NewSearchKey(
             new SearchKeyName(command.Name),
-            command.Description is not null ? new SearchKeyDescription(command.Description) : null); // TODO: method
+            command.Description is not null ? new SearchKeyDescription(command.Description) : null);
 
         return _searchKeyService.AddAsync(newSearchKey);
     }

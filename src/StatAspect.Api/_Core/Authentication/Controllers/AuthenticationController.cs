@@ -14,19 +14,19 @@ namespace StatAspect.Api._Core.Authentication.Controllers;
 [Route("authentication")]
 public sealed class AuthenticationController : BaseController
 {
-    private readonly IMediator _mediator;
     private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
 
     public AuthenticationController(
-        IMediator mediator,
-        IMapper mapper)
+        IMapper mapper,
+        IMediator mediator)
     {
-        _mediator = mediator;
         _mapper = mapper;
+        _mediator = mediator;
     }
 
     /// <summary>
-    /// Generates and returns an access permission if provided with valid user credentials.
+    /// Grants and returns an access permission if provided with valid user credentials.
     /// </summary>
     [AllowAnonymous]
     [HttpGet("token")]
@@ -34,6 +34,7 @@ public sealed class AuthenticationController : BaseController
     {
         var query = new GetAccessPermissionQuery(request.Username, request.Password);
         var result = await _mediator.Send(query);
+
         return result.Match<IActionResult>(
             accessPermission => Ok(_mapper.Map<AccessPermissionResponseBody>(accessPermission)),
             accessDenied => Unauthorized());

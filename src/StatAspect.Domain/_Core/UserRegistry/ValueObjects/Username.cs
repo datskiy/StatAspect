@@ -4,10 +4,15 @@ using StatAspect.Domain._Core.UserRegistry.Validators;
 namespace StatAspect.Domain._Core.UserRegistry.ValueObjects;
 
 /// <summary>
-/// ***
+/// Represents a username.
 /// </summary>
-public record Username : ValueObject<string>, IIntegrityObject<string>
+public sealed record Username : ValueObject<string>, IIntegrityEnsurer<string>
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="Username"/>.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="ArgumentException"/>
     public Username(string value) : base(value, GetValidator())
     {
     }

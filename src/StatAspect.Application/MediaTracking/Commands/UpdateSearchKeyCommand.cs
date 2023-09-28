@@ -4,7 +4,7 @@ using StatAspect.SharedKernel.Results.TargetProperties;
 namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
-/// Represents a command to update a search key.
+/// Represents a search key update command.
 /// </summary>
 public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, AlreadyExists<Name>>>
 {
@@ -19,7 +19,7 @@ public sealed class UpdateSearchKeyCommand : IRequest<OneOf<Success, NotFound, A
     public string Name { get; }
 
     /// <summary>
-    /// Gets a modified search key.
+    /// Gets a modified search key description.
     /// </summary>
     public string? Description { get; }
 

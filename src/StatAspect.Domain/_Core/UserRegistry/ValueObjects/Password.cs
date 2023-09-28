@@ -4,10 +4,15 @@ using StatAspect.Domain._Core.UserRegistry.Validators;
 namespace StatAspect.Domain._Core.UserRegistry.ValueObjects;
 
 /// <summary>
-/// ***
+/// Represents a password.
 /// </summary>
-public record Password : ValueObject<string>, IIntegrityObject<string>
+public sealed record Password : ValueObject<string>, IIntegrityEnsurer<string>
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="Password"/>.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="ArgumentException"/>
     public Password(string value) : base(value, GetValidator())
     {
     }

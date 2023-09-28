@@ -6,20 +6,30 @@
 public sealed class AccessPermissionResponseBody
 {
     /// <summary>
-    /// Gets or inits an access permission value.
+    /// Gets an access permission token.
     /// </summary>
     [JsonProperty("token")]
-    public required string Token { get; init; }
+    public string Token { get; }
     
     /// <summary>
-    /// Gets or inits an access permission issue date.
+    /// Gets an access permission issue date.
     /// </summary>
     [JsonProperty("issueDate")]
-    public DateTime IssueDate { get; init; }
+    public DateTime IssueDate { get; }
 
     /// <summary>
-    /// Gets or inits an access permission expiration date.
+    /// Gets an access permission expiration date.
     /// </summary>
     [JsonProperty("expirationDate")]
-    public DateTime ExpirationDate { get; init; }
+    public DateTime ExpirationDate { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="AccessPermissionResponseBody"/>.
+    /// </summary>
+    public AccessPermissionResponseBody(string token, DateTime issueDate, DateTime expirationDate)
+    {
+        Token = token;
+        IssueDate = issueDate;
+        ExpirationDate = expirationDate;
+    }
 }

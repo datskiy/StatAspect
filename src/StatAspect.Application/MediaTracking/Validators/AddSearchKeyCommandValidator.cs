@@ -6,15 +6,11 @@ using StatAspect.Domain.MediaTracking.ValueObjects;
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
-/// Represents a search key addition command validator.
-/// <remarks>Reflection only.</remarks>
+/// Represents an <see cref="AddSearchKeyCommand"/> validator.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class AddSearchKeyCommandValidator : AbstractValidator<AddSearchKeyCommand>
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="AddSearchKeyCommandValidator"/>.
-    /// <remarks>Reflection only.</remarks>
-    /// </summary>
     public AddSearchKeyCommandValidator()
     {
         RuleFor(c => c.Name)

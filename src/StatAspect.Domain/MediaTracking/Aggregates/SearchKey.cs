@@ -9,7 +9,7 @@ namespace StatAspect.Domain.MediaTracking.Aggregates;
 public sealed class SearchKey
 {
     /// <summary>
-    /// Gets a unique search key identifier.
+    /// Gets a search key unique identifier.
     /// </summary>
     public SearchKeyId Id { get; }
 
@@ -44,6 +44,7 @@ public sealed class SearchKey
         DateTime creationDate,
         DateTime? lastUpdateDate)
     {
+        ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(name);
 
         Id = id;

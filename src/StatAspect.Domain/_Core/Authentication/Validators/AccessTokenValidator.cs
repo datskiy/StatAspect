@@ -3,7 +3,7 @@
 namespace StatAspect.Domain._Core.Authentication.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents an access token validator.
 /// </summary>
 public sealed class AccessTokenValidator : AbstractValidator<string>
 {

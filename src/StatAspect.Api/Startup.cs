@@ -4,30 +4,30 @@ using StatAspect.Api._Common.Helpers;
 namespace StatAspect.Api;
 
 /// <summary>
-/// Represents the application entry point for setting up configuration and wiring up services the application will use.
-/// <remarks>Reflection only.</remarks>
+/// Represents the web app startup unit.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class Startup
 {
     /// <summary>
     /// Configures application services.
-    /// <remarks>Reflection only.</remarks>
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
     public void ConfigureServices(IServiceCollection services)
     {
-        var apiLayerInitType = StartupHelper.GetApiLayerInitType();
-        var applicationLayerInitType = StartupHelper.GetApplicationLayerInitType();
+        var apiAssemblyMarkerType = StartupHelper.GetApiAssemblyMarkerType();
+        var applicationAssemblyMarkerType = StartupHelper.GetApplicationAssemblyMarkerType();
 
         services.AddControllers();
-        services.AddAutoMapper(apiLayerInitType);
-        services.AddValidation(applicationLayerInitType);
-        services.AddMediatR(apiLayerInitType, applicationLayerInitType);
+        services.AddAutoMapper(apiAssemblyMarkerType);
+        services.AddValidation(applicationAssemblyMarkerType);
+        services.AddMediatR(apiAssemblyMarkerType, applicationAssemblyMarkerType);
         services.AddDependencies();
     }
 
     /// <summary>
     /// Configures application pipeline.
-    /// <remarks>Reflection only.</remarks>
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
@@ -38,6 +38,6 @@ public sealed class Startup
         app.UseHttpsRedirection();
         app.UseHsts();
         app.UseRouting();
-        app.UseEndpoints(erb => erb.MapControllers());
+        app.UseEndpoints(routeBuilder => routeBuilder.MapControllers());
     }
 }

@@ -3,7 +3,7 @@
 namespace StatAspect.Application.MediaTracking.Queries;
 
 /// <summary>
-/// Represents a query for getting search keys.
+/// Represents a search key sequence query.
 /// </summary>
 public sealed class GetSearchKeysQuery : IRequest<IImmutableList<SearchKey>>
 {

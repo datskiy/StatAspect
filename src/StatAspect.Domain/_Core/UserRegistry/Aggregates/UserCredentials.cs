@@ -9,7 +9,7 @@ namespace StatAspect.Domain._Core.UserRegistry.Aggregates;
 public sealed class UserCredentials
 {
     /// <summary>
-    /// Gets a unique user identifier.
+    /// Gets a user unique identifier.
     /// </summary>
     public UserId UserId { get; }
 
@@ -19,12 +19,12 @@ public sealed class UserCredentials
     public Username Username { get; }
 
     /// <summary>
-    /// Gets a password hash.
+    /// Gets password hash.
     /// </summary>
     public PasswordHash PasswordHash { get; }
 
     /// <summary>
-    /// Gets a password salt.
+    /// Gets password salt.
     /// </summary>
     public PasswordSalt PasswordSalt { get; }
 

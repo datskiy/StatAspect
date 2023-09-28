@@ -3,17 +3,17 @@
 namespace StatAspect.Domain._Common.Aggregates;
 
 /// <summary>
-/// Represents collection selection params.
+/// Represents sequence selection parameters.
 /// </summary>
 public sealed class SelectionParams
 {
     /// <summary>
-    /// Gets selection offset.
+    /// Gets a selection offset.
     /// </summary>
     public SelectionOffset Offset { get; }
 
     /// <summary>
-    /// Gets selection limit.
+    /// Gets a selection limit.
     /// </summary>
     public SelectionLimit Limit { get; }
 

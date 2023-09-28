@@ -1,17 +1,17 @@
 ﻿namespace StatAspect.Domain._Core.UserRegistry.Specifications;
 
 /// <summary>
-/// TODO: desc***
+/// Provides a specification that describes user credentials constraints.
 /// </summary>
 public static class UserCredentialsSpecification
 {
     /// <summary>
-    /// TODO: desc
+    /// The maximum length of a username.
     /// </summary>
-    public const int MaxUsernameLength = 30;
+    public const int UsernameMaxLength = 30;
 
     /// <summary>
-    /// TODO: desc
+    /// The maximum length of a password.
     /// </summary>
-    public const int MinPasswordLength = 9;
+    public const int PasswordMinLength = 9;
 }

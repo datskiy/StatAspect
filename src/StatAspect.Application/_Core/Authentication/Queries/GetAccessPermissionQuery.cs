@@ -4,17 +4,17 @@ using StatAspect.SharedKernel.Results;
 namespace StatAspect.Application._Core.Authentication.Queries;
 
 /// <summary>
-/// Represents a query for getting an access permission.
+/// Represents an access permission query.
 /// </summary>
 public sealed class GetAccessPermissionQuery : IRequest<OneOf<AccessPermission, AccessDenied>>
 {
     /// <summary>
-    /// Gets a username.
+    /// Gets the target username.
     /// </summary>
     public string Username { get; }
 
     /// <summary>
-    /// Gets a password.
+    /// Gets the target password.
     /// </summary>
     public string Password { get; }
 

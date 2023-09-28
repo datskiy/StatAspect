@@ -3,12 +3,13 @@
 namespace StatAspect.Api._Common.Helpers;
 
 /// <summary>
-/// Provides static utility methods for working with API controllers.
+/// Provides helper methods for controllers.
 /// </summary>
 public static class ControllerHelper
 {
     /// <summary>
-    /// Returns the first <see cref="RouteAttribute"/> template parameter of the applied controller type, or a default value if no templates parameters were specified.
+    /// Returns the first <see cref="RouteAttribute"/> template value of the applied controller type.
+    /// If no route templates were specified, returns null.
     /// </summary>
     public static string? GetRouteTemplate<TController>() where TController : BaseController
     {

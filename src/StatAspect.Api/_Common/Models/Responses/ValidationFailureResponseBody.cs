@@ -1,37 +1,45 @@
 ﻿namespace StatAspect.Api._Common.Models.Responses;
 
 /// <summary>
-/// Represents a unified validation failure response body.
+/// Represents a validation failure response body.
 /// </summary>
 public sealed class ValidationFailureResponseBody
 {
     /// <summary>
-    /// Gets a failure type.
+    /// Gets a default failure type.
     /// </summary>
     [JsonProperty("type")]
     public string Type => "https://tools.ietf.org/html/rfc7231#section-6.5.1";
 
     /// <summary>
-    /// Gets a failure title.
+    /// Gets a default failure title.
     /// </summary>
     [JsonProperty("title")]
     public string Title => "One or more validation errors occurred.";
 
     /// <summary>
-    /// Gets a failure status code.
+    /// Gets a default failure status code.
     /// </summary>
     [JsonProperty("status")]
     public int StatusCode => StatusCodes.Status400BadRequest;
 
     /// <summary>
-    /// Gets a unique failure related request identifier.
+    /// Gets a current trace unique identifier.
     /// </summary>
     [JsonProperty("traceId")]
     public string TraceId => Activity.Current!.Id!;
 
     /// <summary>
-    /// Gets or inits a failure related collection of errors.
+    /// Gets a sequence of errors.
     /// </summary>
     [JsonProperty("errors")]
-    public required IEnumerable<KeyValuePair<string, string[]>> Errors { get; init; }
+    public IEnumerable<KeyValuePair<string, string[]>> Errors { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="ValidationFailureResponseBody"/>.
+    /// </summary>
+    public ValidationFailureResponseBody(IEnumerable<KeyValuePair<string, string[]>> errors)
+    {
+        Errors = errors;
+    }
 }

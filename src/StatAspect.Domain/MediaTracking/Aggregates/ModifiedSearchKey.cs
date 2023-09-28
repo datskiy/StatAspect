@@ -32,6 +32,7 @@ public sealed class ModifiedSearchKey
         SearchKeyName name,
         SearchKeyDescription? description)
     {
+        ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(name);
 
         Id = id;

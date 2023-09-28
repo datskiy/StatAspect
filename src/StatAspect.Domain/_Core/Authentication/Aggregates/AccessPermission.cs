@@ -8,7 +8,7 @@ namespace StatAspect.Domain._Core.Authentication.Aggregates;
 public sealed class AccessPermission
 {
     /// <summary>
-    /// Gets an access permission string.
+    /// Gets an access permission token.
     /// </summary>
     public AccessToken Token { get; }
 

@@ -6,15 +6,11 @@ using StatAspect.Domain._Core.UserRegistry.ValueObjects;
 namespace StatAspect.Application._Core.Authentication.Validators;
 
 /// <summary>
-/// Represents an access permission getting query validator.
-/// <remarks>Reflection only.</remarks>
+/// Represents a <see cref="GetAccessPermissionQuery"/> validator.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class GetAccessPermissionQueryValidator : AbstractValidator<GetAccessPermissionQuery>
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="GetAccessPermissionQueryValidator"/>.
-    /// <remarks>Reflection only.</remarks>
-    /// </summary>
     public GetAccessPermissionQueryValidator()
     {
         RuleFor(q => q.Username)

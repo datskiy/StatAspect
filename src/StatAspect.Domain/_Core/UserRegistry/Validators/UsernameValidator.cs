@@ -4,7 +4,7 @@ using StatAspect.Domain._Core.UserRegistry.Specifications;
 namespace StatAspect.Domain._Core.UserRegistry.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents a username validator.
 /// </summary>
 public sealed class UsernameValidator : AbstractValidator<string>
 {
@@ -19,8 +19,8 @@ public sealed class UsernameValidator : AbstractValidator<string>
         RuleFor(username => username)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(UserCredentialsSpecification.MaxUsernameLength)
-            .ContainsOnlyEnglishLetters()
-            .UseCustomParamName(paramName); // TODO: english only, etc.
+            .MaximumLength(UserCredentialsSpecification.UsernameMaxLength)
+            .ContainsOnlyEnglishCharacters()
+            .UseCustomParamName(paramName);
     }
 }

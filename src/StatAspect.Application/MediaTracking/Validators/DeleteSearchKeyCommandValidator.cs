@@ -6,15 +6,11 @@ using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
-/// Represents a search key deletion command validator.
-/// <remarks>Reflection only.</remarks>
+/// Represents a <see cref="DeleteSearchKeyCommand"/> validator.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class DeleteSearchKeyCommandValidator : AbstractValidator<DeleteSearchKeyCommand>
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="DeleteSearchKeyCommandValidator"/>.
-    /// <remarks>Reflection only.</remarks>
-    /// </summary>
     public DeleteSearchKeyCommandValidator()
     {
         RuleFor(c => c.Id)

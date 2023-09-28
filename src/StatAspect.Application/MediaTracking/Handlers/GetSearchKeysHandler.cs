@@ -9,8 +9,8 @@ using StatAspect.Domain.MediaTracking.Repositories;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search keys getting request handler.
-/// <remarks>Reflection only.</remarks>
+/// Represents a <see cref="GetSearchKeysQuery"/> handler.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, IImmutableList<SearchKey>>
 {
@@ -22,14 +22,11 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     }
 
     /// <summary>
-    /// Returns a result of processing the <see cref="GetSearchKeysQuery"/> request.
-    /// <remarks>Reflection only.</remarks>
+    /// Handles the <see cref="GetSearchKeysQuery"/> request.
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
     public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery query, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(query);
-
         var selectionParams = new SelectionParams(
             new SelectionOffset(query.Offset),
             new SelectionLimit(query.Limit));

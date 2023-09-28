@@ -6,7 +6,7 @@ using StatAspect.SharedKernel.Results.TargetProperties;
 namespace StatAspect.Domain.MediaTracking.Services;
 
 /// <summary>
-/// Represents a search key service.
+/// Defines a search key service.
 /// </summary>
 public interface ISearchKeyService
 {

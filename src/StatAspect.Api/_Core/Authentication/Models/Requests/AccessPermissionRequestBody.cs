@@ -6,14 +6,23 @@
 public sealed class AccessPermissionRequestBody
 {
     /// <summary>
-    /// Gets or inits a username.
+    /// Gets an access permission username.
     /// </summary>
     [JsonProperty("username")]
-    public string Username { get; init; }
+    public string Username { get; }
 
     /// <summary>
-    /// Gets or inits a user password.
+    /// Gets a password.
     /// </summary>
     [JsonProperty("password")]
-    public string Password { get; init; }
+    public string Password { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="AccessPermissionRequestBody"/>.
+    /// </summary>
+    public AccessPermissionRequestBody(string username, string password)
+    {
+        Username = username;
+        Password = password;
+    }
 }

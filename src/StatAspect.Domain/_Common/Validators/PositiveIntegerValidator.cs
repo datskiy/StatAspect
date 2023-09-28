@@ -3,7 +3,7 @@
 namespace StatAspect.Domain._Common.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents a positive integer validator.
 /// </summary>
 public sealed class PositiveIntegerValidator : AbstractValidator<int>
 {
@@ -15,7 +15,7 @@ public sealed class PositiveIntegerValidator : AbstractValidator<int>
     {
         ArgumentNullException.ThrowIfNull(paramName);
 
-        RuleFor(positiveInt => positiveInt)
+        RuleFor(i => i)
             .GreaterThan(0)
             .UseCustomParamName(paramName);
     }

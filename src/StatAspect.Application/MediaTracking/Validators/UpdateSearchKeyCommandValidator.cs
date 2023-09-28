@@ -7,15 +7,11 @@ using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
-/// Represents a search key update command validator.
-/// <remarks>Reflection only.</remarks>
+/// Represents an <see cref="UpdateSearchKeyCommand"/> validator.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class UpdateSearchKeyCommandValidator : AbstractValidator<UpdateSearchKeyCommand>
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="UpdateSearchKeyCommandValidator"/>.
-    /// <remarks>Reflection only.</remarks>
-    /// </summary>
     public UpdateSearchKeyCommandValidator()
     {
         RuleFor(c => c.Id)

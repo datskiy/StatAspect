@@ -15,15 +15,15 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 [Route("media-tracking/search-keys")]
 public sealed class SearchKeyController : BaseController
 {
-    private readonly IMediator _mediator;
     private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
 
     public SearchKeyController(
-        IMediator mediator,
-        IMapper mapper)
+        IMapper mapper,
+        IMediator mediator)
     {
-        _mediator = mediator;
         _mapper = mapper;
+        _mediator = mediator;
     }
 
     /// <summary>
@@ -34,19 +34,21 @@ public sealed class SearchKeyController : BaseController
     {
         var query = new GetSearchKeyQuery(id);
         var searchKey = await _mediator.Send(query, cancellationToken);
+
         return searchKey is not null
             ? Ok(_mapper.Map<SearchKeyResponseBody>(searchKey))
             : NotFound();
     }
 
     /// <summary>
-    /// Returns search key collection filtered by the specified parameters.
+    /// Returns a sequence of search keys filtered according to the specified parameters.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetListAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue, CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeysQuery(offset, limit);
         var searchKeys = await _mediator.Send(query, cancellationToken);
+
         return Ok(_mapper.Map<IEnumerable<SearchKeyResponseBody>>(searchKeys));
     }
 
@@ -58,6 +60,7 @@ public sealed class SearchKeyController : BaseController
     {
         var command = new AddSearchKeyCommand(request.Name, request.Description);
         var result = await _mediator.Send(command);
+
         return result.Match<IActionResult>(
             addedSearchKeyId => Created<SearchKeyController>(addedSearchKeyId),
             alreadyExists => Conflict(alreadyExists));
@@ -71,6 +74,7 @@ public sealed class SearchKeyController : BaseController
     {
         var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
         var result = await _mediator.Send(command);
+
         return result.Match<IActionResult>(
             success => Ok(),
             notFound => NotFound(),
@@ -85,6 +89,7 @@ public sealed class SearchKeyController : BaseController
     {
         var command = new DeleteSearchKeyCommand(id);
         var result = await _mediator.Send(command);
+
         return result.Match<IActionResult>(
             success => Ok(),
             notFound => NotFound());

@@ -4,7 +4,7 @@ using StatAspect.Domain.MediaTracking.Specifications;
 namespace StatAspect.Domain.MediaTracking.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents a search key name validator.
 /// </summary>
 public sealed class SearchKeyNameValidator : AbstractValidator<string>
 {
@@ -19,7 +19,7 @@ public sealed class SearchKeyNameValidator : AbstractValidator<string>
         RuleFor(name => name)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(SearchKeySpecification.MaxNameLength)
+            .MaximumLength(SearchKeySpecification.NameMaxLength)
             .UseCustomParamName(paramName);
     }
 }

@@ -1,25 +1,25 @@
-﻿using StatAspect.Application;
+﻿using StatAspect.Application._Common.Settings;
 
 namespace StatAspect.Api._Common.Helpers;
 
 /// <summary>
-/// Provides static utility methods for working with startup process.
+/// Provides helper methods for startup.
 /// </summary>
 public static class StartupHelper
 {
     /// <summary>
-    /// Returns the <see cref="StatAspect.Api"/> layer default initialization type.
+    /// Returns the <see cref="StatAspect.Api"/> assembly marker type.
     /// </summary>
-    public static Type GetApiLayerInitType()
+    public static Type GetApiAssemblyMarkerType()
     {
         return typeof(Startup);
     }
 
     /// <summary>
-    /// Returns the <see cref="StatAspect.Application"/> layer default initialization type.
+    /// Returns the <see cref="StatAspect.Application"/> assembly marker type.
     /// </summary>
-    public static Type GetApplicationLayerInitType()
+    public static Type GetApplicationAssemblyMarkerType()
     {
-        return typeof(ApplicationInitializer);
+        return typeof(ValidationPipelineBehavior<,>);
     }
 }

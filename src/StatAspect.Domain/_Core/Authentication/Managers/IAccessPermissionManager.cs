@@ -4,12 +4,12 @@ using StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
 namespace StatAspect.Domain._Core.Authentication.Managers;
 
 /// <summary>
-/// Represents an access permission manager. // TODO: desc
+/// Defines an access permission manager.
 /// </summary>
 public interface IAccessPermissionManager
 {
     /// <summary>
-    /// Generates and returns an access permission for the specified user.
+    /// Grants and returns a temporary access permission for the specified user.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     Task<AccessPermission> GrantAsync(UserId userId, TimeSpan duration);

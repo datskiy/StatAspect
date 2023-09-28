@@ -3,8 +3,16 @@ using StatAspect.Domain.MediaTracking.Validators;
 
 namespace StatAspect.Domain.MediaTracking.ValueObjects;
 
-public record SearchKeyDescription : ValueObject<string>, IIntegrityObject<string>
+/// <summary>
+/// Represents a search key description.
+/// </summary>
+public sealed record SearchKeyDescription : ValueObject<string>, IIntegrityEnsurer<string>
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="SearchKeyDescription"/>.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="ArgumentException"/>
     public SearchKeyDescription(string value) : base(value, GetValidator())
     {
     }

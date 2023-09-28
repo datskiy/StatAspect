@@ -4,20 +4,20 @@ using StatAspect.Application._Common.Settings;
 namespace StatAspect.Api._Common.Extensions;
 
 /// <summary>
-/// Provides a set of extension methods for objects that implement <see cref="IServiceCollection"/>.
+/// Provides a set of extension methods for types that implement <see cref="IServiceCollection"/>.
 /// </summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds <see cref="FluentValidation"/> services and a custom pipeline behavior to the service collection.
+    /// Adds validation services and custom validation pipeline behavior to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static void AddValidation(this IServiceCollection services, Type type)
+    public static void AddValidation(this IServiceCollection services, Type assemblyMarkerType)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentNullException.ThrowIfNull(type);
+        ArgumentNullException.ThrowIfNull(assemblyMarkerType);
 
-        services.AddFluentValidationServices(type);
+        services.AddFluentValidationServices(assemblyMarkerType);
         services.AddValidationPipelineBehavior();
     }
 
@@ -29,16 +29,16 @@ public static class ServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        DependencyHelper.ResolveTransient(services);
-        DependencyHelper.ResolveScoped(services);
         DependencyHelper.ResolveSingleton(services);
+        DependencyHelper.ResolveScoped(services);
+        DependencyHelper.ResolveTransient(services);
     }
 
-    private static void AddFluentValidationServices(this IServiceCollection services, Type type)
+    private static void AddFluentValidationServices(this IServiceCollection services, Type assemblyMarkerType)
     {
         services.AddFluentValidation(cfg =>
         {
-            cfg.RegisterValidatorsFromAssemblyContaining(type);
+            cfg.RegisterValidatorsFromAssemblyContaining(assemblyMarkerType);
         });
     }
 

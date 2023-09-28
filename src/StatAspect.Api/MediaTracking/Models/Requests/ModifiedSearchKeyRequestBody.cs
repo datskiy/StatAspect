@@ -6,14 +6,23 @@
 public sealed class ModifiedSearchKeyRequestBody
 {
     /// <summary>
-    /// Gets or inits a modified search key name.
+    /// Gets a modified search key name.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; init; }
+    public string Name { get; }
 
     /// <summary>
-    /// Gets or inits a modified search key description.
+    /// Gets a modified search key description.
     /// </summary>
     [JsonProperty("description")]
-    public string? Description { get; init; }
+    public string? Description { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="ModifiedSearchKeyRequestBody"/>.
+    /// </summary>
+    public ModifiedSearchKeyRequestBody(string name, string? description)
+    {
+        Name = name;
+        Description = description;
+    }
 }

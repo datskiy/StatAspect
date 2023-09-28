@@ -8,8 +8,8 @@ using StatAspect.SharedKernel.Results;
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
-/// Represents a search key deletion request handler.
-/// <remarks>Reflection only.</remarks>
+/// Represents a <see cref="DeleteSearchKeyCommand"/> handler.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyCommand, OneOf<Success, NotFound>>
 {
@@ -21,15 +21,12 @@ public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyComm
     }
 
     /// <summary>
-    /// Returns a result of processing the <see cref="DeleteSearchKeyCommand"/> request.
-    /// <remarks>Reflection only.</remarks>
+    /// Handles the <see cref="DeleteSearchKeyCommand"/> request.
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
     public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand command, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(command);
-
-        var searchKeyId = new SearchKeyId(command.Id);
-        return _searchKeyService.DeleteAsync(searchKeyId);
+        var targetSearchKeyId = new SearchKeyId(command.Id);
+        return _searchKeyService.DeleteAsync(targetSearchKeyId);
     }
 }

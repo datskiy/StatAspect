@@ -3,7 +3,7 @@
 namespace StatAspect.Domain._Common.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents an identity validator.
 /// </summary>
 public sealed class IdentityValidator : AbstractValidator<Guid>
 {

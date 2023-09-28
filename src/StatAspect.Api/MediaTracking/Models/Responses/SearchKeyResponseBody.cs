@@ -6,32 +6,44 @@
 public sealed class SearchKeyResponseBody
 {
     /// <summary>
-    /// Gets or inits a unique search key identifier.
+    /// Gets a search key unique identifier.
     /// </summary>
     [JsonProperty("id")]
-    public Guid Id { get; init; }
+    public Guid Id { get; }
 
     /// <summary>
-    /// Gets or inits a search key name.
+    /// Gets a search key name.
     /// </summary>
     [JsonProperty("name")]
-    public required string Name { get; init; }
+    public string Name { get; }
 
     /// <summary>
-    /// Gets or inits a search key description.
+    /// Gets a search key description.
     /// </summary>
     [JsonProperty("description")]
-    public string? Description { get; init; }
+    public string? Description { get; }
 
     /// <summary>
-    /// Gets or inits a search key creation date.
+    /// Gets a search key creation date.
     /// </summary>
     [JsonProperty("creationDate")]
-    public DateTime CreationDate { get; init; }
+    public DateTime CreationDate { get; }
 
     /// <summary>
-    /// Gets or inits a search key last update date.
+    /// Gets a search key last update date.
     /// </summary>
     [JsonProperty("lastUpdateDate")]
-    public DateTime? LastUpdateDate { get; init; }
+    public DateTime? LastUpdateDate { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="SearchKeyResponseBody"/>.
+    /// </summary>
+    public SearchKeyResponseBody(Guid id, string name, string? description, DateTime creationDate, DateTime? lastUpdateDate)
+    {
+        Id = id;
+        Name = name;
+        Description = description;
+        CreationDate = creationDate;
+        LastUpdateDate = lastUpdateDate;
+    }
 }

@@ -3,15 +3,15 @@
 namespace StatAspect.Domain._Common.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents a Base64 format validator.
 /// </summary>
-public sealed class Base64StringValidator : AbstractValidator<string>
+public sealed class Base64Validator : AbstractValidator<string>
 {
     /// <summary>
-    /// Initializes a new instance of <see cref="Base64StringValidator"/>.
+    /// Initializes a new instance of <see cref="Base64Validator"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public Base64StringValidator(string paramName)
+    public Base64Validator(string paramName)
     {
         ArgumentNullException.ThrowIfNull(paramName);
 

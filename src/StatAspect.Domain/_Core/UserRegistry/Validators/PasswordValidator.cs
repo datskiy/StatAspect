@@ -4,7 +4,7 @@ using StatAspect.Domain._Core.UserRegistry.Specifications;
 namespace StatAspect.Domain._Core.UserRegistry.Validators;
 
 /// <summary>
-/// TODO: description
+/// Represents a password validator.
 /// </summary>
 public sealed class PasswordValidator : AbstractValidator<string>
 {
@@ -19,7 +19,7 @@ public sealed class PasswordValidator : AbstractValidator<string>
         RuleFor(password => password)
             .NotNull()
             .NotEmpty()
-            .MinimumLength(UserCredentialsSpecification.MinPasswordLength)
+            .MinimumLength(UserCredentialsSpecification.PasswordMinLength)
             .UseCustomParamName(paramName);
     }
 }

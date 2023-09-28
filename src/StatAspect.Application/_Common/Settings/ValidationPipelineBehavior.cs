@@ -1,8 +1,8 @@
 ﻿namespace StatAspect.Application._Common.Settings;
 
 /// <summary>
-/// Represents validation pipeline behavior that allows requests to be validated before passing them to the handlers.
-/// <remarks>Reflection only.</remarks>
+/// Represents custom validation pipeline behavior that intercepts invalid requests.
+/// <remarks>Used only through reflection.</remarks>
 /// </summary>
 public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
 {
@@ -14,16 +14,17 @@ public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineB
     }
 
     /// <summary>
-    /// Performs incoming request validation and then passes it to the <see cref="RequestHandlerDelegate{TResponse}"/> delegate.
-    /// <remarks>Reflection only.</remarks>
+    /// Validates the specified request and passes it to the next delegate.
+    /// Throws a <see cref="ValidationException"/> if the request is invalid.
+    /// <remarks>Used only through reflection.</remarks>
     /// </summary>
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
-        var context = new ValidationContext<TRequest>(request);
-        var validationResults = await Task.WhenAll(_validators.Select(vld => vld.ValidateAsync(context, cancellationToken)));
+        var validationContext = new ValidationContext<TRequest>(request);
+        var validationResults = await Task.WhenAll(_validators.Select(validator => validator.ValidateAsync(validationContext, cancellationToken)));
         var validationFailures = validationResults
-            .SelectMany(res => res.Errors)
-            .Where(flr => flr is not null)
+            .SelectMany(result => result.Errors)
+            .Where(fail => fail is not null)
             .ToList();
 
         return validationFailures.Any()

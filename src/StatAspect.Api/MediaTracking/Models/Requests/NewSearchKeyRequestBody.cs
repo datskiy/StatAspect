@@ -6,14 +6,23 @@
 public sealed class NewSearchKeyRequestBody
 {
     /// <summary>
-    /// Gets or inits a new search key name.
+    /// Gets a new search key name.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; init; }
+    public string Name { get; }
 
     /// <summary>
-    /// Gets or inits a new search key description.
+    /// Gets a new search key description.
     /// </summary>
     [JsonProperty("description")]
-    public string? Description { get; init; }
+    public string? Description { get; }
+
+    /// <summary>
+    /// Initializes a new instance of <see cref="NewSearchKeyRequestBody"/>.
+    /// </summary>
+    public NewSearchKeyRequestBody(string name, string? description)
+    {
+        Name = name;
+        Description = description;
+    }
 }

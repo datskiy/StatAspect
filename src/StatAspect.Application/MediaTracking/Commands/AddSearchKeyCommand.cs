@@ -5,7 +5,7 @@ using StatAspect.SharedKernel.Results.TargetProperties;
 namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
-/// Represents a command to add a new search key.
+/// Represents a search key addition command.
 /// </summary>
 public sealed class AddSearchKeyCommand : IRequest<OneOf<SearchKeyId, AlreadyExists<Name>>>
 {

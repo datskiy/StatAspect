@@ -12,7 +12,7 @@ using StatAspect.Infrastructure.MediaTracking.Repositories.Implementations;
 namespace StatAspect.Api._Common.Helpers;
 
 /// <summary>
-/// Provides static utility methods for working with dependency injection.
+/// Provides helper methods for dependency injection.
 /// </summary>
 public static class DependencyHelper
 {
@@ -24,15 +24,17 @@ public static class DependencyHelper
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        //_Core
+        // _Core
         services.AddTransient<IAccessPermissionManager, AccessPermissionManager>();
         services.AddTransient<IUserCredentialsManager, UserCredentialsManager>();
+
         services.AddTransient<IUserCredentialsQueryRepository, UserCredentialsQueryRepository>();
 
         // MediaTracking
         services.AddTransient<ISearchKeyService, SearchKeyService>();
-        services.AddTransient<ISearchKeyQueryRepository, SearchKeyQueryRepository>();
+
         services.AddTransient<ISearchKeyCommandRepository, SearchKeyCommandRepository>();
+        services.AddTransient<ISearchKeyQueryRepository, SearchKeyQueryRepository>();
     }
 
     /// <summary>
@@ -43,7 +45,7 @@ public static class DependencyHelper
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        // no dependencies yet...
+        // there are no scoped dependencies yet..
     }
 
     /// <summary>
@@ -54,6 +56,6 @@ public static class DependencyHelper
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        // no dependencies yet...
+        // there are no singleton dependencies yet..
     }
 }
