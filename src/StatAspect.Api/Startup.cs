@@ -21,7 +21,7 @@ public sealed class Startup
         services.AddControllers();
         services.AddAutoMapper(apiAssemblyMarkerType);
         services.AddValidation(applicationAssemblyMarkerType);
-        services.AddMediatR(apiAssemblyMarkerType, applicationAssemblyMarkerType);
+        services.AddMediator(apiAssemblyMarkerType, applicationAssemblyMarkerType);
         services.AddDependencies();
     }
 

@@ -18,7 +18,7 @@ public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineB
     /// Throws a <see cref="ValidationException"/> if the request is invalid.
     /// <remarks>Used only through reflection.</remarks>
     /// </summary>
-    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var validationContext = new ValidationContext<TRequest>(request);
         var validationResults = await Task.WhenAll(_validators.Select(validator => validator.ValidateAsync(validationContext, cancellationToken)));

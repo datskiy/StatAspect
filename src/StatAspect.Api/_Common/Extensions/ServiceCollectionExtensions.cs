@@ -22,6 +22,20 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
+    /// Adds mediator services to the service collection.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    public static void AddMediator(this IServiceCollection services, params Type[] assemblyMarkerTypes)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(assemblyMarkerTypes);
+
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assemblyMarkerTypes
+            .Select(type => type.Assembly)
+            .ToArray()));
+    }
+
+    /// <summary>
     /// Adds custom services to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
@@ -36,10 +50,9 @@ public static class ServiceCollectionExtensions
 
     private static void AddFluentValidationServices(this IServiceCollection services, Type assemblyMarkerType)
     {
-        services.AddFluentValidation(cfg =>
-        {
-            cfg.RegisterValidatorsFromAssemblyContaining(assemblyMarkerType);
-        });
+        services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
+        services.AddValidatorsFromAssemblyContaining(assemblyMarkerType);
     }
 
     private static void AddValidationPipelineBehavior(this IServiceCollection services)

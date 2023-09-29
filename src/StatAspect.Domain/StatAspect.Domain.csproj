@@ -13,9 +13,9 @@
         <Using Include="System.IdentityModel.Tokens.Jwt"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="10.3.6"/>
-        <PackageReference Include="OneOf" Version="3.0.216"/>
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.0"/>
+        <PackageReference Include="FluentValidation" Version="11.7.1"/>
+        <PackageReference Include="OneOf" Version="3.0.263"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.1"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\StatAspect.SharedKernel\StatAspect.SharedKernel.csproj"/>
