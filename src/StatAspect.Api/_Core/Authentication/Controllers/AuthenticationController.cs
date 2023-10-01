@@ -2,8 +2,8 @@
 // ReSharper disable ConvertClosureToMethodGroup
 
 using StatAspect.Api._Common.Controllers.Abstractions;
+using StatAspect.Api._Core.Authentication.Mappers;
 using StatAspect.Api._Core.Authentication.Models.Requests;
-using StatAspect.Api._Core.Authentication.Models.Responses;
 using StatAspect.Application._Core.Authentication.Queries;
 
 namespace StatAspect.Api._Core.Authentication.Controllers;
@@ -14,14 +14,10 @@ namespace StatAspect.Api._Core.Authentication.Controllers;
 [Route("authentication")]
 public sealed class AuthenticationController : BaseController
 {
-    private readonly IMapper _mapper;
     private readonly IMediator _mediator;
 
-    public AuthenticationController(
-        IMapper mapper,
-        IMediator mediator)
+    public AuthenticationController(IMediator mediator)
     {
-        _mapper = mapper;
         _mediator = mediator;
     }
 
@@ -36,7 +32,7 @@ public sealed class AuthenticationController : BaseController
         var result = await _mediator.Send(query);
 
         return result.Match<IActionResult>(
-            accessPermission => Ok(_mapper.Map<AccessPermissionResponseBody>(accessPermission)),
+            accessPermission => Ok(accessPermission.MapToResponseBody()),
             accessDenied => Unauthorized());
     }
 }

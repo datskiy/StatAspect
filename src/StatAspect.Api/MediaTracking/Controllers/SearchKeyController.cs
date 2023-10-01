@@ -2,8 +2,8 @@
 // ReSharper disable ConvertClosureToMethodGroup
 
 using StatAspect.Api._Common.Controllers.Abstractions;
+using StatAspect.Api.MediaTracking.Mappers;
 using StatAspect.Api.MediaTracking.Models.Requests;
-using StatAspect.Api.MediaTracking.Models.Responses;
 using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Application.MediaTracking.Queries;
 
@@ -15,14 +15,10 @@ namespace StatAspect.Api.MediaTracking.Controllers;
 [Route("media-tracking/search-keys")]
 public sealed class SearchKeyController : BaseController
 {
-    private readonly IMapper _mapper;
     private readonly IMediator _mediator;
 
-    public SearchKeyController(
-        IMapper mapper,
-        IMediator mediator)
+    public SearchKeyController(IMediator mediator)
     {
-        _mapper = mapper;
         _mediator = mediator;
     }
 
@@ -36,7 +32,7 @@ public sealed class SearchKeyController : BaseController
         var searchKey = await _mediator.Send(query, cancellationToken);
 
         return searchKey is not null
-            ? Ok(_mapper.Map<SearchKeyResponseBody>(searchKey))
+            ? Ok(searchKey.MapToResponseBody())
             : NotFound();
     }
 
@@ -44,12 +40,13 @@ public sealed class SearchKeyController : BaseController
     /// Returns a sequence of search keys filtered according to the specified parameters.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetAllAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] int offset = 0, [FromQuery] int limit = int.MaxValue,
+        CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeysQuery(offset, limit);
         var searchKeys = await _mediator.Send(query, cancellationToken);
 
-        return Ok(_mapper.Map<IEnumerable<SearchKeyResponseBody>>(searchKeys));
+        return Ok(searchKeys.MapToResponseBody());
     }
 
     /// <summary>
