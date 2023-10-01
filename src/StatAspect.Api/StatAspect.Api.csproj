@@ -4,6 +4,12 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
     <ItemGroup>
         <Using Include="AutoMapper"/>
         <Using Include="FluentValidation"/>
@@ -31,5 +37,13 @@
     <ItemGroup>
         <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj"/>
         <ProjectReference Include="..\StatAspect.Infrastructure\StatAspect.Infrastructure.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Update="appsettings.Development.json">
+            <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        </Content>
+        <Content Update="appsettings.Production.json">
+            <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        </Content>
     </ItemGroup>
 </Project>

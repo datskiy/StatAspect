@@ -7,7 +7,7 @@ namespace StatAspect.Infrastructure._Core.Authentication.Managers;
 
 public sealed class AccessPermissionManager : IAccessPermissionManager
 {
-    public Task<AccessPermission> GrantAsync(UserId userId, TimeSpan duration) // TODO: implement
+    public Task<AccessPermission> GrantAsync(UserId userId, TimeSpan lifetime) // TODO: implement
     {
         ArgumentNullException.ThrowIfNull(userId);
 
@@ -17,6 +17,6 @@ public sealed class AccessPermissionManager : IAccessPermissionManager
             new AccessPermission(
                 new AccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"),
                 DateTime.Now,
-                DateTime.Now.Add(duration)));
+                DateTime.Now.Add(lifetime)));
     }
 }

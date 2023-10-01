@@ -1,6 +1,7 @@
 ﻿// ReSharper disable UnusedType.Global
 // ReSharper disable UnusedParameter.Local
 
+using StatAspect.Application._Core.Authentication.Options;
 using StatAspect.Application._Core.Authentication.Queries;
 using StatAspect.Domain._Core.Authentication.Aggregates;
 using StatAspect.Domain._Core.Authentication.Managers;
@@ -17,15 +18,19 @@ namespace StatAspect.Application._Core.Authentication.Handlers;
 public sealed class GetAccessPermissionHandler : IRequestHandler<GetAccessPermissionQuery, OneOf<AccessPermission, AccessDenied>>
 {
     private readonly IAccessPermissionManager _accessPermissionManager;
+    private readonly IOptions<AuthenticationPolicies> _authenticationPolicies;
     private readonly IUserCredentialsManager _userCredentialsManager;
 
-    private static Task<OneOf<AccessPermission, AccessDenied>> AccessDeniedResult => Task.FromResult<OneOf<AccessPermission, AccessDenied>>(new AccessDenied());
+    private static Task<OneOf<AccessPermission, AccessDenied>> AccessDeniedResult =>
+        Task.FromResult<OneOf<AccessPermission, AccessDenied>>(new AccessDenied());
 
     public GetAccessPermissionHandler(
         IAccessPermissionManager accessPermissionManager,
+        IOptions<AuthenticationPolicies> authenticationPolicies,
         IUserCredentialsManager userCredentialsManager)
     {
         _accessPermissionManager = accessPermissionManager;
+        _authenticationPolicies = authenticationPolicies;
         _userCredentialsManager = userCredentialsManager;
     }
 
@@ -40,8 +45,9 @@ public sealed class GetAccessPermissionHandler : IRequestHandler<GetAccessPermis
             new Password(query.Password),
             cancellationToken);
 
+        var accessPermissionLifetime = _authenticationPolicies.Value.AccessPermissionLifetime;
         return await verificationResult.Match<Task<OneOf<AccessPermission, AccessDenied>>>(
-            async matchedUserId => await _accessPermissionManager.GrantAsync(matchedUserId, new TimeSpan(0, 0, 69)), // TODO: use configuration value
+            async matchedUserId => await _accessPermissionManager.GrantAsync(matchedUserId, accessPermissionLifetime),
             notFound => AccessDeniedResult,
             mismatched => AccessDeniedResult);
     }

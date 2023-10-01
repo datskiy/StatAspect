@@ -12,5 +12,5 @@ public interface IAccessPermissionManager
     /// Grants and returns a temporary access permission for the specified user.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    Task<AccessPermission> GrantAsync(UserId userId, TimeSpan duration);
+    Task<AccessPermission> GrantAsync(UserId userId, TimeSpan lifetime);
 }

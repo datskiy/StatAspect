@@ -9,6 +9,13 @@ namespace StatAspect.Api;
 /// </summary>
 public sealed class Startup
 {
+    private readonly IConfiguration _configuration;
+
+    public Startup(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+
     /// <summary>
     /// Configures application services.
     /// <remarks>Used only through reflection.</remarks>
@@ -18,6 +25,7 @@ public sealed class Startup
         var apiAssemblyMarkerType = StartupHelper.GetApiAssemblyMarkerType();
         var applicationAssemblyMarkerType = StartupHelper.GetApplicationAssemblyMarkerType();
 
+        services.AddOptions(_configuration);
         services.AddControllers();
         services.AddAutoMapper(apiAssemblyMarkerType);
         services.AddValidation(applicationAssemblyMarkerType);

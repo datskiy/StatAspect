@@ -359,11 +359,11 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Fody - auto-generated XML schema
-FodyWeavers.xsd
-
 # Application settings
-src/StatAspect.Api/Properties/
+**/appsettings.json
+**/appsettings.Testing.json
+**/appsettings.Staging.json
+**/appsettings.Production.json
 
-# Rider
+# Rider files
 .idea/

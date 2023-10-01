@@ -1,5 +1,6 @@
 ﻿using StatAspect.Api._Common.Helpers;
 using StatAspect.Application._Common.Settings;
+using StatAspect.Application._Core.Authentication.Options;
 
 namespace StatAspect.Api._Common.Extensions;
 
@@ -33,6 +34,18 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assemblyMarkerTypes
             .Select(type => type.Assembly)
             .ToArray()));
+    }
+
+    /// <summary>
+    /// Adds configuration options to the service collection.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    public static void AddOptions(this IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        services.AddOptions<AuthenticationPolicies>().Bind(configuration.GetSection(nameof(AuthenticationPolicies)));
     }
 
     /// <summary>
