@@ -1,4 +1,6 @@
-﻿namespace StatAspect.Api._Common.Extensions;
+﻿using ValidationException = FluentValidation.ValidationException;
+
+namespace StatAspect.Api._Common.Extensions;
 
 /// <summary>
 /// Provides a set of extension methods for <see cref="ValidationException"/>.
@@ -9,19 +11,21 @@ public static class ValidationExceptionExtensions
     /// Returns a field-based dictionary of validation errors constructed from the specified <see cref="ValidationException"/> instance.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static IImmutableDictionary<string, string[]> ToImmutableErrorDictionary(this ValidationException ex)
+    public static IImmutableDictionary<string, string[]> ToErrorImmutableDictionary(this ValidationException ex)
     {
         ArgumentNullException.ThrowIfNull(ex);
 
         return ex.Errors
-            .GroupBy(fail => fail.PropertyName)
+            .GroupBy(failure => failure.PropertyName)
             .Select(grp => new
             {
                 PropertyName = grp.Key,
                 ErrorMessages = ex.Errors
-                    .Where(fail => fail.PropertyName == grp.Key)
-                    .Select(fail => fail.ErrorMessage)
+                    .Where(failure => failure.PropertyName == grp.Key)
+                    .Select(failure => failure.ErrorMessage)
             })
-            .ToImmutableDictionary(key => key.PropertyName, val => val.ErrorMessages.ToArray());
+            .ToImmutableDictionary(
+                key => key.PropertyName,
+                val => val.ErrorMessages.ToArray());
     }
 }

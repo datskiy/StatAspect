@@ -5,14 +5,14 @@ using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.Domain.MediaTracking.ValueObjects;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
-using StatAspect.SharedKernel.Results;
-using StatAspect.SharedKernel.Results.TargetProperties;
+using StatAspect.SharedKernel.OneOf.Results;
+using StatAspect.SharedKernel.OneOf.Results.TargetProperties;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents an <see cref="AddSearchKeyCommand"/> handler.
-/// <remarks>Used only through reflection.</remarks>
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, OneOf<SearchKeyId, AlreadyExists<Name>>>
 {
@@ -24,8 +24,8 @@ public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, O
     }
 
     /// <summary>
-    /// Handles the <see cref="AddSearchKeyCommand"/> request.
-    /// <remarks>Used only through reflection.</remarks>
+    /// Handles the <see cref="AddSearchKeyCommand"/>.
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
     public Task<OneOf<SearchKeyId, AlreadyExists<Name>>> Handle(AddSearchKeyCommand command, CancellationToken cancellationToken)
     {

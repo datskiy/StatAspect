@@ -12,12 +12,14 @@ public static partial class SearchKeyMapper
     /// <summary>
     /// Maps the source <see cref="SearchKey"/> object to the destination <see cref="SearchKeyResponseBody"/> object.
     /// </summary>
+    /// <remarks>Source generated implementation.</remarks>
     /// <exception cref="NullReferenceException"/>
     public static partial SearchKeyResponseBody MapToResponseBody(this SearchKey searchKey);
 
     /// <summary>
     /// Maps the source sequence of <see cref="SearchKey"/> objects to the destination sequence of <see cref="SearchKeyResponseBody"/> objects.
     /// </summary>
+    /// <remarks>Source generated implementation.</remarks>
     /// <exception cref="NullReferenceException"/>
     public static partial IEnumerable<SearchKeyResponseBody> MapToResponseBody(this IImmutableList<SearchKey> searchKeys);
 }

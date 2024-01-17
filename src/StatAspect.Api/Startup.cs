@@ -5,7 +5,7 @@ namespace StatAspect.Api;
 
 /// <summary>
 /// Represents the web app startup unit.
-/// <remarks>Used only through reflection.</remarks>
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class Startup
 {
@@ -18,7 +18,7 @@ public sealed class Startup
 
     /// <summary>
     /// Configures application services.
-    /// <remarks>Used only through reflection.</remarks>
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
     public void ConfigureServices(IServiceCollection services)
     {
@@ -26,7 +26,9 @@ public sealed class Startup
         var applicationAssemblyMarkerType = StartupHelper.GetApplicationAssemblyMarkerType();
 
         services.AddOptions(_configuration);
-        services.AddControllers();
+        services.AddApiControllers();
+        services.AddJsonPropertyMetadataFormatter();
+        services.AddSwagger();
         services.AddValidation(applicationAssemblyMarkerType);
         services.AddMediator(apiAssemblyMarkerType, applicationAssemblyMarkerType);
         services.AddDependencies();
@@ -34,17 +36,20 @@ public sealed class Startup
 
     /// <summary>
     /// Configures application pipeline.
-    /// <remarks>Used only through reflection.</remarks>
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
+        {
+            app.UseSwaggerWithConfiguration();
             app.UseDeveloperExceptionPage();
+        }
 
         app.UseValidationExceptionHandler();
         app.UseHttpsRedirection();
         app.UseHsts();
         app.UseRouting();
-        app.UseEndpoints(routeBuilder => routeBuilder.MapControllers());
+        app.UseEndpoints(builder => builder.MapControllers());
     }
 }

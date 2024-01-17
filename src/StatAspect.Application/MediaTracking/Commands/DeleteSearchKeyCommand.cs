@@ -1,4 +1,4 @@
-﻿using StatAspect.SharedKernel.Results;
+﻿using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Application.MediaTracking.Commands;
 

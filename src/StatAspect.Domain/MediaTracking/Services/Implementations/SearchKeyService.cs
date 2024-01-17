@@ -1,8 +1,8 @@
 ﻿using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
-using StatAspect.SharedKernel.Results;
-using StatAspect.SharedKernel.Results.TargetProperties;
+using StatAspect.SharedKernel.OneOf.Results;
+using StatAspect.SharedKernel.OneOf.Results.TargetProperties;
 
 namespace StatAspect.Domain.MediaTracking.Services.Implementations;
 

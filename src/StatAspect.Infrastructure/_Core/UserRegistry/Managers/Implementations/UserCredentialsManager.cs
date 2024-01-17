@@ -2,7 +2,7 @@
 using StatAspect.Domain._Core.UserRegistry.Repositories;
 using StatAspect.Domain._Core.UserRegistry.ValueObjects;
 using StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
-using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Infrastructure._Core.UserRegistry.Managers.Implementations;
 
@@ -24,8 +24,8 @@ public sealed class UserCredentialsManager : IUserCredentialsManager
         if (userCredentials is null)
             return new NotFound();
 
-        // var doesPasswordMatch = _passwordManager.Matches(password, userCredentials.PasswordHash, userCredentials.PasswordSalt);
-        // if(!doesPasswordMatch)
+        // var passwordMatches = _passwordManager.Matches(password, userCredentials.PasswordHash, userCredentials.PasswordSalt);
+        // if(!passwordMatches)
         //  return new Mismatched();
 
         return userCredentials.UserId;

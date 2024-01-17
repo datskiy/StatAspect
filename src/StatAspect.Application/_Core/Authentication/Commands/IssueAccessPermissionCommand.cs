@@ -1,12 +1,12 @@
 ﻿using StatAspect.Domain._Core.Authentication.Aggregates;
-using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.OneOf.Results;
 
-namespace StatAspect.Application._Core.Authentication.Queries;
+namespace StatAspect.Application._Core.Authentication.Commands;
 
 /// <summary>
-/// Represents an access permission query.
+/// Represents an access permission issuance command.
 /// </summary>
-public sealed class GetAccessPermissionQuery : IRequest<OneOf<AccessPermission, AccessDenied>>
+public sealed class IssueAccessPermissionCommand : IRequest<OneOf<AccessPermission, AccessDenied>>
 {
     /// <summary>
     /// Gets the target username.
@@ -19,10 +19,10 @@ public sealed class GetAccessPermissionQuery : IRequest<OneOf<AccessPermission, 
     public string Password { get; }
 
     /// <summary>
-    /// Initializes a new instance of <see cref="GetAccessPermissionQuery"/>.
+    /// Initializes a new instance of <see cref="IssueAccessPermissionCommand"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public GetAccessPermissionQuery(string username, string password)
+    public IssueAccessPermissionCommand(string username, string password)
     {
         ArgumentNullException.ThrowIfNull(username);
         ArgumentNullException.ThrowIfNull(password);

@@ -1,8 +1,8 @@
 ﻿namespace StatAspect.Application._Common.Settings;
 
 /// <summary>
-/// Represents custom validation pipeline behavior that intercepts invalid requests.
-/// <remarks>Used only through reflection.</remarks>
+/// Represents a validation pipeline behavior that intercepts invalid requests.
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
 {
@@ -16,7 +16,7 @@ public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineB
     /// <summary>
     /// Validates the specified request and passes it to the next delegate.
     /// Throws a <see cref="ValidationException"/> if the request is invalid.
-    /// <remarks>Used only through reflection.</remarks>
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
@@ -24,7 +24,7 @@ public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineB
         var validationResults = await Task.WhenAll(_validators.Select(validator => validator.ValidateAsync(validationContext, cancellationToken)));
         var validationFailures = validationResults
             .SelectMany(result => result.Errors)
-            .Where(fail => fail is not null)
+            .Where(failure => failure is not null)
             .ToList();
 
         return validationFailures.Any()

@@ -1,37 +1,49 @@
-﻿namespace StatAspect.Api.MediaTracking.Models.Responses;
+﻿using StatAspect.Domain.MediaTracking.Specifications;
+
+namespace StatAspect.Api.MediaTracking.Models.Responses;
 
 /// <summary>
-/// Represents a search key response body.
+/// A search key response body.
 /// </summary>
 public sealed class SearchKeyResponseBody
 {
     /// <summary>
-    /// Gets a search key unique identifier.
+    /// A search key unique identifier.
     /// </summary>
+    /// <example>9AE98FF4-611B-44FC-8B1E-FAF754E3CB4D</example>
     [JsonProperty("id")]
+    [Required]
     public Guid Id { get; }
 
     /// <summary>
-    /// Gets a search key name.
+    /// A search key name.
     /// </summary>
+    /// <example>Test name</example>
     [JsonProperty("name")]
+    [Required]
+    [MaxLength(SearchKeySpecification.NameMaxLength)]
     public string Name { get; }
 
     /// <summary>
-    /// Gets a search key description.
+    /// A search key description.
     /// </summary>
+    /// <example>Test description</example>
     [JsonProperty("description")]
+    [MaxLength(SearchKeySpecification.DescriptionMaxLength)]
     public string? Description { get; }
 
     /// <summary>
-    /// Gets a search key creation date.
+    /// A search key creation date.
     /// </summary>
+    /// <example>2023-07-07T17:22:03.7008126+04:00</example>
     [JsonProperty("creationDate")]
+    [Required]
     public DateTime CreationDate { get; }
 
     /// <summary>
-    /// Gets a search key last update date.
+    /// A search key last update date.
     /// </summary>
+    /// <example>2023-10-08T21:09:36.7008126+04:00</example>
     [JsonProperty("lastUpdateDate")]
     public DateTime? LastUpdateDate { get; }
 

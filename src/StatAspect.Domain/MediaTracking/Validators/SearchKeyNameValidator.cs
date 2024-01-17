@@ -20,6 +20,6 @@ public sealed class SearchKeyNameValidator : AbstractValidator<string>
             .NotNull()
             .NotEmpty()
             .MaximumLength(SearchKeySpecification.NameMaxLength)
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

@@ -4,14 +4,14 @@ namespace StatAspect.Api;
 
 /// <summary>
 /// Represents the web app entry point.
-/// <remarks>Used only through reflection.</remarks>
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class Program
 {
     /// <summary>
     /// Initializes and runs the web host.
     /// </summary>
-    /// <remarks>Used only through reflection.</remarks>
+    /// <remarks>Reflection usage only.</remarks>
     public static void Main(string[] args)
     {
         CreateHostBuilder(args).Build().Run();

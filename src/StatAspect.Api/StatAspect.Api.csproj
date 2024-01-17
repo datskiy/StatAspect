@@ -6,9 +6,13 @@
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>bin\Debug\StatAspect.Api.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>bin\Release\StatAspect.Api.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <Using Include="FluentValidation"/>
@@ -17,14 +21,22 @@
         <Using Include="Microsoft.AspNetCore.Authorization"/>
         <Using Include="Microsoft.AspNetCore.Diagnostics"/>
         <Using Include="Microsoft.AspNetCore.Mvc"/>
+        <Using Include="Microsoft.AspNetCore.Mvc.ModelBinding.Metadata"/>
+        <Using Include="Microsoft.Extensions.Options"/>
+        <Using Include="Microsoft.OpenApi.Models"/>
         <Using Include="Newtonsoft.Json"/>
         <Using Include="Riok.Mapperly.Abstractions"/>
         <Using Include="System.Collections.Immutable"/>
+        <Using Include="System.ComponentModel"/>
+        <Using Include="System.ComponentModel.DataAnnotations"/>
         <Using Include="System.Diagnostics"/>
         <Using Include="System.Globalization"/>
         <Using Include="System.Net.Mime"/>
         <Using Include="System.Reflection"/>
         <Using Include="System.Text"/>
+        <Using Include="System.Text.Json"/>
+        <Using Include="System.Text.Json.Serialization"/>
+        <Using Include="Swashbuckle.AspNetCore.SwaggerGen"/>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0"/>
@@ -32,6 +44,7 @@
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1"/>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageReference Include="Riok.Mapperly" Version="3.2.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\StatAspect.Application\StatAspect.Application.csproj"/>

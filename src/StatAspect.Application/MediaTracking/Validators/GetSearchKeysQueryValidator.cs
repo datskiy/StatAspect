@@ -7,7 +7,7 @@ namespace StatAspect.Application.MediaTracking.Validators;
 
 /// <summary>
 /// Represents a <see cref="GetSearchKeysQuery"/> validator.
-/// <remarks>Used only through reflection.</remarks>
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class GetSearchKeysQueryValidator : AbstractValidator<GetSearchKeysQuery>
 {

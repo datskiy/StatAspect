@@ -1,21 +1,21 @@
 ﻿// ReSharper disable UnusedType.Global
 // ReSharper disable UnusedParameter.Local
 
+using StatAspect.Application._Core.Authentication.Commands;
 using StatAspect.Application._Core.Authentication.Options;
-using StatAspect.Application._Core.Authentication.Queries;
 using StatAspect.Domain._Core.Authentication.Aggregates;
 using StatAspect.Domain._Core.Authentication.Managers;
 using StatAspect.Domain._Core.UserRegistry.Managers;
 using StatAspect.Domain._Core.UserRegistry.ValueObjects;
-using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Application._Core.Authentication.Handlers;
 
 /// <summary>
-/// Represents an <see cref="GetAccessPermissionQuery"/> handler.
-/// <remarks>Used only through reflection.</remarks>
+/// Represents a <see cref="IssueAccessPermissionCommand"/> handler.
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class GetAccessPermissionHandler : IRequestHandler<GetAccessPermissionQuery, OneOf<AccessPermission, AccessDenied>>
+public sealed class ClaimAccessPermissionHandler : IRequestHandler<IssueAccessPermissionCommand, OneOf<AccessPermission, AccessDenied>>
 {
     private readonly IAccessPermissionManager _accessPermissionManager;
     private readonly IOptions<AuthenticationPolicies> _authenticationPolicies;
@@ -24,7 +24,7 @@ public sealed class GetAccessPermissionHandler : IRequestHandler<GetAccessPermis
     private static Task<OneOf<AccessPermission, AccessDenied>> AccessDeniedResult =>
         Task.FromResult<OneOf<AccessPermission, AccessDenied>>(new AccessDenied());
 
-    public GetAccessPermissionHandler(
+    public ClaimAccessPermissionHandler(
         IAccessPermissionManager accessPermissionManager,
         IOptions<AuthenticationPolicies> authenticationPolicies,
         IUserCredentialsManager userCredentialsManager)
@@ -35,14 +35,14 @@ public sealed class GetAccessPermissionHandler : IRequestHandler<GetAccessPermis
     }
 
     /// <summary>
-    /// Handles the <see cref="GetAccessPermissionQuery"/> request.
-    /// <remarks>Used only through reflection.</remarks>
+    /// Handles the <see cref="IssueAccessPermissionCommand"/>.
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
-    public async Task<OneOf<AccessPermission, AccessDenied>> Handle(GetAccessPermissionQuery query, CancellationToken cancellationToken)
+    public async Task<OneOf<AccessPermission, AccessDenied>> Handle(IssueAccessPermissionCommand command, CancellationToken cancellationToken)
     {
         var verificationResult = await _userCredentialsManager.VerifyAsync(
-            new Username(query.Username),
-            new Password(query.Password),
+            new Username(command.Username),
+            new Password(command.Password),
             cancellationToken);
 
         var accessPermissionLifetime = _authenticationPolicies.Value.AccessPermissionLifetime;

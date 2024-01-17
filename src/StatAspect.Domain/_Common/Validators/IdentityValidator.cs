@@ -17,6 +17,6 @@ public sealed class IdentityValidator : AbstractValidator<Guid>
 
         RuleFor(id => id)
             .NotEqual(default(Guid))
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

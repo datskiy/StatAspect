@@ -1,6 +1,6 @@
 ﻿using StatAspect.Domain._Core.UserRegistry.ValueObjects;
 using StatAspect.Domain._Core.UserRegistry.ValueObjects.Identifiers;
-using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Domain._Core.UserRegistry.Managers;
 

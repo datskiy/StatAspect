@@ -21,6 +21,6 @@ public sealed class UsernameValidator : AbstractValidator<string>
             .NotEmpty()
             .MaximumLength(UserCredentialsSpecification.UsernameMaxLength)
             .ContainsOnlyEnglishCharacters()
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

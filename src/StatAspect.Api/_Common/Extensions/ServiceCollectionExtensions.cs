@@ -1,6 +1,8 @@
-﻿using StatAspect.Api._Common.Helpers;
+﻿using StatAspect.Api._Common.Formatters;
+using StatAspect.Api._Common.Helpers;
 using StatAspect.Application._Common.Settings;
 using StatAspect.Application._Core.Authentication.Options;
+using StatAspect.SharedKernel.IO.Glossaries;
 
 namespace StatAspect.Api._Common.Extensions;
 
@@ -10,7 +12,50 @@ namespace StatAspect.Api._Common.Extensions;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds validation services and custom validation pipeline behavior to the service collection.
+    /// Adds configuration options to the service collection.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    public static void AddOptions(this IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        services
+            .AddOptions<AuthenticationPolicies>()
+            .Bind(configuration.GetSection(nameof(AuthenticationPolicies)));
+    }
+
+    /// <summary>
+    /// Adds API controller services to the service collection.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    public static void AddApiControllers(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        services
+            .AddControllers()
+            .AddJsonOptions(options => options.AllowInputFormatterExceptionMessages = false);
+    }
+
+    /// <summary>
+    /// Adds Swagger services to the service collection.
+    /// </summary>
+    /// <exception cref="ArgumentNullException"/>
+    public static void AddSwagger(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        services.AddSwaggerGen(options =>
+        {
+            options.AddSwaggerDocumentation();
+            options.AddSwaggerXmlComments();
+            options.AddSwaggerSchemaConfiguration();
+        });
+    }
+
+    /// <summary>
+    /// Adds validation services and an intercepting validation pipeline behavior to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static void AddValidation(this IServiceCollection services, Type assemblyMarkerType)
@@ -18,8 +63,9 @@ public static class ServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(assemblyMarkerType);
 
-        services.AddFluentValidationServices(assemblyMarkerType);
-        services.AddValidationPipelineBehavior();
+        services.AddFluentValidationIntegration();
+        services.AddValidatorsFromAssemblyContaining(assemblyMarkerType);
+        services.AddInterceptingValidationPipelineBehavior();
     }
 
     /// <summary>
@@ -37,38 +83,56 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Adds configuration options to the service collection.
+    /// Adds a property-based JSON metadata formatter to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static void AddOptions(this IServiceCollection services, IConfiguration configuration)
+    public static void AddJsonPropertyMetadataFormatter(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentNullException.ThrowIfNull(configuration);
 
-        services.AddOptions<AuthenticationPolicies>().Bind(configuration.GetSection(nameof(AuthenticationPolicies)));
+        services.AddSingleton<IConfigureOptions<MvcOptions>, JsonPropertyMetadataFormatter>();
     }
 
     /// <summary>
-    /// Adds custom services to the service collection.
+    /// Adds dependencies to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static void AddDependencies(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        DependencyHelper.ResolveSingleton(services);
-        DependencyHelper.ResolveScoped(services);
-        DependencyHelper.ResolveTransient(services);
+        DependencyHelper.Resolve(services);
     }
 
-    private static void AddFluentValidationServices(this IServiceCollection services, Type assemblyMarkerType)
+    private static void AddSwaggerDocumentation(this SwaggerGenOptions options)
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Version = "v1",
+            Title = "StatAspect API",
+            Description = "StatAspect REST API documentation"
+        });
+    }
+
+    private static void AddSwaggerXmlComments(this SwaggerGenOptions options)
+    {
+        var xmlDocumentationFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.{FileExtensions.Xml}";
+        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlDocumentationFileName));
+    }
+
+    private static void AddSwaggerSchemaConfiguration(this SwaggerGenOptions options)
+    {
+        options.DocInclusionPredicate((_, _) => true);
+        options.TagActionsBy(api => new[] { api.GroupName });
+    }
+
+    private static void AddFluentValidationIntegration(this IServiceCollection services)
     {
         services.AddFluentValidationAutoValidation();
         services.AddFluentValidationClientsideAdapters();
-        services.AddValidatorsFromAssemblyContaining(assemblyMarkerType);
     }
 
-    private static void AddValidationPipelineBehavior(this IServiceCollection services)
+    private static void AddInterceptingValidationPipelineBehavior(this IServiceCollection services)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
     }

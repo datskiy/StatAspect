@@ -17,10 +17,10 @@ namespace StatAspect.Api._Common.Helpers;
 public static class DependencyHelper
 {
     /// <summary>
-    /// Resolves custom transient services.
+    /// Resolves service dependencies.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static void ResolveTransient(IServiceCollection services)
+    public static void Resolve(IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
 
@@ -35,27 +35,5 @@ public static class DependencyHelper
 
         services.AddTransient<ISearchKeyCommandRepository, SearchKeyCommandRepository>();
         services.AddTransient<ISearchKeyQueryRepository, SearchKeyQueryRepository>();
-    }
-
-    /// <summary>
-    /// Resolves custom scoped services.
-    /// </summary>
-    /// <exception cref="ArgumentNullException"/>
-    public static void ResolveScoped(IServiceCollection services)
-    {
-        ArgumentNullException.ThrowIfNull(services);
-
-        // there are no scoped dependencies yet..
-    }
-
-    /// <summary>
-    /// Resolves custom singleton services.
-    /// </summary>
-    /// <exception cref="ArgumentNullException"/>
-    public static void ResolveSingleton(IServiceCollection services)
-    {
-        ArgumentNullException.ThrowIfNull(services);
-
-        // there are no singleton dependencies yet..
     }
 }

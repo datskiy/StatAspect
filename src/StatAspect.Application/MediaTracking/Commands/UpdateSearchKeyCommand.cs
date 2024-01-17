@@ -1,5 +1,5 @@
-﻿using StatAspect.SharedKernel.Results;
-using StatAspect.SharedKernel.Results.TargetProperties;
+﻿using StatAspect.SharedKernel.OneOf.Results;
+using StatAspect.SharedKernel.OneOf.Results.TargetProperties;
 
 namespace StatAspect.Application.MediaTracking.Commands;
 

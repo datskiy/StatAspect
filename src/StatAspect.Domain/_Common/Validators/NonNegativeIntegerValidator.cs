@@ -17,6 +17,6 @@ public sealed class NonNegativeIntegerValidator : AbstractValidator<int>
 
         RuleFor(i => i)
             .GreaterThanOrEqualTo(0)
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

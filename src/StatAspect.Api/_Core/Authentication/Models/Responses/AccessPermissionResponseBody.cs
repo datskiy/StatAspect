@@ -1,26 +1,32 @@
 ﻿namespace StatAspect.Api._Core.Authentication.Models.Responses;
 
 /// <summary>
-/// Represents a search key response body. // TODO: desc
+/// An access permission response body.
 /// </summary>
 public sealed class AccessPermissionResponseBody
 {
     /// <summary>
-    /// Gets an access permission token.
+    /// An access permission token.
     /// </summary>
+    /// <example>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</example>
     [JsonProperty("token")]
+    [Required]
     public string Token { get; }
 
     /// <summary>
-    /// Gets an access permission issue date.
+    /// An access permission issue date.
     /// </summary>
+    /// <example>2023-10-08T09:09:36.7008126+04:00</example>
     [JsonProperty("issueDate")]
+    [Required]
     public DateTime IssueDate { get; }
 
     /// <summary>
-    /// Gets an access permission expiration date.
+    /// An access permission expiration date.
     /// </summary>
+    /// <example>2023-10-08T21:09:36.7008126+04:00</example>
     [JsonProperty("expirationDate")]
+    [Required]
     public DateTime ExpirationDate { get; }
 
     /// <summary>

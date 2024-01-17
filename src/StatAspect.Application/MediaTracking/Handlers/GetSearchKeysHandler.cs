@@ -10,7 +10,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a <see cref="GetSearchKeysQuery"/> handler.
-/// <remarks>Used only through reflection.</remarks>
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, IImmutableList<SearchKey>>
 {
@@ -22,8 +22,8 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     }
 
     /// <summary>
-    /// Handles the <see cref="GetSearchKeysQuery"/> request.
-    /// <remarks>Used only through reflection.</remarks>
+    /// Handles the <see cref="GetSearchKeysQuery"/>.
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
     public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery query, CancellationToken cancellationToken)
     {

@@ -10,7 +10,7 @@ public static class RuleBuilderOptionsExtensions
     /// Also overrides the name of the property used within an error message.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
-    public static IRuleBuilderOptions<T, TProperty> UseCustomParamName<T, TProperty>(
+    public static IRuleBuilderOptions<T, TProperty> OverrideAssociatedPropertyName<T, TProperty>(
         this IRuleBuilderOptions<T, TProperty> ruleBuilderOptions,
         string paramName)
     {

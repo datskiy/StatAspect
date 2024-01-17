@@ -19,6 +19,6 @@ public sealed class Base64Validator : AbstractValidator<string>
             .NotNull()
             .NotEmpty()
             .FormattedAsBase64()
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

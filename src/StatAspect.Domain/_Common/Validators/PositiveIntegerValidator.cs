@@ -17,6 +17,6 @@ public sealed class PositiveIntegerValidator : AbstractValidator<int>
 
         RuleFor(i => i)
             .GreaterThan(0)
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

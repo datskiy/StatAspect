@@ -1,3 +1,5 @@
+// ReSharper disable UnusedMemberInSuper.Global
+
 namespace StatAspect.Domain._Common.ValueObjects.Abstractions;
 
 /// <summary>
@@ -8,7 +10,7 @@ public interface IIntegrityEnsurer<in T>
 {
     /// <summary>
     /// Returns a type-specific validation method.
-    /// A custom parameter name should be specified to associate it with the error message.
+    /// A parameter name should be specified to associate it with the error message.
     /// </summary>
     static abstract IValidator<T> GetValidator(string? paramName = null);
 }

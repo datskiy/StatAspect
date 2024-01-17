@@ -1,20 +1,27 @@
-﻿namespace StatAspect.Api.MediaTracking.Models.Requests;
+﻿using StatAspect.Domain.MediaTracking.Specifications;
+
+namespace StatAspect.Api.MediaTracking.Models.Requests;
 
 /// <summary>
-/// Represents a modified search key request body.
+/// A modified search key request body.
 /// </summary>
 public sealed class ModifiedSearchKeyRequestBody
 {
     /// <summary>
-    /// Gets a modified search key name.
+    /// A modified search key name.
     /// </summary>
+    /// <example>Test name</example>
     [JsonProperty("name")]
+    [Required]
+    [MaxLength(SearchKeySpecification.NameMaxLength)]
     public string Name { get; }
 
     /// <summary>
-    /// Gets a modified search key description.
+    /// A modified search key description.
     /// </summary>
+    /// <example>Test description</example>
     [JsonProperty("description")]
+    [MaxLength(SearchKeySpecification.DescriptionMaxLength)]
     public string? Description { get; }
 
     /// <summary>

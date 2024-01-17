@@ -11,7 +11,7 @@ public static class ControllerHelper
     /// Returns the first <see cref="RouteAttribute"/> template value of the applied controller type.
     /// If no route templates were specified, returns null.
     /// </summary>
-    public static string? GetRouteTemplate<TController>() where TController : BaseController
+    public static string? GetRouteTemplate<TController>() where TController : BaseApiController
     {
         return (typeof(TController)
             .GetCustomAttributes(typeof(RouteAttribute), inherit: false)

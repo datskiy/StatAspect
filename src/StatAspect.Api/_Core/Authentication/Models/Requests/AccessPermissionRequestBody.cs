@@ -1,20 +1,28 @@
-﻿namespace StatAspect.Api._Core.Authentication.Models.Requests;
+﻿using StatAspect.Domain._Core.UserRegistry.Specifications;
+
+namespace StatAspect.Api._Core.Authentication.Models.Requests;
 
 /// <summary>
-/// Represents an access permission request body.
+/// An access permission request body.
 /// </summary>
 public sealed class AccessPermissionRequestBody
 {
     /// <summary>
-    /// Gets an access permission username.
+    /// The target username.
     /// </summary>
+    /// <example>JohnSmith</example>
     [JsonProperty("username")]
+    [Required]
+    [MaxLength(UserCredentialsSpecification.UsernameMaxLength)]
     public string Username { get; }
 
     /// <summary>
-    /// Gets a password.
+    /// The target password.
     /// </summary>
+    /// <example>VeryComplexTestPassword</example>
     [JsonProperty("password")]
+    [Required]
+    [MinLength(UserCredentialsSpecification.PasswordMinLength)]
     public string Password { get; }
 
     /// <summary>

@@ -19,6 +19,6 @@ public sealed class AccessTokenValidator : AbstractValidator<string>
             .NotNull()
             .NotEmpty()
             .FormattedAsJwt()
-            .UseCustomParamName(paramName);
+            .OverrideAssociatedPropertyName(paramName);
     }
 }

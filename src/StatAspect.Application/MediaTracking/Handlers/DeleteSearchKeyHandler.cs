@@ -3,13 +3,13 @@
 using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
-using StatAspect.SharedKernel.Results;
+using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Application.MediaTracking.Handlers;
 
 /// <summary>
 /// Represents a <see cref="DeleteSearchKeyCommand"/> handler.
-/// <remarks>Used only through reflection.</remarks>
+/// <remarks>Reflection usage only.</remarks>
 /// </summary>
 public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyCommand, OneOf<Success, NotFound>>
 {
@@ -21,8 +21,8 @@ public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyComm
     }
 
     /// <summary>
-    /// Handles the <see cref="DeleteSearchKeyCommand"/> request.
-    /// <remarks>Used only through reflection.</remarks>
+    /// Handles the <see cref="DeleteSearchKeyCommand"/>.
+    /// <remarks>Reflection usage only.</remarks>
     /// </summary>
     public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand command, CancellationToken cancellationToken)
     {

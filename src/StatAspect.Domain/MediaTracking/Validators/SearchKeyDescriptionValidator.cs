@@ -19,7 +19,7 @@ public sealed class SearchKeyDescriptionValidator : AbstractValidator<string>
         RuleFor(description => description)
             .NotEmpty()
             .MaximumLength(SearchKeySpecification.DescriptionMaxLength)
-            .UseCustomParamName(paramName)
+            .OverrideAssociatedPropertyName(paramName)
             .When(description => description is not null);
     }
 }
