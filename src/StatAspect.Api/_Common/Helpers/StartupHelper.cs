@@ -20,6 +20,6 @@ public static class StartupHelper
     /// </summary>
     public static Type GetApplicationAssemblyMarkerType()
     {
-        return typeof(ValidationPipelineBehavior<,>);
+        return typeof(InterceptingValidationPipelineBehavior<,>);
     }
 }

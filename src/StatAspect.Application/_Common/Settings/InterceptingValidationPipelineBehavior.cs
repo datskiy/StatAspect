@@ -4,11 +4,11 @@
 /// Represents a validation pipeline behavior that intercepts invalid requests.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
+public sealed class InterceptingValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
 {
     private readonly IImmutableList<IValidator<TRequest>> _validators;
 
-    public ValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
+    public InterceptingValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
     {
         _validators = validators.ToImmutableList();
     }

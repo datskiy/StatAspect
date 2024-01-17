@@ -10,7 +10,7 @@ namespace StatAspect.Api._Core.Availability.Controllers;
 public sealed class PingController : BaseApiController
 {
     /// <summary>
-    /// Pings the API to check it availability.
+    /// Pings the API to check its availability.
     /// </summary>
     /// <response code="200">The API is available.</response>
     [HttpGet]

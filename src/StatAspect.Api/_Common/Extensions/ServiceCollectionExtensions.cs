@@ -134,6 +134,6 @@ public static class ServiceCollectionExtensions
 
     private static void AddInterceptingValidationPipelineBehavior(this IServiceCollection services)
     {
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(InterceptingValidationPipelineBehavior<,>));
     }
 }
