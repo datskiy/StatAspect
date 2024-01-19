@@ -1,4 +1,5 @@
-﻿using StatAspect.Domain._Core.Authentication.Aggregates;
+﻿using StatAspect.Application._Common.Pipelines.Responses;
+using StatAspect.Domain._Core.Authentication.Aggregates;
 using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Application._Core.Authentication.Commands;
@@ -6,7 +7,7 @@ namespace StatAspect.Application._Core.Authentication.Commands;
 /// <summary>
 /// Represents an access permission issuance command.
 /// </summary>
-public sealed class IssueAccessPermissionCommand : IRequest<OneOf<AccessPermission, AccessDenied>>
+public sealed class IssueAccessPermissionCommand : IRequest<PipelineResponse<OneOf<AccessPermission, AccessDenied>>>
 {
     /// <summary>
     /// Gets the target username.

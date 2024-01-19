@@ -1,6 +1,6 @@
 ﻿using StatAspect.Api._Common.Formatters;
 using StatAspect.Api._Common.Helpers;
-using StatAspect.Application._Common.Settings;
+using StatAspect.Application._Common.Pipelines;
 using StatAspect.Application._Core.Authentication.Options;
 using StatAspect.SharedKernel.IO.Glossaries;
 
@@ -55,7 +55,7 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Adds validation services and an intercepting validation pipeline behavior to the service collection.
+    /// Adds validation services and a validation pipeline behavior to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static void AddValidation(this IServiceCollection services, Type assemblyMarkerType)
@@ -65,7 +65,7 @@ public static class ServiceCollectionExtensions
 
         services.AddFluentValidationIntegration();
         services.AddValidatorsFromAssemblyContaining(assemblyMarkerType);
-        services.AddInterceptingValidationPipelineBehavior();
+        services.AddValidationPipelineBehavior();
     }
 
     /// <summary>
@@ -132,8 +132,8 @@ public static class ServiceCollectionExtensions
         services.AddFluentValidationClientsideAdapters();
     }
 
-    private static void AddInterceptingValidationPipelineBehavior(this IServiceCollection services)
+    private static void AddValidationPipelineBehavior(this IServiceCollection services)
     {
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(InterceptingValidationPipelineBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
     }
 }

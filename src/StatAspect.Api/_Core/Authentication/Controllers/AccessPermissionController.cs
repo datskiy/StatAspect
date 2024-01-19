@@ -37,10 +37,10 @@ public sealed class AccessPermissionController : BaseApiController
     public async Task<IActionResult> IssueAsync([FromBody] AccessPermissionRequestBody request) // TODO: bf/dos protection
     {
         var command = new IssueAccessPermissionCommand(request.Username, request.Password);
-        var result = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
 
-        return result.Match<IActionResult>(
-            grantedAccessPermission => Ok(grantedAccessPermission.MapToResponseBody()),
-            accessDenied => Unauthorized());
+        return Extract(response, result => result.Match<IActionResult>(
+            issuedAccessPermission => Ok(issuedAccessPermission.MapToResponseBody()),
+            accessDenied => Unauthorized()));
     }
 }

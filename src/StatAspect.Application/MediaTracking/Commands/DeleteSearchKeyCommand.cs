@@ -1,11 +1,12 @@
-﻿using StatAspect.SharedKernel.OneOf.Results;
+﻿using StatAspect.Application._Common.Pipelines.Responses;
+using StatAspect.SharedKernel.OneOf.Results;
 
 namespace StatAspect.Application.MediaTracking.Commands;
 
 /// <summary>
 /// Represents a search key deletion command.
 /// </summary>
-public sealed class DeleteSearchKeyCommand : IRequest<OneOf<Success, NotFound>>
+public sealed class DeleteSearchKeyCommand : IRequest<PipelineResponse<OneOf<Success, NotFound>>>
 {
     /// <summary>
     /// Gets the target search key identifier.

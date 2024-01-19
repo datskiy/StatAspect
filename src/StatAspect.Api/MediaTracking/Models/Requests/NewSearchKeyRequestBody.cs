@@ -1,4 +1,6 @@
-﻿namespace StatAspect.Api.MediaTracking.Models.Requests;
+﻿using StatAspect.Domain.MediaTracking.Specifications;
+
+namespace StatAspect.Api.MediaTracking.Models.Requests;
 
 /// <summary>
 /// A new search key request body.
@@ -11,6 +13,7 @@ public sealed class NewSearchKeyRequestBody
     /// <example>Test name</example>
     [JsonProperty("name")]
     [Required]
+    [MaxLength(SearchKeySpecification.NameMaxLength)]
     public string Name { get; }
 
     /// <summary>
@@ -18,6 +21,7 @@ public sealed class NewSearchKeyRequestBody
     /// </summary>
     /// <example>Test description</example>
     [JsonProperty("description")]
+    [MaxLength(SearchKeySpecification.DescriptionMaxLength)]
     public string? Description { get; }
 
     /// <summary>

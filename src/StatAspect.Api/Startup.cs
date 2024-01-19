@@ -46,7 +46,6 @@ public sealed class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseValidationExceptionHandler();
         app.UseHttpsRedirection();
         app.UseHsts();
         app.UseRouting();

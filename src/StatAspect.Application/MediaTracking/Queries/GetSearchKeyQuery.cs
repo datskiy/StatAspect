@@ -1,11 +1,12 @@
-﻿using StatAspect.Domain.MediaTracking.Aggregates;
+﻿using StatAspect.Application._Common.Pipelines.Responses;
+using StatAspect.Domain.MediaTracking.Aggregates;
 
 namespace StatAspect.Application.MediaTracking.Queries;
 
 /// <summary>
 /// Represents a search key query.
 /// </summary>
-public sealed class GetSearchKeyQuery : IRequest<SearchKey?>
+public sealed class GetSearchKeyQuery : IRequest<PipelineResponse<SearchKey?>>
 {
     /// <summary>
     /// Gets the target search key identifier.

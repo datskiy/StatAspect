@@ -1,5 +1,6 @@
 ﻿// ReSharper disable UnusedType.Global
 
+using StatAspect.Application._Common.Pipelines.Responses;
 using StatAspect.Application.MediaTracking.Queries;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Repositories;
@@ -11,7 +12,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// Represents a <see cref="GetSearchKeyQuery"/> handler.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, SearchKey?>
+public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, PipelineResponse<SearchKey?>>
 {
     private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
 
@@ -24,9 +25,11 @@ public sealed class GetSearchKeyHandler : IRequestHandler<GetSearchKeyQuery, Sea
     /// Handles the <see cref="GetSearchKeyQuery"/>.
     /// <remarks>Reflection usage only.</remarks>
     /// </summary>
-    public Task<SearchKey?> Handle(GetSearchKeyQuery query, CancellationToken cancellationToken)
+    public async Task<PipelineResponse<SearchKey?>> Handle(GetSearchKeyQuery query, CancellationToken cancellationToken)
     {
         var targetSearchKeyId = new SearchKeyId(query.Id);
-        return _searchKeyQueryRepository.GetSingleAsync(targetSearchKeyId, cancellationToken);
+        var result = await _searchKeyQueryRepository.GetSingleAsync(targetSearchKeyId, cancellationToken);
+
+        return new PipelineResponse<SearchKey?>(result);
     }
 }

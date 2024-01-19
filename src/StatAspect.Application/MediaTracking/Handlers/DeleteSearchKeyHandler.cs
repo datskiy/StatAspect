@@ -1,5 +1,6 @@
 ﻿// ReSharper disable UnusedType.Global
 
+using StatAspect.Application._Common.Pipelines.Responses;
 using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Services;
 using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
@@ -11,7 +12,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// Represents a <see cref="DeleteSearchKeyCommand"/> handler.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyCommand, OneOf<Success, NotFound>>
+public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyCommand, PipelineResponse<OneOf<Success, NotFound>>>
 {
     private readonly ISearchKeyService _searchKeyService;
 
@@ -24,9 +25,11 @@ public sealed class DeleteSearchKeyHandler : IRequestHandler<DeleteSearchKeyComm
     /// Handles the <see cref="DeleteSearchKeyCommand"/>.
     /// <remarks>Reflection usage only.</remarks>
     /// </summary>
-    public Task<OneOf<Success, NotFound>> Handle(DeleteSearchKeyCommand command, CancellationToken cancellationToken)
+    public async Task<PipelineResponse<OneOf<Success, NotFound>>> Handle(DeleteSearchKeyCommand command, CancellationToken cancellationToken)
     {
         var targetSearchKeyId = new SearchKeyId(command.Id);
-        return _searchKeyService.DeleteAsync(targetSearchKeyId);
+        var result = await _searchKeyService.DeleteAsync(targetSearchKeyId);
+
+        return new PipelineResponse<OneOf<Success, NotFound>>(result);
     }
 }

@@ -1,6 +1,7 @@
 ﻿// ReSharper disable UnusedType.Global
 // ReSharper disable UnusedParameter.Local
 
+using StatAspect.Application._Common.Pipelines.Responses;
 using StatAspect.Application._Core.Authentication.Commands;
 using StatAspect.Application._Core.Authentication.Options;
 using StatAspect.Domain._Core.Authentication.Aggregates;
@@ -15,7 +16,7 @@ namespace StatAspect.Application._Core.Authentication.Handlers;
 /// Represents a <see cref="IssueAccessPermissionCommand"/> handler.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class ClaimAccessPermissionHandler : IRequestHandler<IssueAccessPermissionCommand, OneOf<AccessPermission, AccessDenied>>
+public sealed class IssueAccessPermissionHandler : IRequestHandler<IssueAccessPermissionCommand, PipelineResponse<OneOf<AccessPermission, AccessDenied>>>
 {
     private readonly IAccessPermissionManager _accessPermissionManager;
     private readonly IOptions<AuthenticationPolicies> _authenticationPolicies;
@@ -24,7 +25,7 @@ public sealed class ClaimAccessPermissionHandler : IRequestHandler<IssueAccessPe
     private static Task<OneOf<AccessPermission, AccessDenied>> AccessDeniedResult =>
         Task.FromResult<OneOf<AccessPermission, AccessDenied>>(new AccessDenied());
 
-    public ClaimAccessPermissionHandler(
+    public IssueAccessPermissionHandler(
         IAccessPermissionManager accessPermissionManager,
         IOptions<AuthenticationPolicies> authenticationPolicies,
         IUserCredentialsManager userCredentialsManager)
@@ -38,7 +39,7 @@ public sealed class ClaimAccessPermissionHandler : IRequestHandler<IssueAccessPe
     /// Handles the <see cref="IssueAccessPermissionCommand"/>.
     /// <remarks>Reflection usage only.</remarks>
     /// </summary>
-    public async Task<OneOf<AccessPermission, AccessDenied>> Handle(IssueAccessPermissionCommand command, CancellationToken cancellationToken)
+    public async Task<PipelineResponse<OneOf<AccessPermission, AccessDenied>>> Handle(IssueAccessPermissionCommand command, CancellationToken cancellationToken)
     {
         var verificationResult = await _userCredentialsManager.VerifyAsync(
             new Username(command.Username),
@@ -46,9 +47,11 @@ public sealed class ClaimAccessPermissionHandler : IRequestHandler<IssueAccessPe
             cancellationToken);
 
         var accessPermissionLifetime = _authenticationPolicies.Value.AccessPermissionLifetime;
-        return await verificationResult.Match<Task<OneOf<AccessPermission, AccessDenied>>>(
+        var result = await verificationResult.Match<Task<OneOf<AccessPermission, AccessDenied>>>(
             async matchedUserId => await _accessPermissionManager.GrantAsync(matchedUserId, accessPermissionLifetime),
             notFound => AccessDeniedResult,
             mismatched => AccessDeniedResult);
+
+        return new PipelineResponse<OneOf<AccessPermission, AccessDenied>>(result);
     }
 }

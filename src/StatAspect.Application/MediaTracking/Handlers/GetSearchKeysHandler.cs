@@ -1,5 +1,6 @@
 ﻿// ReSharper disable UnusedType.Global
 
+using StatAspect.Application._Common.Pipelines.Responses;
 using StatAspect.Application.MediaTracking.Queries;
 using StatAspect.Domain._Common.Aggregates;
 using StatAspect.Domain._Common.ValueObjects;
@@ -12,7 +13,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// Represents a <see cref="GetSearchKeysQuery"/> handler.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, IImmutableList<SearchKey>>
+public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, PipelineResponse<IImmutableList<SearchKey>>>
 {
     private readonly ISearchKeyQueryRepository _searchKeyQueryRepository;
 
@@ -25,12 +26,18 @@ public sealed class GetSearchKeysHandler : IRequestHandler<GetSearchKeysQuery, I
     /// Handles the <see cref="GetSearchKeysQuery"/>.
     /// <remarks>Reflection usage only.</remarks>
     /// </summary>
-    public Task<IImmutableList<SearchKey>> Handle(GetSearchKeysQuery query, CancellationToken cancellationToken)
+    public async Task<PipelineResponse<IImmutableList<SearchKey>>> Handle(GetSearchKeysQuery query, CancellationToken cancellationToken)
     {
-        var selectionParams = new SelectionParams(
+        var selectionParams = BuildSelectionParams(query);
+        var result = await _searchKeyQueryRepository.GetAllAsync(selectionParams, cancellationToken);
+
+        return new PipelineResponse<IImmutableList<SearchKey>>(result);
+    }
+
+    private static SelectionParams BuildSelectionParams(GetSearchKeysQuery query)
+    {
+        return new SelectionParams(
             new SelectionOffset(query.Offset),
             new SelectionLimit(query.Limit));
-
-        return _searchKeyQueryRepository.GetAllAsync(selectionParams, cancellationToken);
     }
 }

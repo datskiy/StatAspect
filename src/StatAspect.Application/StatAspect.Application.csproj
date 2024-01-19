@@ -12,7 +12,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Using Include="FluentValidation"/>
-        <Using Include="FluentValidation.Resources"/>
+        <Using Include="FluentValidation.Results"/>
         <Using Include="MediatR"/>
         <Using Include="Microsoft.Extensions.Options"/>
         <Using Include="OneOf"/>

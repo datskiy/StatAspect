@@ -1,5 +1,6 @@
 ﻿// ReSharper disable UnusedType.Global
 
+using StatAspect.Application._Common.Pipelines.Responses;
 using StatAspect.Application.MediaTracking.Commands;
 using StatAspect.Domain.MediaTracking.Aggregates;
 using StatAspect.Domain.MediaTracking.Services;
@@ -14,7 +15,7 @@ namespace StatAspect.Application.MediaTracking.Handlers;
 /// Represents an <see cref="AddSearchKeyCommand"/> handler.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, OneOf<SearchKeyId, AlreadyExists<Name>>>
+public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, PipelineResponse<OneOf<SearchKeyId, AlreadyExists<Name>>>>
 {
     private readonly ISearchKeyService _searchKeyService;
 
@@ -27,12 +28,20 @@ public sealed class AddSearchKeyHandler : IRequestHandler<AddSearchKeyCommand, O
     /// Handles the <see cref="AddSearchKeyCommand"/>.
     /// <remarks>Reflection usage only.</remarks>
     /// </summary>
-    public Task<OneOf<SearchKeyId, AlreadyExists<Name>>> Handle(AddSearchKeyCommand command, CancellationToken cancellationToken)
+    public async Task<PipelineResponse<OneOf<SearchKeyId, AlreadyExists<Name>>>> Handle(AddSearchKeyCommand command, CancellationToken cancellationToken)
     {
-        var newSearchKey = new NewSearchKey(
-            new SearchKeyName(command.Name),
-            command.Description is not null ? new SearchKeyDescription(command.Description) : null);
+        var newSearchKey = BuildNewSearchKey(command);
+        var result = await _searchKeyService.AddAsync(newSearchKey);
 
-        return _searchKeyService.AddAsync(newSearchKey);
+        return new PipelineResponse<OneOf<SearchKeyId, AlreadyExists<Name>>>(result);
+    }
+
+    private static NewSearchKey BuildNewSearchKey(AddSearchKeyCommand command)
+    {
+        return new NewSearchKey(
+            new SearchKeyName(command.Name),
+            command.Description is not null
+                ? new SearchKeyDescription(command.Description)
+                : null);
     }
 }

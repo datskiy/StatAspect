@@ -17,10 +17,12 @@
     <ItemGroup>
         <Using Include="FluentValidation"/>
         <Using Include="FluentValidation.AspNetCore"/>
+        <Using Include="FluentValidation.Results"/>
         <Using Include="MediatR"/>
         <Using Include="Microsoft.AspNetCore.Authorization"/>
         <Using Include="Microsoft.AspNetCore.Diagnostics"/>
         <Using Include="Microsoft.AspNetCore.Mvc"/>
+        <Using Include="Microsoft.AspNetCore.Mvc.ModelBinding"/>
         <Using Include="Microsoft.AspNetCore.Mvc.ModelBinding.Metadata"/>
         <Using Include="Microsoft.Extensions.Options"/>
         <Using Include="Microsoft.OpenApi.Models"/>

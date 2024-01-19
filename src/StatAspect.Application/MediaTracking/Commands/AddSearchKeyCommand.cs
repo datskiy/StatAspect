@@ -1,4 +1,5 @@
-﻿using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
+﻿using StatAspect.Application._Common.Pipelines.Responses;
+using StatAspect.Domain.MediaTracking.ValueObjects.Identifiers;
 using StatAspect.SharedKernel.OneOf.Results;
 using StatAspect.SharedKernel.OneOf.Results.TargetProperties;
 
@@ -7,7 +8,7 @@ namespace StatAspect.Application.MediaTracking.Commands;
 /// <summary>
 /// Represents a search key addition command.
 /// </summary>
-public sealed class AddSearchKeyCommand : IRequest<OneOf<SearchKeyId, AlreadyExists<Name>>>
+public sealed class AddSearchKeyCommand : IRequest<PipelineResponse<OneOf<SearchKeyId, AlreadyExists<Name>>>>
 {
     /// <summary>
     /// Gets a new search key name.

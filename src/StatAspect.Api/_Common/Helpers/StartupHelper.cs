@@ -1,4 +1,4 @@
-﻿using StatAspect.Application._Common.Settings;
+﻿using StatAspect.Application._Common.Pipelines;
 
 namespace StatAspect.Api._Common.Helpers;
 
@@ -20,6 +20,6 @@ public static class StartupHelper
     /// </summary>
     public static Type GetApplicationAssemblyMarkerType()
     {
-        return typeof(InterceptingValidationPipelineBehavior<,>);
+        return typeof(ValidationPipelineBehavior<,>);
     }
 }

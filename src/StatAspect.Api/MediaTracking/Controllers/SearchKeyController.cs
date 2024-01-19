@@ -39,11 +39,11 @@ public sealed class SearchKeyController : BaseApiController
     public async Task<IActionResult> GetAsync([FromRoute] Guid id, CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeyQuery(id);
-        var searchKey = await _mediator.Send(query, cancellationToken);
+        var response = await _mediator.Send(query, cancellationToken);
 
-        return searchKey is not null
-            ? Ok(searchKey.MapToResponseBody())
-            : NotFound();
+        return Extract(response, result => result is not null
+            ? Ok(result.MapToResponseBody())
+            : NotFound());
     }
 
     /// <summary>
@@ -63,9 +63,9 @@ public sealed class SearchKeyController : BaseApiController
         CancellationToken cancellationToken = default)
     {
         var query = new GetSearchKeysQuery(offset, limit);
-        var searchKeys = await _mediator.Send(query, cancellationToken);
+        var response = await _mediator.Send(query, cancellationToken);
 
-        return Ok(searchKeys.MapToResponseBody());
+        return Extract(response, result => Ok(result.MapToResponseBody()));
     }
 
     /// <summary>
@@ -82,11 +82,11 @@ public sealed class SearchKeyController : BaseApiController
     public async Task<IActionResult> AddAsync([FromBody] NewSearchKeyRequestBody request)
     {
         var command = new AddSearchKeyCommand(request.Name, request.Description);
-        var result = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
 
-        return result.Match<IActionResult>(
+        return Extract(response, result => result.Match<IActionResult>(
             addedSearchKeyId => Created<SearchKeyController>(addedSearchKeyId),
-            alreadyExists => Conflict(alreadyExists));
+            alreadyExists => Conflict(alreadyExists)));
     }
 
     /// <summary>
@@ -106,12 +106,12 @@ public sealed class SearchKeyController : BaseApiController
     public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] ModifiedSearchKeyRequestBody request)
     {
         var command = new UpdateSearchKeyCommand(id, request.Name, request.Description);
-        var result = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
 
-        return result.Match<IActionResult>(
+        return Extract(response, result => result.Match<IActionResult>(
             success => Ok(),
             notFound => NotFound(),
-            alreadyExists => Conflict(alreadyExists));
+            alreadyExists => Conflict(alreadyExists)));
     }
 
     /// <summary>
@@ -128,10 +128,10 @@ public sealed class SearchKeyController : BaseApiController
     public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
         var command = new DeleteSearchKeyCommand(id);
-        var result = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
 
-        return result.Match<IActionResult>(
+        return Extract(response, result => result.Match<IActionResult>(
             success => Ok(),
-            notFound => NotFound());
+            notFound => NotFound()));
     }
 }

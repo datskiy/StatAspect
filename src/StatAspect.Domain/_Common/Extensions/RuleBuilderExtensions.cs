@@ -8,7 +8,7 @@ namespace StatAspect.Domain._Common.Extensions;
 public static class RuleBuilderExtensions
 {
     /// <summary>
-    /// Defines an English character validator on the target rule builder, but only for string properties.
+    /// Defines an English character validator on the rule builder, but only for string properties.
     /// Validation will fail if the string contains any non-English characters.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
@@ -22,7 +22,7 @@ public static class RuleBuilderExtensions
     }
 
     /// <summary>
-    /// Defines a Base64 format validator on the target rule builder, but only for string properties.
+    /// Defines a Base64 format validator on the rule builder, but only for string properties.
     /// Validation will fail if the string is not formatted as Base64.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
@@ -35,7 +35,7 @@ public static class RuleBuilderExtensions
     }
 
     /// <summary>
-    /// Defines a JWT format validator on the target rule builder, but only for string properties.
+    /// Defines a JWT format validator on the rule builder, but only for string properties.
     /// Validation will fail if the string is not formatted as JWT.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
