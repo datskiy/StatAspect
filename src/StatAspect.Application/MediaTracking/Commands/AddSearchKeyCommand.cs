@@ -23,11 +23,8 @@ public sealed class AddSearchKeyCommand : IRequest<PipelineResponse<OneOf<Search
     /// <summary>
     /// Initializes a new instance of <see cref="AddSearchKeyCommand"/>.
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
-    public AddSearchKeyCommand(string name, string? description)
+    public AddSearchKeyCommand([MaybeNull] string name, string? description)
     {
-        ArgumentNullException.ThrowIfNull(name);
-
         Name = name;
         Description = description;
     }

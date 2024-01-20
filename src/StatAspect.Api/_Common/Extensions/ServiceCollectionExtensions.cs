@@ -1,5 +1,4 @@
-﻿using StatAspect.Api._Common.Formatters;
-using StatAspect.Api._Common.Helpers;
+﻿using StatAspect.Api._Common.Helpers;
 using StatAspect.Application._Common.Pipelines;
 using StatAspect.Application._Core.Authentication.Options;
 using StatAspect.SharedKernel.IO.Glossaries;
@@ -83,17 +82,6 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Adds a property-based JSON metadata formatter to the service collection.
-    /// </summary>
-    /// <exception cref="ArgumentNullException"/>
-    public static void AddJsonPropertyMetadataFormatter(this IServiceCollection services)
-    {
-        ArgumentNullException.ThrowIfNull(services);
-
-        services.AddSingleton<IConfigureOptions<MvcOptions>, JsonPropertyMetadataFormatter>();
-    }
-
-    /// <summary>
     /// Adds dependencies to the service collection.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
@@ -128,6 +116,11 @@ public static class ServiceCollectionExtensions
 
     private static void AddFluentValidationIntegration(this IServiceCollection services)
     {
+        services.Configure<ApiBehaviorOptions>(options =>
+        {
+            options.SuppressModelStateInvalidFilter = true;
+        });
+
         services.AddFluentValidationAutoValidation();
         services.AddFluentValidationClientsideAdapters();
     }

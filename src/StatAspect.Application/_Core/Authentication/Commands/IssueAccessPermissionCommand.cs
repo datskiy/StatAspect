@@ -22,12 +22,8 @@ public sealed class IssueAccessPermissionCommand : IRequest<PipelineResponse<One
     /// <summary>
     /// Initializes a new instance of <see cref="IssueAccessPermissionCommand"/>.
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
-    public IssueAccessPermissionCommand(string username, string password)
+    public IssueAccessPermissionCommand([MaybeNull] string username, [MaybeNull] string password)
     {
-        ArgumentNullException.ThrowIfNull(username);
-        ArgumentNullException.ThrowIfNull(password);
-
         Username = username;
         Password = password;
     }

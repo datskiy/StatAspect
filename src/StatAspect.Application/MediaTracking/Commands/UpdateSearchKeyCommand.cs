@@ -27,11 +27,8 @@ public sealed class UpdateSearchKeyCommand : IRequest<PipelineResponse<OneOf<Suc
     /// <summary>
     /// Initializes a new instance of <see cref="UpdateSearchKeyCommand"/>.
     /// </summary>
-    /// <exception cref="ArgumentNullException"/>
-    public UpdateSearchKeyCommand(Guid id, string name, string? description)
+    public UpdateSearchKeyCommand(Guid id, [MaybeNull] string name, string? description)
     {
-        ArgumentNullException.ThrowIfNull(name);
-
         Id = id;
         Name = name;
         Description = description;

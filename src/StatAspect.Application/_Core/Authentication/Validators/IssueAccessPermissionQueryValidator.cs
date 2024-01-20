@@ -1,6 +1,7 @@
 ﻿// ReSharper disable UnusedType.Global
 
 using StatAspect.Application._Core.Authentication.Commands;
+using StatAspect.Domain._Common.Extensions;
 using StatAspect.Domain._Core.UserRegistry.ValueObjects;
 
 namespace StatAspect.Application._Core.Authentication.Validators;
@@ -9,14 +10,14 @@ namespace StatAspect.Application._Core.Authentication.Validators;
 /// Represents a <see cref="IssueAccessPermissionCommand"/> validator.
 /// <remarks>Reflection usage only.</remarks>
 /// </summary>
-public sealed class GetAccessPermissionQueryValidator : AbstractValidator<IssueAccessPermissionCommand>
+public sealed class IssueAccessPermissionCommandValidator : AbstractValidator<IssueAccessPermissionCommand>
 {
-    public GetAccessPermissionQueryValidator()
+    public IssueAccessPermissionCommandValidator()
     {
         RuleFor(q => q.Username)
-            .SetValidator(Username.GetValidator(nameof(IssueAccessPermissionCommand.Username)));
+            .AssignTo(Username.GetValidator, nameof(IssueAccessPermissionCommand.Username));
 
         RuleFor(q => q.Password)
-            .SetValidator(Password.GetValidator(nameof(IssueAccessPermissionCommand.Password)));
+            .AssignTo(Password.GetValidator, nameof(IssueAccessPermissionCommand.Password));
     }
 }

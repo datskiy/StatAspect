@@ -28,7 +28,7 @@ public sealed class AccessPermissionRequestBody
     /// <summary>
     /// Initializes a new instance of <see cref="AccessPermissionRequestBody"/>.
     /// </summary>
-    public AccessPermissionRequestBody(string username, string password)
+    public AccessPermissionRequestBody([MaybeNull] string username, [MaybeNull] string password)
     {
         Username = username;
         Password = password;

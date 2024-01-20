@@ -27,7 +27,6 @@ public sealed class Startup
 
         services.AddOptions(_configuration);
         services.AddApiControllers();
-        services.AddJsonPropertyMetadataFormatter();
         services.AddSwagger();
         services.AddValidation(applicationAssemblyMarkerType);
         services.AddMediator(apiAssemblyMarkerType, applicationAssemblyMarkerType);

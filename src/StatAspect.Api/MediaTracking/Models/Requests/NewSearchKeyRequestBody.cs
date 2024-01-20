@@ -27,7 +27,7 @@ public sealed class NewSearchKeyRequestBody
     /// <summary>
     /// Initializes a new instance of <see cref="NewSearchKeyRequestBody"/>.
     /// </summary>
-    public NewSearchKeyRequestBody(string name, string? description)
+    public NewSearchKeyRequestBody([MaybeNull] string name, string? description)
     {
         Name = name;
         Description = description;
